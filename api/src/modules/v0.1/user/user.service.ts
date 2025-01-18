@@ -1,26 +1,25 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { DatabaseService } from "src/database/database.service";
+import { User } from "src/database/entities/user.entity";
+import { Repository } from "typeorm";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { firstValueFrom } from "rxjs";
 
 @Injectable()
-export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user1';
+export class UserService extends DatabaseService<User> {
+  constructor(
+    @InjectRepository(User)
+    protected readonly repository: Repository<User>
+  ) {
+    super(repository);
   }
-
-  findAll() {
-    return `This action returns all user1`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} user1`;
-  }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user1`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user1`;
+  async validateUser(user: CreateUserDto) {
+    const candidates = await firstValueFrom(
+      this.findByProperty("email", user.email)
+    );
+    const candidate = candidates?.[0];
+    if (candidate) return candidate;
+    return firstValueFrom(this.create(user));
   }
 }

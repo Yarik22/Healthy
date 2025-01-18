@@ -1,45 +1,21 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from "@nestjs/common";
-import { EvaluationService } from "./evaluation.service";
-import { CreateEvaluationDto } from "./dto/create-evaluation.dto";
-import { UpdateEvaluationDto } from "./dto/update-evaluation.dto";
+import { Controller } from "@nestjs/common";
+import { AnswerService } from "./answer.service";
+import { QuestionService } from "./question.service";
+import { ApiVersion } from "src/modules/versions";
+import { ApiHeader } from "@nestjs/swagger";
+import { TestService } from "./test.service";
 
-@Controller({ path: "evaluation", version: "0.1" })
+@Controller({ path: "evaluation", version: ApiVersion.Version01 })
+@ApiHeader({
+  name: "Version",
+  enum: Object.values(ApiVersion),
+  required: true,
+  description: "API version header",
+})
 export class EvaluationController {
-  constructor(private readonly evaluationService: EvaluationService) {}
-
-  @Post()
-  create(@Body() createEvaluationDto: CreateEvaluationDto) {
-    return this.evaluationService.create(createEvaluationDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.evaluationService.findAll();
-  }
-
-  @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.evaluationService.findOne(+id);
-  }
-
-  @Patch(":id")
-  update(
-    @Param("id") id: string,
-    @Body() updateEvaluationDto: UpdateEvaluationDto
-  ) {
-    return this.evaluationService.update(+id, updateEvaluationDto);
-  }
-
-  @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.evaluationService.remove(+id);
-  }
+  constructor(
+    private readonly answerService: AnswerService,
+    private readonly questionService: QuestionService,
+    private readonly testService: TestService
+  ) {}
 }

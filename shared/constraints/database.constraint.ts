@@ -30,7 +30,7 @@ export const Constraints = {
   },
   User: {
     emailMaxLength: 320,
-    nicknameMaxLength: 50,
+    nicknameMaxLength: 64,
     bioMaxLength: 1000,
     imgMaxLength: 5242880, // 5 MB in bytes
   },

@@ -35,7 +35,7 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `CREATE TYPE "public"."user_sex_enum" AS ENUM('male', 'female', 'other')`
     );
     await queryRunner.query(
-      `CREATE TABLE "user" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "email" character varying(320) NOT NULL, "nickname" character varying(50) NOT NULL, "birthdate" date, "sex" "public"."user_sex_enum", "bio" character varying(1000), "banned" boolean NOT NULL DEFAULT false, "img" bytea, CONSTRAINT "UQ_e12875dfb3b1d92d7d7c5377e22" UNIQUE ("email"), CONSTRAINT "UQ_e2364281027b926b879fa2fa1e0" UNIQUE ("nickname"), CONSTRAINT "UQ_d6e8ecf5a7a4793568b2f6e0c9a" UNIQUE ("email", "nickname"), CONSTRAINT "CHK_d21100fb1cb0f9cb5676cc2868" CHECK (length(img) <= 5242880), CONSTRAINT "PK_a95e949168be7b7ece1a2382fed" PRIMARY KEY ("uuid"))`
+      `CREATE TABLE "user" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "email" character varying(320) NOT NULL, "nickname" character varying(64) NOT NULL, "birthdate" date, "sex" "public"."user_sex_enum", "bio" character varying(1000), "banned" boolean NOT NULL DEFAULT false, "img" bytea, CONSTRAINT "UQ_e12875dfb3b1d92d7d7c5377e22" UNIQUE ("email"), CONSTRAINT "UQ_e2364281027b926b879fa2fa1e0" UNIQUE ("nickname"), CONSTRAINT "UQ_d6e8ecf5a7a4793568b2f6e0c9a" UNIQUE ("email", "nickname"), CONSTRAINT "CHK_d21100fb1cb0f9cb5676cc2868" CHECK (length(img) <= 5242880), CONSTRAINT "PK_a95e949168be7b7ece1a2382fed" PRIMARY KEY ("uuid"))`
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_e12875dfb3b1d92d7d7c5377e2" ON "user" ("email") `

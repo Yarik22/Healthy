@@ -13,7 +13,7 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { ApiHeader } from "@nestjs/swagger";
 import { ApiVersion } from "src/modules/versions";
 
-@Controller({ path: "user", version: "0.1" })
+@Controller({ path: "user", version: ApiVersion.Version01 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),
@@ -22,27 +22,4 @@ import { ApiVersion } from "src/modules/versions";
 })
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
-  }
-  @Get()
-  findAll() {
-    return this.userService.findAll();
-  }
-
-  @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.userService.findOne(+id);
-  }
-
-  @Patch(":id")
-  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
-  }
-
-  @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.userService.remove(+id);
-  }
 }
