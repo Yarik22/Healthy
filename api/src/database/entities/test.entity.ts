@@ -1,9 +1,9 @@
 import { Entity, Column, JoinTable, ManyToMany, Check } from "typeorm";
 import { Question } from "./question.entity";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
-import { User } from "../../user/entities/user.entity";
-import { BaseEntity } from "../../../../database/base.entity";
 import { ApiProperty } from "@nestjs/swagger";
+import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { User } from "./user.entity";
+import { BaseEntity } from "../base.entity";
 
 @Entity()
 @Check(`length(img) <= ${Constraints.Test.imgMaxLength}`)

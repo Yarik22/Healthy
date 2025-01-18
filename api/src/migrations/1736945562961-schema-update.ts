@@ -5,8 +5,9 @@ import { RoleName } from "../../../shared/enums/user.enum";
 
 config();
 
-export class SchemaUpdate1736872639413 implements MigrationInterface {
-  private async getHashedToken(secret: string): Promise<string> {
+export class SchemaUpdate1736945562961 implements MigrationInterface {
+
+private async getHashedToken(secret: string): Promise<string> {
     if (!secret) {
       throw new Error("Role secret is missing");
     }

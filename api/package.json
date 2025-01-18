@@ -7,10 +7,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "start:dev": "nest start --watch",
-    "start:prod": "node dist/api/src/main",
+    "dev": "nest start --watch",
+    "prod": "node dist/api/src/main",
     "typeorm": "typeorm-ts-node-commonjs",
-    "schema:sync": "npx typeorm-ts-node-commonjs schema:sync",
+    "schema:sync": "npx typeorm-ts-node-commonjs schema:sync -d ./src/database/data-source.ts",
     "typeorm:cache": "npx typeorm-ts-node-commonjs cache:clear -d ./src/database/data-source.ts",
     "schema:drop": "npx typeorm-ts-node-commonjs schema:drop -d ./src/database/data-source.ts",
     "migration:create": "typeorm migration:create ./src/migrations/schema-update",

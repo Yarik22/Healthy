@@ -4,6 +4,7 @@ export const Constraints = {
       min: 0,
       max: 100,
     },
+    defaultValue: 50,
   },
   Therapy: {
     imgMaxLength: 5242880, // 5 MB in bytes
@@ -23,7 +24,7 @@ export const Constraints = {
   },
   Answer: {
     imgMaxLength: 5242880, // 5 MB in bytes
-    influenceMin: 0,
+    influenceMin: -10,
     influenceMax: 10,
     textMaxLength: 250,
   },

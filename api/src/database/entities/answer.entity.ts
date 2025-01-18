@@ -1,4 +1,3 @@
-import { BaseEntity } from "../../../../database/base.entity";
 import {
   Entity,
   Column,
@@ -8,10 +7,11 @@ import {
   OneToMany,
 } from "typeorm";
 import { Question } from "./question.entity";
-import { MentalState } from "../../../../../../shared/enums/therapy.enum";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
 import { Result } from "./result.entity";
 import { ApiProperty } from "@nestjs/swagger";
+import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../../shared/enums/therapy.enum";
+import { BaseEntity } from "../base.entity";
 
 @Entity()
 @Check(
@@ -39,6 +39,7 @@ export class Answer extends BaseEntity {
   @Column({
     type: "enum",
     enum: MentalState,
+    name: "mentalstate",
   })
   @ApiProperty({
     description: "The mental state associated with the answer.",

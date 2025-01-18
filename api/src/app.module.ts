@@ -19,7 +19,7 @@ import { RegisterModule } from "./modules/register.module";
         password: configService.get("DATABASE_PASSWORD"),
         database: configService.get("DATABASE_NAME"),
         entities: [__dirname + "/../**/*.entity.{ts,js}"],
-        synchronize: true,
+        synchronize: false,
         autoLoadEntities: true,
         migrations: [__dirname + "/migrations/**/*.{ts,js}"],
       }),

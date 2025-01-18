@@ -1,4 +1,3 @@
-import { BaseEntity } from "../../../../database/base.entity";
 import {
   Entity,
   Column,
@@ -7,11 +6,12 @@ import {
   Check,
   OneToMany,
 } from "typeorm";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
 import { Test } from "./test.entity";
 import { Answer } from "./answer.entity";
 import { Result } from "./result.entity";
 import { ApiProperty } from "@nestjs/swagger";
+import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { BaseEntity } from "../base.entity";
 
 @Entity()
 @Check(`length(img) <= ${Constraints.Question.imgMaxLength}`)

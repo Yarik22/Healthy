@@ -8,13 +8,13 @@ import {
   OneToMany,
   Check,
 } from "typeorm";
-import { Conclusion } from "../../evaluation/entities/conclusion.entity";
-import { Role } from "./role.entity";
-import { BaseEntity } from "../../../../database/base.entity";
-import { Result } from "../../evaluation/entities/result.entity";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
-import { Sex } from "../../../../../../shared/enums/user.enum";
 import { ApiProperty } from "@nestjs/swagger";
+import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { Sex } from "../../../../shared/enums/user.enum";
+import { Conclusion } from "./conclusion.entity";
+import { Result } from "./result.entity";
+import { Role } from "./role.entity";
+import { BaseEntity } from "../base.entity";
 
 @Entity()
 @Check(`length(img) <= ${Constraints.User.imgMaxLength}`)

@@ -1,9 +1,9 @@
 import { Entity, Column, ManyToOne, JoinColumn, Check } from "typeorm";
-import { User } from "../../user/entities/user.entity";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
-import { BaseEntity } from "../../../../database/base.entity";
-import { MentalState } from "../../../../../../shared/enums/therapy.enum";
+import { BaseEntity } from "../base.entity";
 import { ApiProperty } from "@nestjs/swagger";
+import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../../shared/enums/therapy.enum";
+import { User } from "./user.entity";
 
 @Entity()
 @Check(
@@ -20,6 +20,7 @@ export class Conclusion extends BaseEntity {
   @Column({
     type: "enum",
     enum: MentalState,
+    name: "mentalstate",
   })
   @ApiProperty({
     description: "The mental state evaluated for this conclusion.",
@@ -30,6 +31,7 @@ export class Conclusion extends BaseEntity {
   @Column({
     type: "int",
     nullable: false,
+    default: Constraints.Conclusion.defaultValue,
   })
   @ApiProperty({
     description:

@@ -1,6 +1,6 @@
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
-import { MentalState } from "../../../../../../shared/enums/therapy.enum";
-import { BaseEntity } from "../../../../database/base.entity";
+import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../../shared/enums/therapy.enum";
+import { BaseEntity } from "../base.entity";
 import { Entity, Column, Check } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
 
@@ -59,12 +59,13 @@ export class Therapy extends BaseEntity {
     type: "enum",
     enum: MentalState,
     array: true,
+    name: "mentalstates"
   })
   @ApiProperty({
     description: "An array of mental states that the therapy aims to address.",
     enum: MentalState,
     isArray: true,
-    example: [MentalState.ACCEPTANCE, MentalState.AGGRESSION],
+    example: [MentalState.Apathy, MentalState.Anger],
   })
   mentalStates: MentalState[];
 }

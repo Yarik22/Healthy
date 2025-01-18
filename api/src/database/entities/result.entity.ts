@@ -1,8 +1,8 @@
 import { Entity, ManyToOne, JoinColumn, PrimaryColumn } from "typeorm";
-import { User } from "../../user/entities/user.entity";
 import { Question } from "./question.entity";
 import { Answer } from "./answer.entity";
 import { ApiProperty } from "@nestjs/swagger";
+import { User } from "./user.entity";
 
 @Entity()
 export class Result {
