@@ -50,12 +50,6 @@ export class User extends BaseEntity {
     type: "varchar",
     length: Constraints.User.emailMaxLength,
   })
-  @ApiProperty({
-    description: "The hashed password of the user.",
-    example: "hashedpassword123",
-  })
-  hashedPassword: string;
-
   @Column({
     type: "varchar",
     length: Constraints.User.emailMaxLength,

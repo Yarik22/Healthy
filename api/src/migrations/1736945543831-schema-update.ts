@@ -5,12 +5,6 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `CREATE TYPE "public"."therapy_mentalstates_enum" AS ENUM('Anxiety', 'Depression', 'Stress', 'Fear', 'Guilt', 'Shame', 'Anger', 'Hopelessness', 'Isolation', 'Confusion', 'Frustration', 'Insecurity', 'Pessimism', 'Apathy', 'Loneliness')`
-    );
-    await queryRunner.query(
-      `CREATE TABLE "therapy" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "title" character varying(100) NOT NULL, "description" character varying(1000), "url" character varying(500), "img" bytea, "mentalstates" "public"."therapy_mentalstates_enum" array NOT NULL, CONSTRAINT "UQ_f17dfa1b353a85db470d050a9a3" UNIQUE ("title"), CONSTRAINT "CHK_60763d1517062bdf20c42dea08" CHECK (length(img) <= 5242880), CONSTRAINT "PK_67573f585485462fc2202442c57" PRIMARY KEY ("uuid"))`
-    );
-    await queryRunner.query(
       `CREATE TYPE "public"."conclusion_mentalstate_enum" AS ENUM('Anxiety', 'Depression', 'Stress', 'Fear', 'Guilt', 'Shame', 'Anger', 'Hopelessness', 'Isolation', 'Confusion', 'Frustration', 'Insecurity', 'Pessimism', 'Apathy', 'Loneliness')`
     );
     await queryRunner.query(
@@ -32,10 +26,16 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `CREATE TABLE "result" ("user_uuid" uuid NOT NULL, "question_uuid" uuid NOT NULL, "answer_uuid" uuid, CONSTRAINT "PK_28402f995776dba801dec2c3ec8" PRIMARY KEY ("user_uuid", "question_uuid"))`
     );
     await queryRunner.query(
+      `CREATE TYPE "public"."role_name_enum" AS ENUM('admin', 'user', 'moderator')`
+    );
+    await queryRunner.query(
+      `CREATE TABLE "role" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "name" "public"."role_name_enum" NOT NULL DEFAULT 'user', "description" character varying(1000), "token" character varying(255) NOT NULL, CONSTRAINT "UQ_ae4578dcaed5adff96595e61660" UNIQUE ("name"), CONSTRAINT "UQ_2cfa395daced6c810c8c4aaf1bb" UNIQUE ("token"), CONSTRAINT "PK_16fc336b9576146aa1f03fdc7c5" PRIMARY KEY ("uuid"))`
+    );
+    await queryRunner.query(
       `CREATE TYPE "public"."user_sex_enum" AS ENUM('male', 'female', 'other')`
     );
     await queryRunner.query(
-      `CREATE TABLE "user" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "hashedPassword" character varying(320) NOT NULL, "email" character varying(320) NOT NULL, "nickname" character varying(50) NOT NULL, "birthdate" date, "sex" "public"."user_sex_enum", "bio" character varying(1000), "banned" boolean NOT NULL DEFAULT false, "img" bytea, CONSTRAINT "UQ_e12875dfb3b1d92d7d7c5377e22" UNIQUE ("email"), CONSTRAINT "UQ_e2364281027b926b879fa2fa1e0" UNIQUE ("nickname"), CONSTRAINT "UQ_d6e8ecf5a7a4793568b2f6e0c9a" UNIQUE ("email", "nickname"), CONSTRAINT "CHK_d21100fb1cb0f9cb5676cc2868" CHECK (length(img) <= 5242880), CONSTRAINT "PK_a95e949168be7b7ece1a2382fed" PRIMARY KEY ("uuid"))`
+      `CREATE TABLE "user" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "email" character varying(320) NOT NULL, "nickname" character varying(50) NOT NULL, "birthdate" date, "sex" "public"."user_sex_enum", "bio" character varying(1000), "banned" boolean NOT NULL DEFAULT false, "img" bytea, CONSTRAINT "UQ_e12875dfb3b1d92d7d7c5377e22" UNIQUE ("email"), CONSTRAINT "UQ_e2364281027b926b879fa2fa1e0" UNIQUE ("nickname"), CONSTRAINT "UQ_d6e8ecf5a7a4793568b2f6e0c9a" UNIQUE ("email", "nickname"), CONSTRAINT "CHK_d21100fb1cb0f9cb5676cc2868" CHECK (length(img) <= 5242880), CONSTRAINT "PK_a95e949168be7b7ece1a2382fed" PRIMARY KEY ("uuid"))`
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_e12875dfb3b1d92d7d7c5377e2" ON "user" ("email") `
@@ -44,10 +44,10 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `CREATE INDEX "IDX_e2364281027b926b879fa2fa1e" ON "user" ("nickname") `
     );
     await queryRunner.query(
-      `CREATE TYPE "public"."role_name_enum" AS ENUM('admin', 'user', 'moderator')`
+      `CREATE TYPE "public"."therapy_mentalstates_enum" AS ENUM('Anxiety', 'Depression', 'Stress', 'Fear', 'Guilt', 'Shame', 'Anger', 'Hopelessness', 'Isolation', 'Confusion', 'Frustration', 'Insecurity', 'Pessimism', 'Apathy', 'Loneliness')`
     );
     await queryRunner.query(
-      `CREATE TABLE "role" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "name" "public"."role_name_enum" NOT NULL DEFAULT 'user', "description" character varying(1000), "token" character varying(255) NOT NULL, CONSTRAINT "UQ_ae4578dcaed5adff96595e61660" UNIQUE ("name"), CONSTRAINT "UQ_2cfa395daced6c810c8c4aaf1bb" UNIQUE ("token"), CONSTRAINT "PK_16fc336b9576146aa1f03fdc7c5" PRIMARY KEY ("uuid"))`
+      `CREATE TABLE "therapy" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "title" character varying(100) NOT NULL, "description" character varying(1000), "url" character varying(500), "img" bytea, "mentalstates" "public"."therapy_mentalstates_enum" array NOT NULL, CONSTRAINT "UQ_f17dfa1b353a85db470d050a9a3" UNIQUE ("title"), CONSTRAINT "CHK_60763d1517062bdf20c42dea08" CHECK (length(img) <= 5242880), CONSTRAINT "PK_67573f585485462fc2202442c57" PRIMARY KEY ("uuid"))`
     );
     await queryRunner.query(
       `CREATE TABLE "user_test" ("test_uuid" uuid NOT NULL, "user_uuid" uuid NOT NULL, CONSTRAINT "PK_9dc0853abaae813c2944b8fa5fe" PRIMARY KEY ("test_uuid", "user_uuid"))`
@@ -68,13 +68,13 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `CREATE INDEX "IDX_d803e0caace4198e92e72a25ed" ON "test_question" ("question_uuid") `
     );
     await queryRunner.query(
-      `CREATE TABLE "user_role" ("user_uuid" uuid NOT NULL, "role_uuid" uuid NOT NULL, CONSTRAINT "PK_b3ae719908a740d300f2032780b" PRIMARY KEY ("user_uuid", "role_uuid"))`
-    );
-    await queryRunner.query(
-      `CREATE INDEX "IDX_2dcc8bd6b8738bc96d9dcf229b" ON "user_role" ("user_uuid") `
+      `CREATE TABLE "user_role" ("role_uuid" uuid NOT NULL, "user_uuid" uuid NOT NULL, CONSTRAINT "PK_b3ae719908a740d300f2032780b" PRIMARY KEY ("role_uuid", "user_uuid"))`
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_3838c6c75fb63afc447bc8fa64" ON "user_role" ("role_uuid") `
+    );
+    await queryRunner.query(
+      `CREATE INDEX "IDX_2dcc8bd6b8738bc96d9dcf229b" ON "user_role" ("user_uuid") `
     );
     await queryRunner.query(
       `ALTER TABLE "conclusion" ADD CONSTRAINT "FK_1ce7b9dfaa59d818f4f37ecab1a" FOREIGN KEY ("user_uuid") REFERENCES "user"("uuid") ON DELETE CASCADE ON UPDATE CASCADE`
@@ -104,19 +104,19 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `ALTER TABLE "test_question" ADD CONSTRAINT "FK_d803e0caace4198e92e72a25ede" FOREIGN KEY ("question_uuid") REFERENCES "question"("uuid") ON DELETE CASCADE ON UPDATE CASCADE`
     );
     await queryRunner.query(
-      `ALTER TABLE "user_role" ADD CONSTRAINT "FK_2dcc8bd6b8738bc96d9dcf229bd" FOREIGN KEY ("user_uuid") REFERENCES "user"("uuid") ON DELETE CASCADE ON UPDATE CASCADE`
+      `ALTER TABLE "user_role" ADD CONSTRAINT "FK_3838c6c75fb63afc447bc8fa64f" FOREIGN KEY ("role_uuid") REFERENCES "role"("uuid") ON DELETE CASCADE ON UPDATE CASCADE`
     );
     await queryRunner.query(
-      `ALTER TABLE "user_role" ADD CONSTRAINT "FK_3838c6c75fb63afc447bc8fa64f" FOREIGN KEY ("role_uuid") REFERENCES "role"("uuid") ON DELETE CASCADE ON UPDATE CASCADE`
+      `ALTER TABLE "user_role" ADD CONSTRAINT "FK_2dcc8bd6b8738bc96d9dcf229bd" FOREIGN KEY ("user_uuid") REFERENCES "user"("uuid") ON DELETE CASCADE ON UPDATE CASCADE`
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE "user_role" DROP CONSTRAINT "FK_3838c6c75fb63afc447bc8fa64f"`
+      `ALTER TABLE "user_role" DROP CONSTRAINT "FK_2dcc8bd6b8738bc96d9dcf229bd"`
     );
     await queryRunner.query(
-      `ALTER TABLE "user_role" DROP CONSTRAINT "FK_2dcc8bd6b8738bc96d9dcf229bd"`
+      `ALTER TABLE "user_role" DROP CONSTRAINT "FK_3838c6c75fb63afc447bc8fa64f"`
     );
     await queryRunner.query(
       `ALTER TABLE "test_question" DROP CONSTRAINT "FK_d803e0caace4198e92e72a25ede"`
@@ -146,10 +146,10 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `ALTER TABLE "conclusion" DROP CONSTRAINT "FK_1ce7b9dfaa59d818f4f37ecab1a"`
     );
     await queryRunner.query(
-      `DROP INDEX "public"."IDX_3838c6c75fb63afc447bc8fa64"`
+      `DROP INDEX "public"."IDX_2dcc8bd6b8738bc96d9dcf229b"`
     );
     await queryRunner.query(
-      `DROP INDEX "public"."IDX_2dcc8bd6b8738bc96d9dcf229b"`
+      `DROP INDEX "public"."IDX_3838c6c75fb63afc447bc8fa64"`
     );
     await queryRunner.query(`DROP TABLE "user_role"`);
     await queryRunner.query(
@@ -166,8 +166,8 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `DROP INDEX "public"."IDX_b1c7013267dcbb102fdedaa030"`
     );
     await queryRunner.query(`DROP TABLE "user_test"`);
-    await queryRunner.query(`DROP TABLE "role"`);
-    await queryRunner.query(`DROP TYPE "public"."role_name_enum"`);
+    await queryRunner.query(`DROP TABLE "therapy"`);
+    await queryRunner.query(`DROP TYPE "public"."therapy_mentalstates_enum"`);
     await queryRunner.query(
       `DROP INDEX "public"."IDX_e2364281027b926b879fa2fa1e"`
     );
@@ -176,6 +176,8 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
     );
     await queryRunner.query(`DROP TABLE "user"`);
     await queryRunner.query(`DROP TYPE "public"."user_sex_enum"`);
+    await queryRunner.query(`DROP TABLE "role"`);
+    await queryRunner.query(`DROP TYPE "public"."role_name_enum"`);
     await queryRunner.query(`DROP TABLE "result"`);
     await queryRunner.query(`DROP TABLE "question"`);
     await queryRunner.query(`DROP TABLE "answer"`);
@@ -183,7 +185,5 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
     await queryRunner.query(`DROP TABLE "test"`);
     await queryRunner.query(`DROP TABLE "conclusion"`);
     await queryRunner.query(`DROP TYPE "public"."conclusion_mentalstate_enum"`);
-    await queryRunner.query(`DROP TABLE "therapy"`);
-    await queryRunner.query(`DROP TYPE "public"."therapy_mentalstates_enum"`);
   }
 }
