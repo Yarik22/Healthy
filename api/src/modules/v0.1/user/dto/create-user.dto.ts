@@ -7,10 +7,8 @@ import {
   IsBoolean,
   IsDate,
   IsByteLength,
-  IsArray,
   IsNotEmpty,
 } from "class-validator";
-import { Role } from "src/database/entities/role.entity";
 import { Constraints } from "../../../../../../shared/constraints/database.constraint";
 import { Sex } from "../../../../../../shared/enums/user.enum";
 
@@ -78,13 +76,4 @@ export class CreateUserDto {
   @IsOptional()
   @IsByteLength(0, Constraints.User.imgMaxLength)
   img?: Buffer;
-
-  @ApiProperty({
-    description: "Roles to be assigned to the user.",
-    type: [Role],
-    nullable: true,
-  })
-  @IsOptional()
-  @IsArray()
-  roles?: Role[];
 }

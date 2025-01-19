@@ -4,6 +4,9 @@ import { ApiHeader } from "@nestjs/swagger";
 import { ApiVersion } from "src/modules/versions";
 import { GoogleAuthGuard } from "../guard/google.guard";
 import { Request, Response } from "express";
+import { RoleName } from "../../../../../shared/enums/user.enum";
+import { Roles } from "../decorator/role.decorator";
+import { RolesGuard } from "../guard/role.guard";
 
 @Controller({ path: "auth", version: ApiVersion.Version01 })
 @ApiHeader({
@@ -22,15 +25,17 @@ export class AuthController {
 
   @Get("google/redirect")
   @UseGuards(GoogleAuthGuard)
-  handleRedirect() {
-    return { message: "OK2" };
+  handleRedirect(@Res() res: Response) {
+    res.redirect("http://localhost:3000/api/auth/status")
   }
-
+  @UseGuards(RolesGuard)
+  @Roles(RoleName.User)
   @Get("/status")
-  handleStatus(@Req() req: Request) {
+  async handleStatus(@Req() req: Request) {
     if (req.user) {
       return { msg: "Auth" };
     }
     return { msg: "Not Auth" };
   }
+
 }

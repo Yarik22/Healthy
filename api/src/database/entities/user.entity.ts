@@ -20,36 +20,23 @@ import { BaseEntity } from "../base.entity";
 @Check(`length(img) <= ${Constraints.User.imgMaxLength}`)
 @Unique(["email", "nickname"])
 export class User extends BaseEntity {
-  @ManyToMany(() => Role, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+  @ManyToMany(() => Role, (role) => role.users, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   @JoinTable({
     name: "user_role",
     joinColumn: { name: "user_uuid", referencedColumnName: "uuid" },
     inverseJoinColumn: { name: "role_uuid", referencedColumnName: "uuid" },
   })
-  @ApiProperty({
-    description: "The roles assigned to the user.",
-    type: [Role],
-  })
   roles: Role[];
 
   @OneToMany(() => Conclusion, (conclusion) => conclusion.user)
-  @ApiProperty({
-    description: "The conclusions associated with the user.",
-    type: [Conclusion],
-  })
   conclusions: Conclusion[];
 
   @OneToMany(() => Result, (result) => result.user)
-  @ApiProperty({
-    description: "The results associated with the user.",
-    type: [Result],
-  })
   results: Result[];
 
-  @Column({
-    type: "varchar",
-    length: Constraints.User.emailMaxLength,
-  })
   @Column({
     type: "varchar",
     length: Constraints.User.emailMaxLength,

@@ -7,10 +7,18 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { Question } from "src/database/entities/question.entity";
 import { TestService } from "./test.service";
 import { Test } from "src/database/entities/test.entity";
+import { AnswerController } from "./answer.controller";
+import { QuestionController } from "./question.controller";
+import { TestController } from "./test.controller";
 
 @Module({
   imports: [TypeOrmModule.forFeature([Answer, Question, Test])],
-  controllers: [EvaluationController],
+  controllers: [
+    EvaluationController,
+    AnswerController,
+    QuestionController,
+    TestController,
+  ],
   providers: [QuestionService, AnswerService, TestService],
 })
 export class EvaluationModule {}

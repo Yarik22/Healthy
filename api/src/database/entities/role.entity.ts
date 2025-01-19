@@ -1,6 +1,5 @@
 import { Entity, Column, JoinTable, ManyToMany } from "typeorm";
 import { User } from "./user.entity";
-
 import { ApiProperty } from "@nestjs/swagger";
 import { Constraints } from "../../../../shared/constraints/database.constraint";
 import { RoleName } from "../../../../shared/enums/user.enum";
@@ -33,19 +32,10 @@ export class Role extends BaseEntity {
   })
   description: string;
 
-  @Column({
-    type: "varchar",
-    length: Constraints.Role.tokenMaxLength,
-    unique: true,
-    nullable: false,
+  @ManyToMany(() => User, (user) => user.roles, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
   })
-  @ApiProperty({
-    description: "A unique token associated with this role.",
-    example: "role-token-example",
-  })
-  token: string;
-
-  @ManyToMany(() => User, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinTable({
     name: "user_role",
     joinColumn: { name: "role_uuid", referencedColumnName: "uuid" },

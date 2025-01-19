@@ -1,36 +1,14 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
-import * as bcrypt from "bcrypt";
-import { config } from "dotenv";
 import { RoleName } from "../../../shared/enums/user.enum";
 
-config();
-
 export class SchemaUpdate1736945562961 implements MigrationInterface {
-
-private async getHashedToken(secret: string): Promise<string> {
-    if (!secret) {
-      throw new Error("Role secret is missing");
-    }
-    const saltRounds = 10;
-    const hashedToken = await bcrypt.hash(secret, saltRounds);
-    return hashedToken;
-  }
-
   public async up(queryRunner: QueryRunner): Promise<void> {
-    const secretAdmin = process.env.ROLE_SECRET_ADMIN;
-    const secretUser = process.env.ROLE_SECRET_USER;
-    const secretModerator = process.env.ROLE_SECRET_MODERATOR;
-
-    const hashedTokenAdmin = await this.getHashedToken(secretAdmin);
-    const hashedTokenUser = await this.getHashedToken(secretUser);
-    const hashedTokenModerator = await this.getHashedToken(secretModerator);
-
     await queryRunner.query(`
-          INSERT INTO role (name, description, token)
+          INSERT INTO role (name, description)
           VALUES
-            ('${RoleName.Admin}', 'Admin role with all permissions', '${hashedTokenAdmin}'),
-            ('${RoleName.User}', 'Standard user role', '${hashedTokenUser}'),
-            ('${RoleName.Moderator}', 'Moderator with limited permissions', '${hashedTokenModerator}')
+            ('${RoleName.Admin}', 'Admin role with all permissions'),
+            ('${RoleName.User}', 'Standard user role'),
+            ('${RoleName.Moderator}', 'Moderator with limited permissions')
         `);
 
     await queryRunner.query(`

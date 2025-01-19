@@ -24,16 +24,9 @@ export class Answer extends BaseEntity {
     onUpdate: "CASCADE",
   })
   @JoinColumn({ name: "question_uuid", referencedColumnName: "uuid" })
-  @ApiProperty({
-    description: "The question to which this answer corresponds.",
-  })
   question: Question;
 
   @OneToMany(() => Result, (result) => result.answer)
-  @ApiProperty({
-    description: "The list of results associated with this answer.",
-    type: [Result],
-  })
   results: Result[];
 
   @Column({

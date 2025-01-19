@@ -50,10 +50,6 @@ export class Test extends BaseEntity {
     joinColumn: { name: "test_uuid", referencedColumnName: "uuid" },
     inverseJoinColumn: { name: "user_uuid", referencedColumnName: "uuid" },
   })
-  @ApiProperty({
-    description: "The users associated with this test.",
-    type: [User],
-  })
   users: User[];
 
   @ManyToMany(() => Question, { onDelete: "CASCADE", onUpdate: "CASCADE" })
@@ -61,10 +57,6 @@ export class Test extends BaseEntity {
     name: "test_question",
     joinColumn: { name: "test_uuid", referencedColumnName: "uuid" },
     inverseJoinColumn: { name: "question_uuid", referencedColumnName: "uuid" },
-  })
-  @ApiProperty({
-    description: "The questions associated with this test.",
-    type: [Question],
   })
   questions: Question[];
 }

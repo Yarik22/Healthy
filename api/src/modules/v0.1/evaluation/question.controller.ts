@@ -1,0 +1,117 @@
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from "@nestjs/common";
+import { QuestionService } from "./question.service";
+import { CreateQuestionDto } from "./dto/create-question.dto";
+import { UpdateQuestionDto } from "./dto/update-question.dto";
+import { Question } from "src/database/entities/question.entity";
+import {
+  ApiOperation,
+  ApiResponse,
+  ApiParam,
+  ApiHeader,
+} from "@nestjs/swagger";
+import { Observable } from "rxjs";
+import { DeleteResult, UpdateResult } from "typeorm";
+import { ApiVersion } from "src/modules/versions";
+
+@Controller({ path: "question", version: ApiVersion.Version01 })
+@ApiHeader({
+  name: "Version",
+  enum: Object.values(ApiVersion),
+  required: true,
+  description: "API version header",
+})
+export class QuestionController {
+  constructor(private readonly questionService: QuestionService) {}
+
+  @Post()
+  @ApiOperation({ summary: "Create a new question" })
+  @ApiResponse({
+    status: 201,
+    description: "The question has been successfully created.",
+    type: Question,
+  })
+  handleCreateQuestion(
+    @Body() question: CreateQuestionDto
+  ): Observable<Question> {
+    return this.questionService.create(question);
+  }
+
+  @Get(":id")
+  @ApiOperation({ summary: "Get a question by ID" })
+  @ApiParam({
+    name: "id",
+    description: "The unique identifier of the question",
+  })
+  @ApiResponse({
+    status: 200,
+    description: "The question was successfully found.",
+    type: Question,
+  })
+  @ApiResponse({
+    status: 404,
+    description: "Question not found",
+  })
+  handleFindQuestionById(@Param("id") id: string): Observable<Question> {
+    return this.questionService.findById(id);
+  }
+
+  @Get()
+  @ApiOperation({ summary: "Get a list of all questions" })
+  @ApiResponse({
+    status: 200,
+    description: "List of questions retrieved successfully.",
+    type: [Question],
+  })
+  handleFindAllQuestions(): Observable<Question[]> {
+    return this.questionService.findAll();
+  }
+
+  @Patch(":id")
+  @ApiOperation({ summary: "Update a question by ID" })
+  @ApiParam({
+    name: "id",
+    description: "The unique identifier of the question",
+  })
+  @ApiResponse({
+    status: 200,
+    description: "The question was successfully updated.",
+    type: UpdateResult,
+  })
+  @ApiResponse({
+    status: 404,
+    description: "Question not found",
+  })
+  handleUpdateQuestion(
+    @Param("id") id: string,
+    @Body() updateQuestionDto: UpdateQuestionDto
+  ): Observable<UpdateResult> {
+    return this.questionService.update(id, updateQuestionDto);
+  }
+
+  @Delete(":id")
+  @ApiOperation({ summary: "Delete a question by ID" })
+  @ApiParam({
+    name: "id",
+    description: "The unique identifier of the question",
+  })
+  @ApiResponse({
+    status: 200,
+    description: "The question has been successfully deleted.",
+    type: DeleteResult,
+  })
+  @ApiResponse({
+    status: 404,
+    description: "Question not found",
+  })
+  handleDeleteQuestion(@Param("id") id: string): Observable<DeleteResult> {
+    return this.questionService.delete(id);
+  }
+}

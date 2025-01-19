@@ -29,7 +29,7 @@ export class SchemaUpdate1736945543831 implements MigrationInterface {
       `CREATE TYPE "public"."role_name_enum" AS ENUM('admin', 'user', 'moderator')`
     );
     await queryRunner.query(
-      `CREATE TABLE "role" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "name" "public"."role_name_enum" NOT NULL DEFAULT 'user', "description" character varying(1000), "token" character varying(255) NOT NULL, CONSTRAINT "UQ_ae4578dcaed5adff96595e61660" UNIQUE ("name"), CONSTRAINT "UQ_2cfa395daced6c810c8c4aaf1bb" UNIQUE ("token"), CONSTRAINT "PK_16fc336b9576146aa1f03fdc7c5" PRIMARY KEY ("uuid"))`
+      `CREATE TABLE "role" ("uuid" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "name" "public"."role_name_enum" NOT NULL DEFAULT 'user', "description" character varying(1000), CONSTRAINT "UQ_ae4578dcaed5adff96595e61660" UNIQUE ("name"), CONSTRAINT "PK_16fc336b9576146aa1f03fdc7c5" PRIMARY KEY ("uuid"))`
     );
     await queryRunner.query(
       `CREATE TYPE "public"."user_sex_enum" AS ENUM('male', 'female', 'other')`

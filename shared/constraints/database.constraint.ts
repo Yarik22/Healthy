@@ -37,6 +37,5 @@ export const Constraints = {
   Role: {
     nameMaxLength: 50,
     descriptionMaxLength: 1000,
-    tokenMaxLength: 255,
   },
 };

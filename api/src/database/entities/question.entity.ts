@@ -22,24 +22,12 @@ export class Question extends BaseEntity {
     joinColumn: { name: "question_uuid", referencedColumnName: "uuid" },
     inverseJoinColumn: { name: "test_uuid", referencedColumnName: "uuid" },
   })
-  @ApiProperty({
-    description: "The list of tests that this question belongs to.",
-    type: [Test],
-  })
   tests: Test[];
 
   @OneToMany(() => Answer, (answer) => answer.question)
-  @ApiProperty({
-    description: "The list of answers associated with this question.",
-    type: [Answer],
-  })
   answers: Answer[];
 
   @OneToMany(() => Result, (result) => result.question)
-  @ApiProperty({
-    description: "The list of results associated with this question.",
-    type: [Result],
-  })
   results: Result[];
 
   @Column({

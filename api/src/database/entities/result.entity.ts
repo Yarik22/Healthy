@@ -22,22 +22,13 @@ export class Result {
 
   @ManyToOne(() => User, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinColumn({ name: "user_uuid", referencedColumnName: "uuid" })
-  @ApiProperty({
-    description: "The user associated with this result.",
-  })
   user: User;
 
   @ManyToOne(() => Question, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinColumn({ name: "question_uuid", referencedColumnName: "uuid" })
-  @ApiProperty({
-    description: "The question associated with this result.",
-  })
   question: Question;
 
   @ManyToOne(() => Answer, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinColumn({ name: "answer_uuid", referencedColumnName: "uuid" })
-  @ApiProperty({
-    description: "The answer associated with this result.",
-  })
   answer: Answer;
 }
