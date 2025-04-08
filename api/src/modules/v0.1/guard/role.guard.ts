@@ -30,7 +30,9 @@ export class RolesGuard implements CanActivate {
 
     const request = context.switchToHttp().getRequest();
     const userPromise = request.user as Promise<User>;
-
+    if (!userPromise) {
+      throw new ForbiddenException("User is not authenticated");
+    }
     return from(userPromise).pipe(
       switchMap((user) => {
         if (!user) {

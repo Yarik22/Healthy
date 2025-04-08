@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from "@nestjs/common";
 import { QuestionService } from "./question.service";
 import { CreateQuestionDto } from "./dto/create-question.dto";
@@ -20,6 +21,9 @@ import {
 import { Observable } from "rxjs";
 import { DeleteResult, UpdateResult } from "typeorm";
 import { ApiVersion } from "src/modules/versions";
+import { RoleName } from "../../../../../shared/enums/user.enum";
+import { Roles } from "../decorator/role.decorator";
+import { RolesGuard } from "../guard/role.guard";
 
 @Controller({ path: "question", version: ApiVersion.Version01 })
 @ApiHeader({
@@ -28,9 +32,11 @@ import { ApiVersion } from "src/modules/versions";
   required: true,
   description: "API version header",
 })
+@UseGuards(RolesGuard)
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
 
+  @Roles(RoleName.Admin)
   @Post()
   @ApiOperation({ summary: "Create a new question" })
   @ApiResponse({
@@ -44,6 +50,7 @@ export class QuestionController {
     return this.questionService.create(question);
   }
 
+  @Roles(RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get a question by ID" })
   @ApiParam({
@@ -63,6 +70,7 @@ export class QuestionController {
     return this.questionService.findById(id);
   }
 
+  @Roles(RoleName.Admin)
   @Get()
   @ApiOperation({ summary: "Get a list of all questions" })
   @ApiResponse({
@@ -74,6 +82,7 @@ export class QuestionController {
     return this.questionService.findAll();
   }
 
+  @Roles(RoleName.Admin)
   @Patch(":id")
   @ApiOperation({ summary: "Update a question by ID" })
   @ApiParam({
@@ -96,6 +105,7 @@ export class QuestionController {
     return this.questionService.update(id, updateQuestionDto);
   }
 
+  @Roles(RoleName.Admin)
   @Delete(":id")
   @ApiOperation({ summary: "Delete a question by ID" })
   @ApiParam({

@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from "@nestjs/common";
 import { AnswerService } from "./answer.service";
 import { CreateAnswerDto } from "./dto/create-answer.dto";
@@ -20,6 +21,9 @@ import {
 import { Observable } from "rxjs";
 import { DeleteResult, UpdateResult } from "typeorm";
 import { ApiVersion } from "src/modules/versions";
+import { RoleName } from "../../../../../shared/enums/user.enum";
+import { Roles } from "../decorator/role.decorator";
+import { RolesGuard } from "../guard/role.guard";
 
 @Controller({ path: "answer", version: ApiVersion.Version01 })
 @ApiHeader({
@@ -28,9 +32,11 @@ import { ApiVersion } from "src/modules/versions";
   required: true,
   description: "API version header",
 })
+@UseGuards(RolesGuard)
 export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
+  @Roles(RoleName.Admin)
   @Post()
   @ApiOperation({ summary: "Create a new answer" })
   @ApiResponse({
@@ -42,6 +48,7 @@ export class AnswerController {
     return this.answerService.create(answer);
   }
 
+  @Roles(RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get an answer by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the answer" })
@@ -58,6 +65,7 @@ export class AnswerController {
     return this.answerService.findById(id);
   }
 
+  @Roles(RoleName.Admin)
   @Get()
   @ApiOperation({ summary: "Get a list of all answers" })
   @ApiResponse({
@@ -69,6 +77,7 @@ export class AnswerController {
     return this.answerService.findAll();
   }
 
+  @Roles(RoleName.Admin)
   @Patch(":id")
   @ApiOperation({ summary: "Update an answer by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the answer" })
@@ -88,6 +97,7 @@ export class AnswerController {
     return this.answerService.update(id, updateAnswerDto);
   }
 
+  @Roles(RoleName.Admin)
   @Delete(":id")
   @ApiOperation({ summary: "Delete an answer by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the answer" })

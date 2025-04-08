@@ -11,5 +11,6 @@ import { SessionSerializer } from "../utils/session.serializer";
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UserController, AuthController],
   providers: [UserService, GoogleStrategy, SessionSerializer],
+  exports: [GoogleStrategy, SessionSerializer, UserService],
 })
 export class UserModule {}

@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from "@nestjs/common";
 import { TherapyService } from "./therapy.service";
 import { CreateTherapyDto } from "./dto/create-therapy.dto";
@@ -20,8 +21,12 @@ import { ApiVersion } from "src/modules/versions";
 import { Observable } from "rxjs";
 import { Therapy } from "src/database/entities/therapy.entity";
 import { DeleteResult, UpdateResult } from "typeorm";
+import { RolesGuard } from "../guard/role.guard";
+import { RoleName } from "../../../../../shared/enums/user.enum";
+import { Roles } from "../decorator/role.decorator";
 
 @Controller({ path: "therapy", version: ApiVersion.Version01 })
+@UseGuards(RolesGuard)
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),
@@ -31,6 +36,7 @@ import { DeleteResult, UpdateResult } from "typeorm";
 export class TherapyController {
   constructor(private readonly therapyService: TherapyService) {}
 
+  @Roles(RoleName.Admin)
   @Post()
   @ApiOperation({ summary: "Create a new therapy" })
   @ApiResponse({
@@ -42,6 +48,7 @@ export class TherapyController {
     return this.therapyService.create(therapy);
   }
 
+  @Roles(RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get a therapy by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the therapy" })
@@ -58,6 +65,7 @@ export class TherapyController {
     return this.therapyService.findById(id);
   }
 
+  @Roles(RoleName.Admin)
   @Get()
   @ApiOperation({ summary: "Get a list of all therapies" })
   @ApiResponse({
@@ -69,6 +77,7 @@ export class TherapyController {
     return this.therapyService.findAll();
   }
 
+  @Roles(RoleName.Admin)
   @Patch(":id")
   @ApiOperation({ summary: "Update therapy information by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the therapy" })
@@ -88,6 +97,7 @@ export class TherapyController {
     return this.therapyService.update(id, therapy);
   }
 
+  @Roles(RoleName.Admin)
   @Delete(":id")
   @ApiOperation({ summary: "Delete a therapy by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the therapy" })

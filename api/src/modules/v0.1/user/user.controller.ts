@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { CreateUserDto } from "./dto/create-user.dto";
@@ -20,6 +21,9 @@ import { ApiVersion } from "src/modules/versions";
 import { Observable } from "rxjs";
 import { User } from "src/database/entities/user.entity";
 import { DeleteResult, UpdateResult } from "typeorm";
+import { RoleName } from "../../../../../shared/enums/user.enum";
+import { Roles } from "../decorator/role.decorator";
+import { RolesGuard } from "../guard/role.guard";
 
 @Controller({ path: "user", version: ApiVersion.Version01 })
 @ApiHeader({
@@ -28,9 +32,11 @@ import { DeleteResult, UpdateResult } from "typeorm";
   required: true,
   description: "API version header",
 })
+@UseGuards(RolesGuard)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Roles(RoleName.Admin)
   @Post()
   @ApiOperation({ summary: "Create a new user" })
   @ApiResponse({
@@ -42,6 +48,7 @@ export class UserController {
     return this.userService.create(user);
   }
 
+  @Roles(RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get a user by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the user" })
@@ -58,6 +65,7 @@ export class UserController {
     return this.userService.findById(id);
   }
 
+  @Roles(RoleName.Admin)
   @Get()
   @ApiOperation({ summary: "Get a list of all users" })
   @ApiResponse({
@@ -69,6 +77,7 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @Roles(RoleName.Admin)
   @Patch(":id")
   @ApiOperation({ summary: "Update user information by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the user" })
@@ -88,6 +97,7 @@ export class UserController {
     return this.userService.update(id, user);
   }
 
+  @Roles(RoleName.Admin)
   @Delete(":id")
   @ApiOperation({ summary: "Delete a user by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the user" })
