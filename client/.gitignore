@@ -1,18 +1,22 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# Compiled output
+# ----------------------------------------
+# Compiled output and build directories
+# ----------------------------------------
 /dist
 /tmp
 /out-tsc
 /bazel-out
 
-# Node
+# -----------------------------
+# Node.js dependencies and logs
+# -----------------------------
 /node_modules
 npm-debug.log
 yarn-error.log
 
-# IDEs and editors
-.idea/
+# -------------------------------
+# IDEs and editor configurations
+# -------------------------------
+/.idea/
 .project
 .classpath
 .c9/
@@ -20,7 +24,9 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
-# Visual Studio Code
+# ----------------------------------------
+# Visual Studio Code settings and workspace
+# ----------------------------------------
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -28,7 +34,9 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
+# -----------------------------------
+# Miscellaneous build/cache files
+# -----------------------------------
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -37,6 +45,19 @@ yarn-error.log
 testem.log
 /typings
 
-# System files
+# -------------------------
+# System and OS-specific files
+# -------------------------
 .DS_Store
 Thumbs.db
+
+# ---------------------------------------
+# Environment Variables Files
+# Ignore local environment variable files, including for development, test, and production.
+# ---------------------------------------
+/environments
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local

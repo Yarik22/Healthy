@@ -25,7 +25,7 @@ import { RolesGuard } from "../guard/role.guard";
 import { RoleName } from "../../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 
-@Controller({ path: "therapy", version: ApiVersion.Version01 })
+@Controller({ path: "therapies", version: ApiVersion.Version01 })
 @UseGuards(RolesGuard)
 @ApiHeader({
   name: "Version",
@@ -48,7 +48,7 @@ export class TherapyController {
     return this.therapyService.create(therapy);
   }
 
-  @Roles(RoleName.Admin)
+  @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get a therapy by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the therapy" })

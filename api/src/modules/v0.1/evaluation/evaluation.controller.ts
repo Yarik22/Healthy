@@ -9,7 +9,7 @@ import { RoleName } from "../../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 
-@Controller({ path: "evaluation", version: ApiVersion.Version01 })
+@Controller({ path: "evaluations", version: ApiVersion.Version01 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),

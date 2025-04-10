@@ -6,7 +6,6 @@ export const config = () => ({
   swagger: {
     prefix: process.env.SWAGGER_PREFIX || "docs",
   },
-  port: process.env.APP_PORT || 3000,
   database: {
     host: process.env.DATABASE_HOST || "localhost",
     port: +process.env.DATABASE_PORT || 5432,
@@ -19,4 +18,9 @@ export const config = () => ({
     clientSecret: process.env.CLIENT_SECRET,
     clientId: process.env.CLIENT_ID,
   },
+  client: {
+    port: process.env.CLIENT_PORT || 4200
+  },
+  port: process.env.APP_PORT || 3000,
+  secret: process.env.SECRET
 });

@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="navbar__logo">
+    <img src="../../../assets/favicon.ico" alt="Logo" />
+    <span>MyApp</span>
+  </div>
+
+  <button class="navbar__toggle" (click)="toggleMenu()">
+    &#9776;
+  </button>
+
+  <ul [class.open]="isMenuOpen" class="navbar__links">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+  </ul>
+</nav>

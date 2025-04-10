@@ -25,7 +25,7 @@ import { RoleName } from "../../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 
-@Controller({ path: "question", version: ApiVersion.Version01 })
+@Controller({ path: "questions", version: ApiVersion.Version01 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),
@@ -50,7 +50,7 @@ export class QuestionController {
     return this.questionService.create(question);
   }
 
-  @Roles(RoleName.Admin)
+  @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get a question by ID" })
   @ApiParam({

@@ -25,7 +25,7 @@ import { RoleName } from "../../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 
-@Controller({ path: "test", version: ApiVersion.Version01 })
+@Controller({ path: "tests", version: ApiVersion.Version01 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),
@@ -48,7 +48,7 @@ export class TestController {
     return this.testService.create(test);
   }
 
-  @Roles(RoleName.Admin)
+  @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get a test by ID" })
   @ApiParam({ name: "id", description: "The unique identifier of the test" })
