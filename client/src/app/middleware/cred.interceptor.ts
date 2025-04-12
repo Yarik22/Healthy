@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable()
-export class WithCredentialsInterceptor implements HttpInterceptor {
+export class CredentialsInterceptor implements HttpInterceptor {
   constructor(private router: Router) {}
 
   intercept(

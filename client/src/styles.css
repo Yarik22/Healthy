@@ -31,6 +31,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-family: "WinkyRough", sans-serif;
 }
 
 ul[class],
@@ -133,4 +134,55 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/*---------------------------------------------------------COLOR THEME---------------------------------------------------------*/
+
+:root {
+  --background-main: #dfc97a;
+  --background-semishadow: #d18c4b;
+  --background-shadow: #e25336;
+
+  --background-main-enhanced: #c0aa5b;
+  --background-semishadow-enhanced: #a86b32;
+  --background-shadow-enhanced: #af3c25;
+
+  --positive: #ffffff;
+  --text-color: #000000;
+  /* --cursor-light: url('./assets/icons/cursor.svg'), auto; */
+}
+
+[data-theme="dark"] {
+  --background-main: #ff6500;
+  --background-semishadow: #1e3e62;
+  --background-shadow: #0b192c;
+
+  --background-main-enhanced: #d35603;
+  --background-semishadow-enhanced: #153150;
+  --background-shadow-enhanced: #081425;
+
+  --positive: #000000;
+  --text-color: #ffffff;
+  /* --cursor-dark: url('./assets/icons/cursor.svg'), auto; */
+}
+
+* {
+  transition: all 1s;
+  color: var(--text-color);
+}
+/*---------------------------------------------------------FONTS---------------------------------------------------------*/
+
+@font-face {
+  font-family: "WinkyRough";
+  src: url("./assets/fonts/WinkyRough-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WinkyRough";
+  src: url("./assets/fonts/WinkyRough-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
 }

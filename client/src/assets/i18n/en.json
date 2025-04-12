@@ -1,0 +1,20 @@
+{
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "forgot_password": "Forgot your password?"
+  },
+  "header": {
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "footer": {
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy"
+  },
+  "messages": {
+    "hello": "Hello, {{name}}!",
+    "welcome_back": "Welcome back, {{name}}!"
+  }
+}

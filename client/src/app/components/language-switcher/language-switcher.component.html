@@ -1,0 +1,14 @@
+<div class="radio-input">
+  <label *ngFor="let lang of availableLanguages">
+    <input
+      type="radio"
+      [id]="'value-' + lang"
+      name="value-radio"
+      [value]="lang"
+      [checked]="lang === currentLang"
+      (change)="switchLanguage(lang)"
+    />
+    <span> {{ lang.toUpperCase() }}</span>
+  </label>
+  <span class="selection"></span>
+</div>

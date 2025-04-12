@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { environment } from '../../environments/environment';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ThemeService } from './service/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,4 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = environment.API_VERSION;
-}
+export class AppComponent {}
