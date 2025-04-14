@@ -3,6 +3,7 @@ import {
   CanActivate,
   ExecutionContext,
   ForbiddenException,
+  UnauthorizedException,
 } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { Observable, from } from "rxjs";
@@ -31,17 +32,17 @@ export class RolesGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const userPromise = request.user as Promise<User>;
     if (!userPromise) {
-      throw new ForbiddenException("User is not authenticated");
+      throw new UnauthorizedException("User is not authenticated");
     }
     return from(userPromise).pipe(
       switchMap((user) => {
         if (!user) {
-          throw new ForbiddenException("User is not authenticated");
+          throw new UnauthorizedException("User is not authenticated");
         }
 
         const userUuid = user.uuid;
         if (!userUuid) {
-          throw new ForbiddenException("User does not have a valid UUID");
+          throw new UnauthorizedException("User does not have a valid UUID");
         }
 
         return from(this.userService.findById(userUuid, ["roles"])).pipe(

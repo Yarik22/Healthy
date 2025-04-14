@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { User } from '../../../../types/UserType';
+import { loadUser } from '../../store/user/user.actions';
+import {
+  selectUser,
+  selectUserLoading,
+  selectUserError,
+} from '../../store/user/user.selectors';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { CommonModule } from '@angular/common';
+import { ProfileBadgeComponent } from '../../components/profile-badge/profile-badge.component';
+
+@Component({
+  selector: 'app-profile-page',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
+  imports: [LoaderComponent, CommonModule, ProfileBadgeComponent],
+})
+export class ProfileComponent implements OnInit {
+  user$: Observable<User | null>;
+  loading$: Observable<boolean>;
+  error$: Observable<any>;
+
+  constructor(private store: Store) {
+    this.user$ = this.store.pipe(select(selectUser));
+    this.loading$ = this.store.pipe(select(selectUserLoading));
+    this.error$ = this.store.pipe(select(selectUserError));
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(loadUser());
+  }
+}

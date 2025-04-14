@@ -1,0 +1,14 @@
+<div class="profile-page">
+  <app-loader *ngIf="loading$ | async"></app-loader>
+  <ng-container *ngIf="!(loading$ | async)">
+    <div *ngIf="error$ | async; else profileContent" class="error-message">
+      <p>Error loading user data: {{ error$ | async }}</p>
+    </div>
+    <ng-template #profileContent>
+      <app-profile-badge
+        *ngIf="user$ | async as user"
+        [user]="user"
+      ></app-profile-badge>
+    </ng-template>
+  </ng-container>
+</div>

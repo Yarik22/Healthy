@@ -1,12 +1,25 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './guard/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
-import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
-import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { authGuard } from './guard/auth.guard';
+import { TherapiesComponent } from './pages/therapies/therapies.component';
 
 export const routes: Routes = [
+  {
+    path: 'therapies',
+    component: TherapiesComponent,
+    canActivate: [authGuard],
+  },
   { path: 'home', component: HomeComponent },
-  { path: 'not-authorized', component: NotAuthorizedComponent },
-  { path: 'forbidden', component: ForbiddenComponent },
+  { path: 'me', component: ProfileComponent, canActivate: [authGuard] },
+  {
+    path: 'error/:code/:title/:message/:icon/:buttonText/:buttonLink',
+    component: ErrorComponent,
+  },
+  {
+    path: 'error',
+    component: ErrorComponent,
+  },
   { path: '**', redirectTo: 'home' },
 ];

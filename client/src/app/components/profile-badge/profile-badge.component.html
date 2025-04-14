@@ -1,0 +1,38 @@
+<div class="profile-badge">
+  <div class="profile-header">
+    <div class="avatar-container">
+      <img
+        *ngIf="userImageBase64; else defaultAvatar"
+        [src]="userImageBase64"
+        alt="Profile picture"
+        class="avatar"
+      />
+      <ng-template #defaultAvatar>
+        <div class="avatar default-avatar">
+          {{ user.nickname.charAt(0).toUpperCase() }}
+        </div>
+      </ng-template>
+    </div>
+    <div class="profile-info">
+      <h2>{{ user.nickname }}</h2>
+      <p class="email">{{ user.email }}</p>
+    </div>
+  </div>
+
+  <div class="profile-details" *ngIf="user.birthdate || user.sex || user.bio">
+    <div class="detail-row" *ngIf="user.birthdate">
+      <span class="detail-label">Age:</span>
+      <span class="detail-value">{{ getAge() }}</span>
+    </div>
+
+    <div class="detail-row" *ngIf="user.sex">
+      <span class="detail-label">Gender:</span>
+      <span class="detail-value">{{ getSexDisplayText() }}</span>
+    </div>
+
+    <div class="detail-row" *ngIf="user.bio">
+      <span class="detail-label">Bio:</span>
+      <p class="detail-value bio">{{ user.bio }}</p>
+    </div>
+  </div>
+</div>

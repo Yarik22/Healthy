@@ -1,0 +1,18 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-page {
+    padding: 10px;
+  }
+}

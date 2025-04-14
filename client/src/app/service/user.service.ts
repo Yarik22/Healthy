@@ -12,15 +12,11 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl);
+  getMe(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/me`);
   }
 
-  getUserById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/${id}`);
-  }
-
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.apiUrl, user);
+  updateMe(updatedUser: Partial<User>): Observable<User> {
+    return this.http.patch<User>(`${this.apiUrl}/me`, updatedUser);
   }
 }

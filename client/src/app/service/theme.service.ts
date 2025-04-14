@@ -17,7 +17,7 @@ export class ThemeService {
     localStorage.setItem('theme', this.currentTheme);
   }
   applyTheme(theme: string): void {
-    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
   }
 
   getCurrentTheme(): string {

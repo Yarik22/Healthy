@@ -23,11 +23,18 @@ export class CredentialsInterceptor implements HttpInterceptor {
     });
 
     return next.handle(clonedRequest).pipe(
-      tap((event) => {
-      }),
+      tap((event) => {}),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 403) {
-          this.router.navigate(['/forbidden']);
+          this.router.navigate([
+            '/error',
+            error.status,
+            'Access Denied',
+            'You do not have permission to access this resource.',
+            '🚫',
+            'Go Back',
+            '/home',
+          ]);
         }
         return throwError(error);
       })

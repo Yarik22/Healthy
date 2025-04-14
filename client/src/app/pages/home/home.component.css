@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 15px auto;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+h1,
+h2,
+h3 {
+  color: #ffffff;
+}
+
+body {
+  background: url("https://fakeimg.pl/1600x1000/111/aaa/?text=BG") no-repeat
+    center center / cover;
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #ffffff;
+  padding: 2rem 0;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.hero-left h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.feature-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .feature-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.feature-item img {
+  border-radius: 12px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.gallery-item h3 {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: #f0f0f0;
+}
+
+.full-highlight {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  padding: 5rem 2rem;
+  border-radius: 1.2rem;
+}
+
+.full-highlight h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.columns-alt {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .columns-alt {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.columns-alt > div {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  HttpStatus,
-  Req,
-  Res,
-  UseGuards,
-} from "@nestjs/common";
+import { Controller, Get, HttpStatus, Res, UseGuards } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { ApiHeader } from "@nestjs/swagger";
 import { ApiVersion } from "src/modules/versions";
@@ -13,8 +6,8 @@ import { GoogleAuthGuard } from "../guard/google.guard";
 import { Response } from "express";
 import { ConfigService } from "@nestjs/config";
 
-@Controller({ path: "auth", version: ApiVersion.Version01 })
 @UseGuards(GoogleAuthGuard)
+@Controller({ path: "auth", version: ApiVersion.Version01 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),
@@ -22,15 +15,11 @@ import { ConfigService } from "@nestjs/config";
   description: "API version header",
 })
 export class AuthController {
-  constructor(
-    private readonly userService: UserService,
-    private readonly configService: ConfigService
-  ) {}
+  constructor(private readonly configService: ConfigService) {}
   @Get("google/login")
-  handleLogin() {
-    return HttpStatus.ACCEPTED;
+  handleLogin(){
+    HttpStatus.TEMPORARY_REDIRECT
   }
-
   @Get("google/redirect")
   handleRedirect(@Res() res: Response) {
     res.redirect(

@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Req,
 } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { CreateUserDto } from "./dto/create-user.dto";
@@ -18,12 +19,13 @@ import {
   ApiParam,
 } from "@nestjs/swagger";
 import { ApiVersion } from "src/modules/versions";
-import { Observable } from "rxjs";
+import { from, Observable, switchMap } from "rxjs";
 import { User } from "src/database/entities/user.entity";
 import { DeleteResult, UpdateResult } from "typeorm";
 import { RoleName } from "../../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
+import { Request } from "express";
 
 @Controller({ path: "users", version: ApiVersion.Version01 })
 @ApiHeader({
@@ -35,6 +37,48 @@ import { RolesGuard } from "../guard/role.guard";
 @UseGuards(RolesGuard)
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @Roles(RoleName.User)
+  @ApiOperation({ summary: "Get current user" })
+  @ApiResponse({
+    status: 200,
+    description: "The user was successfully found.",
+    type: User,
+  })
+  @ApiResponse({
+    status: 404,
+    description: "User not found",
+  })
+  @Get("me")
+  async handleMe(@Req() req: Request) {
+    return req.user;
+  }
+
+  @Roles(RoleName.User)
+  @Patch("me")
+  @ApiOperation({ summary: "Update current user information" })
+  @ApiResponse({
+    status: 200,
+    description: "User updated successfully.",
+    type: UpdateResult,
+  })
+  @ApiResponse({
+    status: 404,
+    description: "User not found",
+  })
+  handleMeEdit(
+    @Req() req: Request,
+    @Body() userData: UpdateUserDto
+  ): Observable<UpdateResult> {
+    return from(req.user as Promise<User>).pipe(
+      switchMap((user: User) => {
+        if (!user || !user.uuid) {
+          throw new Error("User not found");
+        }
+        return this.userService.updateUserProfile(user.uuid, userData);
+      })
+    );
+  }
 
   @Roles(RoleName.Admin)
   @Post()

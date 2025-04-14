@@ -1,4 +1,10 @@
-<div class="background">
-  <app-navbar />
+<div class="body-wrapper">
+  <div class="body"></div>
+  <app-navbar *ngIf="showHeader" />
   <router-outlet />
+
+  <button *ngIf="isScrolled" class="scroll-to-top" (click)="scrollToTop()">
+    ↑
+  </button>
+  <app-footer *ngIf="showFooter"/>
 </div>
