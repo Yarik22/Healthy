@@ -33,8 +33,9 @@ export class Test extends BaseEntity {
   description: string;
 
   @Column({
-    type: "bytea",
+    type: "varchar",
     nullable: true,
+    length: Constraints.Test.imgMaxLength,
   })
   @ApiProperty({
     description: "An optional image related to the test.",
@@ -42,7 +43,7 @@ export class Test extends BaseEntity {
     format: "binary",
     nullable: true,
   })
-  img: Buffer;
+  img: string;
 
   @ManyToMany(() => User, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinTable({

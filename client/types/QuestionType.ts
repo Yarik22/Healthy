@@ -9,5 +9,5 @@ export type Question = BaseEntityType & {
   results: Result[];
   title: string;
   description?: string | null;
-  img?: Buffer | null;
+  img?: string | null;
 };

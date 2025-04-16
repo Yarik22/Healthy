@@ -4,11 +4,6 @@ import { Result } from './ResultType';
 import { Role } from './RoleType';
 import { Sex } from '../../shared/enums/user.enum';
 
-export type Img = {
-  type: string;
-  data: Buffer;
-};
-
 export type User = BaseEntityType & {
   email: string;
   nickname: string;
@@ -16,7 +11,7 @@ export type User = BaseEntityType & {
   sex?: Sex | null;
   bio?: string | null;
   banned: boolean;
-  img?: Img | null;
+  img?: string | null;
   roles: Role[];
   conclusions: Conclusion[];
   results: Result[];

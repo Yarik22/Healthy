@@ -63,8 +63,9 @@ export class Answer extends BaseEntity {
   text: string;
 
   @Column({
-    type: "bytea",
+    type: "varchar",
     nullable: true,
+    length: Constraints.Answer.imgMaxLength,
   })
   @ApiProperty({
     description: "The optional image file related to the answer.",
@@ -72,5 +73,5 @@ export class Answer extends BaseEntity {
     format: "binary",
     nullable: true,
   })
-  img: Buffer;
+  img: string;
 }

@@ -5,9 +5,11 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { VersioningType } from "@nestjs/common";
 import * as seesion from "express-session";
 import * as passport from "passport";
+import * as bodyParser from "body-parser";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.use(bodyParser.json({ limit: "2mb" }));
 
   const configService = app.get(ConfigService);
   const PORT = configService.get<number>("port") || 3000;

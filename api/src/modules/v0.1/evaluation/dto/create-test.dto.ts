@@ -36,5 +36,5 @@ export class CreateTestDto {
   })
   @IsOptional()
   @IsByteLength(0, Constraints.Test.imgMaxLength)
-  img?: Buffer;
+  img?: string;
 }

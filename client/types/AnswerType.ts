@@ -9,5 +9,5 @@ export type Answer = BaseEntityType & {
   mentalState: MentalState;
   influence: number;
   text?: string | null;
-  img?: Buffer | null;
+  img?: string | null;
 };

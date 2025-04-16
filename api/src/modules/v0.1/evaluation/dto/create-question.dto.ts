@@ -30,5 +30,5 @@ export class CreateQuestionDto {
   })
   @IsOptional()
   @IsByteLength(0, Constraints.Question.imgMaxLength)
-  img?: Buffer;
+  img?: string;
 }

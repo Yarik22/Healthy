@@ -7,10 +7,10 @@ import {
   OneToMany,
 } from "typeorm";
 import { Test } from "./test.entity";
-import { Answer } from "./answer.entity";
-import { Result } from "./result.entity";
 import { ApiProperty } from "@nestjs/swagger";
 import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { Answer } from "./answer.entity";
+import { Result } from "./result.entity";
 import { BaseEntity } from "../base.entity";
 
 @Entity()
@@ -55,8 +55,9 @@ export class Question extends BaseEntity {
   description: string;
 
   @Column({
-    type: "bytea",
+    type: "varchar",
     nullable: true,
+    length: Constraints.Question.imgMaxLength,
   })
   @ApiProperty({
     description: "An optional image associated with the question.",
@@ -64,5 +65,5 @@ export class Question extends BaseEntity {
     format: "binary",
     nullable: true,
   })
-  img: Buffer;
+  img: string;
 }

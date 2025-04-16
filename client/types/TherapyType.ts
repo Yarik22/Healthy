@@ -5,6 +5,6 @@ export type Therapy = BaseEntityType & {
   title: string;
   description?: string | null;
   url?: string | null;
-  img?: Buffer | null;
+  img?: string | null;
   mentalStates: MentalState[];
 };

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Img, User } from '../../../../types/UserType';
+import { User } from '../../../../types/UserType';
 import { Sex } from '../../../../../shared/enums/user.enum';
 import { ImageService } from '../../service/image.service';
 
@@ -14,16 +14,17 @@ import { ImageService } from '../../service/image.service';
 export class ProfileBadgeComponent implements OnInit {
   @Input() user!: User;
   userImageBase64: string | null = null;
+  age: number | null = null;
 
   constructor(private imageService: ImageService) {}
 
   ngOnInit(): void {
-    this.userImageBase64 = this.imgToBase64();
+    this.userImageBase64 = this.imageService.getImageSrc(this.user?.img);
+    this.age = this.getAge();
   }
 
   getSexDisplayText(): string {
     if (!this.user.sex) return 'Not specified';
-
     return {
       [Sex.Male]: 'Male',
       [Sex.Female]: 'Female',
@@ -37,8 +38,8 @@ export class ProfileBadgeComponent implements OnInit {
     const birthDate = new Date(this.user.birthdate);
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
 
+    const monthDiff = today.getMonth() - birthDate.getMonth();
     if (
       monthDiff < 0 ||
       (monthDiff === 0 && today.getDate() < birthDate.getDate())
@@ -49,18 +50,8 @@ export class ProfileBadgeComponent implements OnInit {
     return age;
   }
 
-  imgToBase64(): string | null {
-    if (this.user.img) {
-      if (typeof this.user.img === 'string') {
-        return `data:image/jpeg;base64,${this.user.img}`;
-      }
-
-      return this.imageService.bufferToBase64(this.user.img);
-    }
-    return null;
-  }
-
-  base64ToBuffer(base64String: string): Img | null {
-    return this.imageService.base64ToBuffer(base64String);
+  getInitials(): string {
+    if (!this.user.nickname) return '?';
+    return this.user.nickname.charAt(0).toUpperCase();
   }
 }

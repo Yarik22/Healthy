@@ -1,8 +1,8 @@
+import { Entity, Column, Check } from "typeorm";
+import { ApiProperty } from "@nestjs/swagger";
 import { Constraints } from "../../../../shared/constraints/database.constraint";
 import { MentalState } from "../../../../shared/enums/therapy.enum";
 import { BaseEntity } from "../base.entity";
-import { Entity, Column, Check } from "typeorm";
-import { ApiProperty } from "@nestjs/swagger";
 
 @Entity()
 @Check(`length(img) <= ${Constraints.Therapy.imgMaxLength}`)
@@ -44,8 +44,9 @@ export class Therapy extends BaseEntity {
   url: string;
 
   @Column({
-    type: "bytea",
+    type: "varchar",
     nullable: true,
+    length: Constraints.Therapy.imgMaxLength,
   })
   @ApiProperty({
     description: "An optional image associated with the therapy.",
@@ -53,13 +54,13 @@ export class Therapy extends BaseEntity {
     format: "binary",
     nullable: true,
   })
-  img: Buffer;
+  img: string;
 
   @Column({
     type: "enum",
     enum: MentalState,
     array: true,
-    name: "mentalstates"
+    name: "mentalstates",
   })
   @ApiProperty({
     description: "An array of mental states that the therapy aims to address.",

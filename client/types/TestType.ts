@@ -5,7 +5,7 @@ import { User } from "./UserType";
 export type Test = BaseEntityType & {
     title: string;
     description?: string | null;
-    img?: Buffer | null;
+    img?: string | null;
     users: User[];
     questions: Question[];
   };

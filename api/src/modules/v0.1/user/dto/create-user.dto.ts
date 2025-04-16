@@ -11,6 +11,8 @@ import {
 } from "class-validator";
 import { Constraints } from "../../../../../../shared/constraints/database.constraint";
 import { Sex } from "../../../../../../shared/enums/user.enum";
+import { Transform } from "class-transformer";
+import { ImageService } from "../../image/image.service";
 
 export class CreateUserDto {
   @ApiProperty({
@@ -68,12 +70,13 @@ export class CreateUserDto {
   banned?: boolean;
 
   @ApiProperty({
-    description: "An optional profile image for the user.",
+    description: "An optional profile image for the user. The image should be base64 encoded.",
     type: String,
     format: "binary",
     nullable: true,
   })
   @IsOptional()
+  @IsString()
   @IsByteLength(0, Constraints.User.imgMaxLength)
-  img?: Buffer;
+  img?: string;
 }

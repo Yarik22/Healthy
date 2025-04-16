@@ -6,12 +6,14 @@ import { Repository, UpdateResult } from "typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { firstValueFrom, from, Observable, switchMap } from "rxjs";
 import { UpdateUserDto } from "./dto/update-user.dto";
+import { ImageService } from "../image/image.service";
 
 @Injectable()
 export class UserService extends DatabaseService<User> {
   constructor(
     @InjectRepository(User)
-    protected readonly repository: Repository<User>
+    protected readonly repository: Repository<User>,
+    private readonly imageService: ImageService
   ) {
     super(repository);
   }
@@ -29,6 +31,7 @@ export class UserService extends DatabaseService<User> {
     userData: UpdateUserDto
   ): Observable<UpdateResult> {
     const user = this.findById(id);
+
     return user.pipe(
       switchMap((userDataFromDb) => {
         if (!userDataFromDb) {
@@ -37,11 +40,21 @@ export class UserService extends DatabaseService<User> {
         const updatedUserData = {
           ...userDataFromDb,
           bio: userData.bio ?? userDataFromDb.bio,
-          img: userData.img ?? userDataFromDb.img,
           sex: userData.sex ?? userDataFromDb.sex,
           birthdate: userData.birthdate ?? userDataFromDb.birthdate,
         };
-        return from(this.repository.update(id, updatedUserData));
+
+        if (userData.img) {
+          return from(this.imageService.compressImage(userData.img)).pipe(
+            switchMap((compressedImage) => {
+              updatedUserData.img = compressedImage;
+              return from(this.repository.update(id, updatedUserData));
+            })
+          );
+        } else {
+          updatedUserData.img = userDataFromDb.img;
+          return from(this.repository.update(id, updatedUserData));
+        }
       })
     );
   }

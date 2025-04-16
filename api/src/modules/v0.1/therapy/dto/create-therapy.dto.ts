@@ -47,7 +47,7 @@ export class CreateTherapyDto {
   })
   @IsOptional()
   @IsByteLength(0, Constraints.Therapy.imgMaxLength)
-  img?: Buffer;
+  img?: string;
 
   @ApiProperty({
     description: "An array of mental states that the therapy aims to address.",

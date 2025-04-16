@@ -108,14 +108,15 @@ export class User extends BaseEntity {
   banned: boolean;
 
   @Column({
-    type: "bytea",
+    type: "varchar",
+    length: Constraints.User.imgMaxLength,
     nullable: true,
   })
   @ApiProperty({
-    description: "An optional profile image for the user.",
+    description: "An optional profile image for the user in base64 format.",
     type: String,
     format: "binary",
     nullable: true,
   })
-  img: Buffer;
+  img: string;
 }
