@@ -1,26 +1,65 @@
 <div class="profile-badge">
   <div class="profile-content">
     <div class="avatar-container">
-      <div class="avatar-ring">
-        <img
-          *ngIf="userImageBase64; else defaultAvatar"
-          [src]="userImageBase64"
-          alt="Profile picture"
-          class="avatar"
-        />
-        <ng-template #defaultAvatar>
-          <div class="avatar default-avatar">
-            {{ getInitials() }}
-          </div>
+      <div class="avatar-ring" [class.editing]="isEditing">
+        <ng-container *ngIf="!isEditing; else editAvatar">
+          <img
+            *ngIf="userImageBase64; else defaultAvatar"
+            [src]="userImageBase64"
+            alt="Profile picture"
+            class="avatar"
+          />
+          <ng-template #defaultAvatar>
+            <div class="avatar default-avatar">
+              {{ getInitials() }}
+            </div>
+          </ng-template>
+        </ng-container>
+        <ng-template #editAvatar>
+          <label class="avatar-upload">
+            <img
+              *ngIf="previewImage || userImageBase64; else editDefaultAvatar"
+              [src]="previewImage || userImageBase64"
+              alt="Profile picture"
+              class="avatar"
+            />
+            <ng-template #editDefaultAvatar>
+              <div class="avatar default-avatar">
+                {{ getInitials() }}
+              </div>
+            </ng-template>
+            <input
+              type="file"
+              accept="image/*"
+              (change)="onFileSelected($event)"
+              style="display: none"
+            />
+            <div class="upload-overlay">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z M8,15V17H16V15H8M8,11V13H16V11H8M8,7V9H16V7H8Z"
+                />
+              </svg>
+            </div>
+          </label>
         </ng-template>
       </div>
     </div>
+    <div *ngIf="imageError" class="error-message" style="text-align: center">
+      Image size exceeds 1MB
+    </div>
 
-    <div class="profile-info">
-      <h2>{{ user.nickname }}</h2>
-      <p class="email">{{ user.email }}</p>
+    <!-- PROFILE INFO DISPLAY -->
+    <div [class.hidden]="isEditing" class="profile-info">
+      <h2 [ngClass]="{ placeholder: !user.nickname }">
+        {{ user.nickname || "No nickname" }}
+      </h2>
+      <p class="email" [ngClass]="{ placeholder: !user.email }">
+        {{ user.email || "No email provided" }}
+      </p>
 
-      <div class="stats-container" *ngIf="age || user.sex">
+      <div class="stats-container">
         <div class="stat-pill" *ngIf="age">
           <span class="stat-value">{{ age }}</span>
           <span class="stat-label">years</span>
@@ -28,18 +67,101 @@
         <div class="stat-pill" *ngIf="user.sex">
           <span class="stat-value">{{ getSexDisplayText() }}</span>
         </div>
+        <div class="stat-pill" *ngIf="!age && !user.sex">
+          <span class="stat-value empty">No info</span>
+        </div>
       </div>
+
+      <div class="profile-details">
+        <div class="bio-container" [ngClass]="{ 'no-bio': !user.bio }">
+          <svg class="quote-icon" viewBox="0 0 24 24">
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+            />
+          </svg>
+          <p class="bio">
+            {{ user.bio || "No bio provided" }}
+          </p>
+        </div>
+      </div>
+
+      <button class="edit-button" (click)="startEditing()">Edit Profile</button>
     </div>
 
-    <div class="profile-details" *ngIf="user.bio">
-      <div class="bio-container">
-        <svg class="quote-icon" viewBox="0 0 24 24">
-          <path
-            d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
-          />
-        </svg>
-        <p class="bio">{{ user.bio }}</p>
+    <!-- EDIT FORM -->
+    <form
+      [formGroup]="profileForm"
+      [class.hidden]="!isEditing"
+      class="edit-form"
+    >
+      <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input
+          type="text"
+          id="nickname"
+          formControlName="nickname"
+          placeholder="Enter nickname"
+        />
+        <div *ngIf="nicknameError" class="error-message">
+          Nickname is too long (max {{ nicknameMaxLength }} characters)
+        </div>
+        <div
+          *ngIf="
+            profileForm.get('nickname')?.hasError('required') &&
+            profileForm.get('nickname')?.touched
+          "
+          class="error-message"
+        >
+          Nickname cannot be empty
+        </div>
       </div>
-    </div>
+
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea
+          id="bio"
+          formControlName="bio"
+          rows="3"
+          placeholder="Tell us about yourself"
+        ></textarea>
+        <div *ngIf="bioError" class="error-message">
+          Bio is too long (max {{ bioMaxLength }} characters)
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="birthdate">Birthdate</label>
+          <input type="date" id="birthdate" formControlName="birthdate" />
+          <div *ngIf="birthdateError" class="error-message">
+            Birthdate cannot be in the future
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sex">Gender</label>
+          <select id="sex" formControlName="sex">
+            <option [ngValue]="null">Not specified</option>
+            <option *ngFor="let option of sexOptions" [ngValue]="option.value">
+              {{ option.label }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-button" (click)="cancelEditing()">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="save-button"
+          (click)="saveChanges()"
+          [disabled]="isFormInvalid"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
   </div>
 </div>

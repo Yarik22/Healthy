@@ -39,11 +39,12 @@ export class UserService extends DatabaseService<User> {
         }
         const updatedUserData = {
           ...userDataFromDb,
-          bio: userData.bio ?? userDataFromDb.bio,
-          sex: userData.sex ?? userDataFromDb.sex,
-          birthdate: userData.birthdate ?? userDataFromDb.birthdate,
+          nickname: userData.nickname,
+          bio: userData.bio,
+          sex: userData.sex,
+          birthdate: userData.birthdate,
         };
-
+        console.log(updatedUserData);
         if (userData.img) {
           return from(this.imageService.compressImage(userData.img)).pipe(
             switchMap((compressedImage) => {

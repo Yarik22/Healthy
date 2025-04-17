@@ -7,7 +7,7 @@ import { Sex } from '../../shared/enums/user.enum';
 export type User = BaseEntityType & {
   email: string;
   nickname: string;
-  birthdate?: Date | null;
+  birthdate?: Date | null | string;
   sex?: Sex | null;
   bio?: string | null;
   banned: boolean;
