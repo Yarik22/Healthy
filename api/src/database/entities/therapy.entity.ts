@@ -35,13 +35,15 @@ export class Therapy extends BaseEntity {
     type: "varchar",
     length: Constraints.Therapy.urlMaxLength,
     nullable: true,
+    array: true,
   })
   @ApiProperty({
-    description: "An optional URL for more information about the therapy.",
-    example: "https://www.cbt.com",
+    description: "An optional list of URLs for more information about the therapy.",
+    example: ["https://www.cbt.com", "https://www.psychologytoday.com"],
+    isArray: true,
     nullable: true,
   })
-  url: string;
+  url: string[];
 
   @Column({
     type: "varchar",

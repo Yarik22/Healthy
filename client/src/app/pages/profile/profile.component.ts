@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../../../../types/UserType';
 import { loadUser } from '../../store/user/user.actions';
@@ -24,9 +24,9 @@ export class ProfileComponent implements OnInit {
   error$: Observable<any>;
 
   constructor(private store: Store) {
-    this.user$ = this.store.pipe(select(selectUser));
-    this.loading$ = this.store.pipe(select(selectUserLoading));
-    this.error$ = this.store.pipe(select(selectUserError));
+    this.user$ = this.store.select(selectUser);
+    this.loading$ = this.store.select(selectUserLoading);
+    this.error$ = this.store.select(selectUserError);
   }
 
   ngOnInit(): void {

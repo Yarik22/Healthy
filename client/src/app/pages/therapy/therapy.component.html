@@ -1,0 +1,53 @@
+<div class="therapy-detail-container">
+  <app-loader *ngIf="loading$ | async"></app-loader>
+
+  <div *ngIf="error$ | async as error" class="error-state">
+    <p class="error-message">{{ error }}</p>
+    <button (click)="reload()" class="retry-button">Retry</button>
+  </div>
+
+  <div *ngIf="therapy$ | async as therapy" class="therapy-detail">
+    <div class="therapy-header">
+      <h1>{{ therapy.title }}</h1>
+      <div class="therapy-image-container">
+        <img
+          [src]="therapy.img || './assets/default-therapy.jpg'"
+          [alt]="therapy.title"
+          class="therapy-image"
+          (error)="handleImageError($event)"
+        />
+      </div>
+    </div>
+
+    <div class="therapy-content">
+      <div class="description">
+        <h2>Description</h2>
+        <p>{{ therapy.description || "No description available" }}</p>
+      </div>
+
+      <div class="mental-states" *ngIf="therapy.mentalStates?.length">
+        <h2>Helps With</h2>
+        <div class="mental-state-badges">
+          <span
+            *ngFor="let state of therapy.mentalStates"
+            class="mental-state-badge"
+            [style.backgroundColor]="getColorForState(state)"
+          >
+            {{ state }}
+          </span>
+        </div>
+      </div>
+
+      <div class="resources" *ngIf="therapy.url?.length">
+        <h2>Resources</h2>
+        <ul>
+          <li *ngFor="let resourceUrl of therapy.url">
+            <a [href]="resourceUrl" target="_blank" rel="noopener noreferrer">{{
+              resourceUrl
+            }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

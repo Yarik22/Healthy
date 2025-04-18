@@ -31,7 +31,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: "WinkyRough", sans-serif;
+  font-family: "WinkyRough", "SofiaSans", sans-serif;
 }
 
 ul[class],
@@ -152,6 +152,7 @@ select {
   --text-color: #000000;
 
   --accent: #8b89f7;
+  --button-hover: #a86b32;
   /* --cursor-light: url('./assets/icons/cursor.svg'), auto; */
 }
 
@@ -169,14 +170,30 @@ select {
   --text-color: #ffffff;
 
   --accent: #74c0fc;
+  --button-hover: #d19862;
   /* --cursor-dark: url('./assets/icons/cursor.svg'), auto; */
 }
 
 * {
-  transition: color 0.5s;
+  transition: color 0.5s ease;
   color: var(--text-color);
 }
 /*---------------------------------------------------------FONTS---------------------------------------------------------*/
+
+@font-face {
+  font-family: "SofiaSans";
+  src: url("./assets/fonts/SofiaSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SofiaSans";
+  src: url("./assets/fonts/SofiaSans-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+}
 
 @font-face {
   font-family: "WinkyRough";

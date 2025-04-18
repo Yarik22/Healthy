@@ -1,3 +1,6 @@
+/* Error Page Styles */
+
+/* Default Light Theme */
 .error-page {
   height: 100vh;
   display: flex;
@@ -33,7 +36,7 @@ h1 {
 }
 
 p {
-  color: #ddd;
+  color: var(--text-color);
   margin-bottom: 1.5rem;
 }
 
@@ -61,6 +64,39 @@ p {
   transform: scale(0.98);
 }
 
+/* Dark Theme Adjustments */
+[data-theme="dark"] .error-content {
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Lighter border for dark theme */
+  background: rgba(0, 0, 0, 0.5); /* Darker background for error content */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6); /* Darker shadow for better contrast */
+}
+
+[data-theme="dark"] .icon {
+  color: #74c0fc; /* Accent color for icon in dark mode */
+}
+
+[data-theme="dark"] h1 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] p {
+  color: #aaa;
+}
+
+[data-theme="dark"] .error-button {
+  background: #ff4444; /* Red button background for dark mode */
+  box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3); /* Softer shadow in dark mode */
+}
+
+[data-theme="dark"] .error-button:hover {
+  background: #dd3333;
+}
+
+[data-theme="dark"] .error-button:active {
+  background: #cc2a2a;
+}
+
+/* Pulse Animation */
 @keyframes pulse {
   from {
     transform: scale(1);

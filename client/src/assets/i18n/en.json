@@ -1,20 +1,107 @@
 {
-  "auth": {
-    "login": "Login",
-    "signup": "Sign Up",
-    "forgot_password": "Forgot your password?"
+  "therapyPage": {
+    "header": {
+      "title": "Art Therapy Techniques",
+      "subtitle": "Explore various therapeutic approaches to improve mental wellbeing"
+    },
+    "filterControls": {
+      "searchPlaceholder": "Search therapies...",
+      "mentalStateFilter": "All Mental States"
+    },
+    "noResults": {
+      "oops": "Oops...",
+      "noTherapiesFound": "No therapies found",
+      "tryAdjusting": "Try adjusting your search or filter criteria"
+    },
+    "errorState": {
+      "message": "Failed to load therapies. Please try again later.",
+      "retryButton": "Retry"
+    },
+    "therapy": {
+      "noDescription": "No description available",
+      "mentalState": {
+        "Anxiety": "Anxiety",
+        "Depression": "Depression",
+        "Stress": "Stress",
+        "Isolation": "Isolation",
+        "Loneliness": "Loneliness",
+        "Confusion": "Confusion",
+        "Frustration": "Frustration",
+        "Insecurity": "Insecurity",
+        "Hopelessness": "Hopelessness",
+        "Fear": "Fear",
+        "Anger": "Anger",
+        "Guilt": "Guilt",
+        "Shame": "Shame",
+        "Pessimism": "Pessimism",
+        "Apathy": "Apathy"
+      },
+      "titles": {
+        "Music Therapy": "Music Therapy",
+        "Cinema Therapy": "Cinema Therapy",
+        "Sand Therapy": "Sand Therapy",
+        "Mandala Drawing Therapy": "Mandala Drawing Therapy",
+        "Drama Therapy": "Drama Therapy",
+        "Dance Movement Therapy": "Dance Movement Therapy",
+        "Collage Therapy": "Collage Therapy",
+        "Photography Therapy": "Photography Therapy",
+        "Clay Therapy": "Clay Therapy",
+        "Poetry Therapy": "Poetry Therapy",
+        "Puppet Therapy": "Puppet Therapy",
+        "Nature Art Therapy": "Nature Art Therapy"
+      },
+      "descriptions": {
+        "Music Therapy": "Using music to address physical, emotional, cognitive, and social needs through listening, singing, or playing instruments.",
+        "Cinema Therapy": "Using films as a therapeutic tool to gain insight, process emotions, and stimulate discussion about personal challenges.",
+        "Sand Therapy": "A hands-on therapeutic approach using sand and miniature objects to create scenes that reflect one's inner world.",
+        "Mandala Drawing Therapy": "A calming art therapy technique using mandalas to reduce anxiety and bring focus and emotional balance.",
+        "Drama Therapy": "Using theater techniques and role-playing to explore emotional issues and foster personal growth.",
+        "Dance Movement Therapy": "Using movement and dance to support intellectual, emotional, and motor functions of the body.",
+        "Collage Therapy": "Creating collages from various materials to express feelings and thoughts that might be hard to verbalize.",
+        "Photography Therapy": "Using photography as a means of self-expression and exploration of personal identity and perspective.",
+        "Clay Therapy": "Working with clay to release emotions, reduce stress, and improve self-esteem through tactile creation.",
+        "Poetry Therapy": "Using reading, writing, and discussing poetry to promote healing and personal growth.",
+        "Puppet Therapy": "Using puppets to act out emotions and experiences, helping individuals express difficult feelings in a safe, symbolic way.",
+        "Nature Art Therapy": "Creating art with natural materials (leaves, twigs, stones) to foster grounding, mindfulness, and connection to the environment."
+      }
+    }
   },
-  "header": {
-    "home": "Home",
-    "about": "About Us",
-    "contact": "Contact"
+  "navbar": {
+    "profile": "Profile",
+    "tests": "Tests",
+    "therapies": "Therapies"
   },
-  "footer": {
-    "terms": "Terms and Conditions",
-    "privacy": "Privacy Policy"
-  },
-  "messages": {
-    "hello": "Hello, {{name}}!",
-    "welcome_back": "Welcome back, {{name}}!"
+  "profile": {
+    "noNickname": "No nickname",
+    "noEmail": "No email provided",
+    "noBio": "No bio provided",
+    "noInfo": "No info",
+    "years": "years",
+    "editButton": "Edit Profile",
+    "form": {
+      "nickname": "Nickname",
+      "nicknamePlaceholder": "Enter nickname",
+      "bio": "Bio",
+      "bioPlaceholder": "Tell us about yourself",
+      "birthdate": "Birthdate",
+      "gender": "Gender",
+      "notSpecified": "Not specified"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save Changes"
+    },
+    "errors": {
+      "nicknameTooLong": "Nickname is too long (max {{ max }} characters)",
+      "nicknameRequired": "Nickname cannot be empty",
+      "bioTooLong": "Bio is too long (max {{ max }} characters)",
+      "invalidBirthdate": "Birthdate cannot be in the future",
+      "imageTooLarge": "Image size exceeds 1MB"
+    },
+    "gender": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
+    }
   }
 }

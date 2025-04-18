@@ -1,0 +1,78 @@
+<!-- <div class="test-container">
+  <app-loader *ngIf="loading$ | async"></app-loader>
+
+  <div *ngIf="error$ | async as error" class="error-state">
+    <p class="error-message">{{ error }}</p>
+    <button (click)="ngOnInit()" class="retry-button">Retry</button>
+  </div>
+
+  <div *ngIf="test$ | async as test" class="test-content">
+    <div class="test-header">
+      <h1>{{ test.title }}</h1>
+      <div class="progress-bar" *ngIf="progress$ | async as progress">
+        <div class="progress" [style.width]="progress + '%'"></div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="getCurrentQuestion(test.questions) as question"
+      class="question-container"
+    >
+      <div class="question-header">
+        <h2>
+          Question {{ currentQuestionIndex + 1 }} of
+          {{ test.questions.length }}
+        </h2>
+        <p class="question-text">{{ question.title }}</p>
+        <p *ngIf="question.description" class="question-description">
+          {{ question.description }}
+        </p>
+      </div>
+
+      <div class="answers-container">
+        <div
+          *ngFor="let answer of question.answers"
+          class="answer-option"
+          [class.selected]="selectedAnswers[question.uuid] === answer.uuid"
+          (click)="selectAnswer(question.uuid, answer.uuid)"
+        >
+          <div class="answer-radio">
+            <div
+              class="radio-inner"
+              *ngIf="selectedAnswers[question.uuid] === answer.uuid"
+            ></div>
+          </div>
+          <div class="answer-content">
+            <p class="answer-text">{{ answer.text || "Select this option" }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <button
+          *ngIf="currentQuestionIndex > 0"
+          (click)="prevQuestion()"
+          class="nav-button prev-button"
+        >
+          Previous
+        </button>
+        <button
+          *ngIf="!isLastQuestion(test.questions)"
+          (click)="nextQuestion()"
+          class="nav-button next-button"
+          [disabled]="!selectedAnswers[question.uuid]"
+        >
+          Next
+        </button>
+        <button
+          *ngIf="isLastQuestion(test.questions)"
+          (click)="submitTest()"
+          class="nav-button submit-button"
+          [disabled]="!isTestComplete(test.questions)"
+        >
+          Submit Test
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->

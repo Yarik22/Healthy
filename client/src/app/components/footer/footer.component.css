@@ -18,7 +18,8 @@
   padding-bottom: 1rem;
 }
 
-.brand h2 {
+.brand h2,p{
+  color: #bbb;
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
 }

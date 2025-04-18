@@ -1,0 +1,26 @@
+<div class="therapy-badge" (click)="onBadgeClick()">
+  <div class="image-container">
+    <img
+      [src]="safeImg"
+      [alt]="title"
+      class="therapy-image"
+      (error)="therapyImageError($event)"
+      loading="eager"
+    />
+    <div class="image-overlay"></div>
+  </div>
+
+  <div class="therapy-details">
+    <h3 class="title">{{ translatedTitle }}</h3>
+    <p class="description">{{ translatedDescription }}</p>
+    <div class="mental-states" *ngIf="hasMentalStates">
+      <span
+        *ngFor="let state of mentalStates"
+        class="mental-state-badge"
+        [style.backgroundColor]="getColorForState(state)"
+      >
+        {{ "therapyPage.therapy.mentalState." + state | translate }}
+      </span>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,11 @@ import {
   IsEnum,
   IsByteLength,
   IsArray,
+  ArrayMaxSize,
+  ValidateNested,
+  ArrayNotEmpty,
 } from "class-validator";
+import { Type } from "class-transformer";
 import { Constraints } from "../../../../../../shared/constraints/database.constraint";
 import { MentalState } from "../../../../../../shared/enums/therapy.enum";
 
@@ -30,14 +34,16 @@ export class CreateTherapyDto {
   description?: string;
 
   @ApiProperty({
-    description: "An optional URL for more information about the therapy.",
-    example: "https://www.cbt.com",
+    description: "An optional list of URLs for more information about the therapy.",
+    example: ["https://www.cbt.com", "https://www.psychologytoday.com"],
     nullable: true,
+    isArray: true,
   })
   @IsOptional()
-  @IsString()
-  @IsByteLength(0, Constraints.Therapy.urlMaxLength)
-  url?: string;
+  @IsArray()
+  @IsString({ each: true })
+  @IsByteLength(0, Constraints.Therapy.urlMaxLength, { each: true })
+  url?: string[];
 
   @ApiProperty({
     description: "An optional image associated with the therapy.",

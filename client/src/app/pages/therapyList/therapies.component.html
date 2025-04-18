@@ -1,0 +1,70 @@
+<div class="therapy-page">
+  <header class="therapy-header">
+    <h1>{{ "therapyPage.header.title" | translate }}</h1>
+    <p class="subtitle">
+      {{ "therapyPage.header.subtitle" | translate }}
+    </p>
+
+    <div class="filter-controls">
+      <div class="search-box">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (input)="filterTherapies()"
+          [placeholder]="
+            'therapyPage.filterControls.searchPlaceholder' | translate
+          "
+          class="search-input"
+        />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <select
+        [(ngModel)]="selectedMentalState"
+        (change)="filterTherapies()"
+        class="mental-state-filter"
+      >
+        <option [ngValue]="null">
+          {{ "therapyPage.filterControls.mentalStateFilter" | translate }}
+        </option>
+        <option *ngFor="let state of allMentalStates" [ngValue]="state">
+          {{ 'therapyPage.therapy.mentalState.' + state | translate }}
+        </option>
+      </select>
+    </div>
+  </header>
+
+  <app-loader *ngIf="isLoading"></app-loader>
+
+  <div *ngIf="error" class="error-state">
+    <p class="error-message">
+      {{ "therapyPage.errorState.message" | translate }}
+    </p>
+    <button (click)="loadTherapies()" class="retry-button">
+      {{ "therapyPage.errorState.retryButton" | translate }}
+    </button>
+  </div>
+
+  <div class="therapy-list" *ngIf="!isLoading && !error">
+    <ng-container *ngIf="filteredTherapies.length > 0; else noResults">
+      <app-therapy-badge
+        *ngFor="let therapy of filteredTherapies; trackBy: trackByTherapy"
+        [title]="therapy.title"
+        [description]="
+          therapy.description ??
+          ('therapyPage.therapy.noDescription' | translate)
+        "
+        [img]="therapy.img ?? './assets/default-therapy.jpg'"
+        [mentalStates]="therapy.mentalStates"
+      ></app-therapy-badge>
+    </ng-container>
+
+    <ng-template #noResults>
+      <div class="no-results">
+        <h2>{{ "therapyPage.noResults.oops" | translate }}</h2>
+        <h3>{{ "therapyPage.noResults.noTherapiesFound" | translate }}</h3>
+        <p>{{ "therapyPage.noResults.tryAdjusting" | translate }}</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

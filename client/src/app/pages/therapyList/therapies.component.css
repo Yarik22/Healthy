@@ -1,0 +1,187 @@
+.therapy-page {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: transparent; /* Set the background to be transparent */
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.therapy-header {
+  text-align: center;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Transparent background with slight opacity */
+  backdrop-filter: blur(10px); /* Apply the blur effect to the background */
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.therapy-header h1 {
+  font-size: 2.25rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 2px solid var(--background-semishadow);
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  background-color: var(--background-shadow);
+  color: var(--text-color);
+}
+
+.search-input::placeholder {
+  color: var(--text-color);
+  opacity: 0.65;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+}
+
+.mental-state-filter {
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--background-semishadow);
+  border-radius: 50px;
+  font-size: 1rem;
+  background-color: var(--background-shadow);
+  color: var(--text-color);
+  cursor: pointer;
+  min-width: 200px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.mental-state-filter:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.therapy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 1.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply the blur effect to the background */
+  border-radius: 10px; /* Optional: Adds rounded corners for a softer look */
+}
+
+.error-state {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgba(255, 85, 85, 0.1); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply the blur effect */
+  border-radius: 8px;
+  color: #c53030;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-message {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.retry-button {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.retry-button:hover {
+  background-color: #c53030;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  grid-column: 1 / -1;
+  border-radius: 8px;
+}
+
+.no-results img {
+  max-width: 200px;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+}
+
+.no-results h3 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.no-results p {
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .therapy-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .search-box,
+  .mental-state-filter {
+    width: 100%;
+    max-width: none;
+  }
+
+  .therapy-list {
+    grid-template-columns: 1fr;
+  }
+}

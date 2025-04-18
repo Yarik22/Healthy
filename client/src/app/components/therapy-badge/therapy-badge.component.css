@@ -1,0 +1,148 @@
+.therapy-badge {
+  background: var(--background-main);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 350px; /* Reduced from 400px */
+}
+
+@media (max-width: 768px) {
+  .therapy-badge {
+    min-height: 300px; /* Even smaller on mobile */
+  }
+}
+
+.therapy-badge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.image-container {
+  position: relative;
+  height: 160px; /* Reduced from 200px */
+  min-height: 160px;
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    height: 140px;
+    min-height: 140px;
+  }
+}
+
+.therapy-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.therapy-badge:hover .therapy-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.2)
+  );
+}
+
+.therapy-details {
+  padding: 1rem; /* Reduced from 1.25rem */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.title {
+  font-size: 1.1rem; /* Reduced from 1.25rem */
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1rem;
+  }
+}
+
+.description {
+  background: rgba(207, 153, 153, 0.7);
+  border: 1px solid var(--background-shadow);
+  border-radius: 8px;
+  padding: 0.6rem; /* Reduced from 0.75rem */
+  color: var(--text-color);
+  margin-bottom: 0.6rem; /* Reduced from 0.75rem */
+  font-size: 1rem; /* Reduced from 1rem */
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Reduced from 4 */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+  min-height: 50px; /* Reduced from 60px */
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    -webkit-line-clamp: 5; /* Even fewer lines on mobile */
+    line-clamp: 5;
+  }
+}
+
+[data-theme="dark"] .description {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: var(--background-shadow-enhanced);
+}
+
+.mental-states {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem; /* Reduced from 0.5rem */
+  margin-top: auto;
+  padding-top: 0.4rem; /* Reduced from 0.5rem */
+}
+
+.mental-state-badge {
+  color: var(--text-color);
+  padding: 0.2rem 0.6rem; /* Reduced from 0.25rem 0.75rem */
+  border-radius: 50px;
+  font-size: 0.8rem; /* Reduced from 0.875rem */
+  font-weight: 500;
+  background-color: var(--mental-state-neutral);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .mental-state-badge {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+  }
+}

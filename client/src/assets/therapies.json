@@ -1,0 +1,80 @@
+[
+  {
+    "title": "Music Therapy",
+    "description": "Using music to address physical, emotional, cognitive, and social needs through listening, singing, or playing instruments.",
+    "mentalStates": [
+      "Anxiety",
+      "Depression",
+      "Stress",
+      "Isolation",
+      "Loneliness"
+    ],
+    "img": "assets/images/music_therapy.jpg"
+  },
+  {
+    "title": "Cinema Therapy",
+    "description": "Using films as a therapeutic tool to gain insight, process emotions, and stimulate discussion about personal challenges.",
+    "mentalStates": ["Confusion", "Frustration", "Insecurity", "Hopelessness"],
+    "img": "assets/images/cinema_therapy.jpg"
+  },
+  {
+    "title": "Sand Therapy",
+    "description": "A hands-on therapeutic approach using sand and miniature objects to create scenes that reflect one's inner world.",
+    "mentalStates": ["Fear", "Anger", "Guilt", "Shame"],
+    "img": "assets/images/sand_therapy.jpg"
+  },
+  {
+    "title": "Mandala Drawing Therapy",
+    "description": "A calming art therapy technique using mandalas to reduce anxiety and bring focus and emotional balance.",
+    "mentalStates": ["Anxiety", "Stress", "Pessimism"],
+    "img": "assets/images/mandala_therapy.jpg"
+  },
+  {
+    "title": "Drama Therapy",
+    "description": "Using theater techniques and role-playing to explore emotional issues and foster personal growth.",
+    "mentalStates": ["Insecurity", "Isolation", "Confusion", "Anger"],
+    "img": "assets/images/drama_therapy.jpg"
+  },
+  {
+    "title": "Dance Movement Therapy",
+    "description": "Using movement and dance to support intellectual, emotional, and motor functions of the body.",
+    "mentalStates": ["Depression", "Apathy", "Stress", "Loneliness"],
+    "img": "assets/images/dance_therapy.jpg"
+  },
+  {
+    "title": "Collage Therapy",
+    "description": "Creating collages from various materials to express feelings and thoughts that might be hard to verbalize.",
+    "mentalStates": ["Confusion", "Frustration", "Hopelessness", "Pessimism"],
+    "img": "assets/images/collage_therapy.jpg"
+  },
+  {
+    "title": "Photography Therapy",
+    "description": "Using photography as a means of self-expression and exploration of personal identity and perspective.",
+    "mentalStates": ["Isolation", "Insecurity", "Depression", "Apathy"],
+    "img": "assets/images/photography_therapy.jpg"
+  },
+  {
+    "title": "Clay Therapy",
+    "description": "Working with clay to release emotions, reduce stress, and improve self-esteem through tactile creation.",
+    "mentalStates": ["Anger", "Stress", "Frustration", "Guilt"],
+    "img": "assets/images/clay_therapy.jpg"
+  },
+  {
+    "title": "Poetry Therapy",
+    "description": "Using reading, writing, and discussing poetry to promote healing and personal growth.",
+    "mentalStates": ["Loneliness", "Isolation", "Hopelessness", "Depression"],
+    "img": "assets/images/poetry_therapy.jpg"
+  },
+  {
+    "title": "Puppet Therapy",
+    "description": "Using puppets to act out emotions and experiences, helping individuals express difficult feelings in a safe, symbolic way.",
+    "mentalStates": ["Fear", "Shame", "Anger", "Insecurity"],
+    "img": "assets/images/puppet_therapy.jpg"
+  },
+  {
+    "title": "Nature Art Therapy",
+    "description": "Creating art with natural materials (leaves, twigs, stones) to foster grounding, mindfulness, and connection to the environment.",
+    "mentalStates": ["Stress", "Anxiety", "Apathy", "Pessimism"],
+    "img": "assets/images/nature_therapy.jpg"
+  }
+]

@@ -46,29 +46,32 @@
         </ng-template>
       </div>
     </div>
+
     <div *ngIf="imageError" class="error-message" style="text-align: center">
-      Image size exceeds 1MB
+      {{ "profile.errors.imageTooLarge" | translate }}
     </div>
 
     <!-- PROFILE INFO DISPLAY -->
     <div [class.hidden]="isEditing" class="profile-info">
       <h2 [ngClass]="{ placeholder: !user.nickname }">
-        {{ user.nickname || "No nickname" }}
+        {{ user.nickname || ("profile.noNickname" | translate) }}
       </h2>
       <p class="email" [ngClass]="{ placeholder: !user.email }">
-        {{ user.email || "No email provided" }}
+        {{ user.email || ("profile.noEmail" | translate) }}
       </p>
 
       <div class="stats-container">
         <div class="stat-pill" *ngIf="age">
           <span class="stat-value">{{ age }}</span>
-          <span class="stat-label">years</span>
+          <span class="stat-label">{{ "profile.years" | translate }}</span>
         </div>
         <div class="stat-pill" *ngIf="user.sex">
           <span class="stat-value">{{ getSexDisplayText() }}</span>
         </div>
         <div class="stat-pill" *ngIf="!age && !user.sex">
-          <span class="stat-value empty">No info</span>
+          <span class="stat-value empty">{{
+            "profile.noInfo" | translate
+          }}</span>
         </div>
       </div>
 
@@ -80,12 +83,14 @@
             />
           </svg>
           <p class="bio">
-            {{ user.bio || "No bio provided" }}
+            {{ user.bio || ("profile.noBio" | translate) }}
           </p>
         </div>
       </div>
 
-      <button class="edit-button" (click)="startEditing()">Edit Profile</button>
+      <button class="edit-button" (click)="startEditing()">
+        {{ "profile.editButton" | translate }}
+      </button>
     </div>
 
     <!-- EDIT FORM -->
@@ -95,15 +100,18 @@
       class="edit-form"
     >
       <div class="form-group">
-        <label for="nickname">Nickname</label>
+        <label for="nickname">{{ "profile.form.nickname" | translate }}</label>
         <input
           type="text"
           id="nickname"
           formControlName="nickname"
-          placeholder="Enter nickname"
+          [placeholder]="'profile.form.nicknamePlaceholder' | translate"
         />
         <div *ngIf="nicknameError" class="error-message">
-          Nickname is too long (max {{ nicknameMaxLength }} characters)
+          {{
+            "profile.errors.nicknameTooLong"
+              | translate : { max: nicknameMaxLength }
+          }}
         </div>
         <div
           *ngIf="
@@ -112,38 +120,42 @@
           "
           class="error-message"
         >
-          Nickname cannot be empty
+          {{ "profile.errors.nicknameRequired" | translate }}
         </div>
       </div>
 
       <div class="form-group">
-        <label for="bio">Bio</label>
+        <label for="bio">{{ "profile.form.bio" | translate }}</label>
         <textarea
           id="bio"
           formControlName="bio"
           rows="3"
-          placeholder="Tell us about yourself"
+          [placeholder]="'profile.form.bioPlaceholder' | translate"
         ></textarea>
         <div *ngIf="bioError" class="error-message">
-          Bio is too long (max {{ bioMaxLength }} characters)
+          {{ "profile.errors.bioTooLong" | translate : { max: bioMaxLength } }}
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label for="birthdate">Birthdate</label>
+          <label for="birthdate">{{
+            "profile.form.birthdate" | translate
+          }}</label>
           <input type="date" id="birthdate" formControlName="birthdate" />
           <div *ngIf="birthdateError" class="error-message">
-            Birthdate cannot be in the future
+            {{ "profile.errors.invalidBirthdate" | translate }}
           </div>
         </div>
 
         <div class="form-group">
-          <label for="sex">Gender</label>
+          <label for="sex">{{ "profile.form.gender" | translate }}</label>
           <select id="sex" formControlName="sex">
-            <option [ngValue]="null">Not specified</option>
+            <option [ngValue]="null">
+              {{ "profile.form.notSpecified" | translate }}
+            </option>
             <option *ngFor="let option of sexOptions" [ngValue]="option.value">
-              {{ option.label }}
+              {{ option.label | translate }}
             </option>
           </select>
         </div>
@@ -151,7 +163,7 @@
 
       <div class="form-actions">
         <button type="button" class="cancel-button" (click)="cancelEditing()">
-          Cancel
+          {{ "profile.buttons.cancel" | translate }}
         </button>
         <button
           type="submit"
@@ -159,7 +171,7 @@
           (click)="saveChanges()"
           [disabled]="isFormInvalid"
         >
-          Save Changes
+          {{ "profile.buttons.save" | translate }}
         </button>
       </div>
     </form>

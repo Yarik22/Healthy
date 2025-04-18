@@ -1,0 +1,131 @@
+.therapy-detail-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.error-state {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #fff5f5;
+  border-radius: 8px;
+  color: #c53030;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-message {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.retry-button {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.retry-button:hover {
+  background-color: #c53030;
+}
+
+.therapy-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.therapy-header h1 {
+  font-size: 2rem;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
+}
+
+.therapy-image-container {
+  height: 350px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.therapy-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.therapy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.therapy-content h2 {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+}
+
+.therapy-content p {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.mental-state-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mental-state-badge {
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.resources ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.resources li {
+  margin-bottom: 0.5rem;
+}
+
+.resources a {
+  color: #3182ce;
+  text-decoration: none;
+  transition: color 0.2s;
+  word-break: break-all;
+}
+
+.resources a:hover {
+  color: #2c5282;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .therapy-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .therapy-image-container {
+    height: 250px;
+  }
+
+  .therapy-content {
+    padding: 0;
+  }
+}

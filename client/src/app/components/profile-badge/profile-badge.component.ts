@@ -12,11 +12,12 @@ import { ImageService } from '../../service/image.service';
 import { Store } from '@ngrx/store';
 import { updateUser } from '../../store/user/user.actions';
 import { Constraints } from '../../../../../shared/constraints/database.constraint';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile-badge',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './profile-badge.component.html',
   styleUrls: ['./profile-badge.component.css'],
 })
@@ -152,9 +153,9 @@ export class ProfileBadgeComponent implements OnInit {
 
   get sexOptions() {
     return [
-      { value: Sex.Male, label: 'Male' },
-      { value: Sex.Female, label: 'Female' },
-      { value: Sex.Other, label: 'Other' },
+      { value: Sex.Male, label: 'profile.gender.male' },
+      { value: Sex.Female, label: 'profile.gender.female' },
+      { value: Sex.Other, label: 'profile.gender.other' },
     ];
   }
 

@@ -44,7 +44,6 @@ export class UserService extends DatabaseService<User> {
           sex: userData.sex,
           birthdate: userData.birthdate,
         };
-        console.log(updatedUserData);
         if (userData.img) {
           return from(this.imageService.compressImage(userData.img)).pipe(
             switchMap((compressedImage) => {
