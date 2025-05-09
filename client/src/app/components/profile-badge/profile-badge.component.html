@@ -48,30 +48,29 @@
     </div>
 
     <div *ngIf="imageError" class="error-message" style="text-align: center">
-      {{ "profile.errors.imageTooLarge" | translate }}
+      Розмір зображення перевищує 1 МБ
     </div>
 
     <!-- PROFILE INFO DISPLAY -->
     <div [class.hidden]="isEditing" class="profile-info">
       <h2 [ngClass]="{ placeholder: !user.nickname }">
-        {{ user.nickname || ("profile.noNickname" | translate) }}
+        {{ user.nickname || "Немає нікнейму" }}
       </h2>
       <p class="email" [ngClass]="{ placeholder: !user.email }">
-        {{ user.email || ("profile.noEmail" | translate) }}
+        {{ user.email || "Немає електронної пошти" }}
       </p>
 
       <div class="stats-container">
         <div class="stat-pill" *ngIf="age">
+          <span class="stat-label">Вік:</span>
           <span class="stat-value">{{ age }}</span>
-          <span class="stat-label">{{ "profile.years" | translate }}</span>
         </div>
         <div class="stat-pill" *ngIf="user.sex">
-          <span class="stat-value">{{ getSexDisplayText() }}</span>
+          Стать:
+          <span class="stat-value"> {{ getSexDisplayText() }}</span>
         </div>
         <div class="stat-pill" *ngIf="!age && !user.sex">
-          <span class="stat-value empty">{{
-            "profile.noInfo" | translate
-          }}</span>
+          <span class="stat-value empty">Немає інформації</span>
         </div>
       </div>
 
@@ -83,13 +82,13 @@
             />
           </svg>
           <p class="bio">
-            {{ user.bio || ("profile.noBio" | translate) }}
+            {{ user.bio || "Немає біографії" }}
           </p>
         </div>
       </div>
 
       <button class="edit-button" (click)="startEditing()">
-        {{ "profile.editButton" | translate }}
+        Редагувати профіль
       </button>
     </div>
 
@@ -100,18 +99,15 @@
       class="edit-form"
     >
       <div class="form-group">
-        <label for="nickname">{{ "profile.form.nickname" | translate }}</label>
+        <label for="nickname">Нікнейм</label>
         <input
           type="text"
           id="nickname"
           formControlName="nickname"
-          [placeholder]="'profile.form.nicknamePlaceholder' | translate"
+          placeholder="Введіть нікнейм"
         />
         <div *ngIf="nicknameError" class="error-message">
-          {{
-            "profile.errors.nicknameTooLong"
-              | translate : { max: nicknameMaxLength }
-          }}
+          Нікнейм занадто довгий
         </div>
         <div
           *ngIf="
@@ -120,42 +116,38 @@
           "
           class="error-message"
         >
-          {{ "profile.errors.nicknameRequired" | translate }}
+          Нікнейм не може бути порожнім
         </div>
       </div>
 
       <div class="form-group">
-        <label for="bio">{{ "profile.form.bio" | translate }}</label>
+        <label for="bio">Біографія</label>
         <textarea
           id="bio"
           formControlName="bio"
           rows="3"
-          [placeholder]="'profile.form.bioPlaceholder' | translate"
+          placeholder="Розкажіть про себе"
         ></textarea>
         <div *ngIf="bioError" class="error-message">
-          {{ "profile.errors.bioTooLong" | translate : { max: bioMaxLength } }}
+          Біографія занадто довга
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label for="birthdate">{{
-            "profile.form.birthdate" | translate
-          }}</label>
+          <label for="birthdate">Дата народження</label>
           <input type="date" id="birthdate" formControlName="birthdate" />
           <div *ngIf="birthdateError" class="error-message">
-            {{ "profile.errors.invalidBirthdate" | translate }}
+            Дата народження не може бути в майбутньому
           </div>
         </div>
 
         <div class="form-group">
-          <label for="sex">{{ "profile.form.gender" | translate }}</label>
+          <label for="sex">Стать</label>
           <select id="sex" formControlName="sex">
-            <option [ngValue]="null">
-              {{ "profile.form.notSpecified" | translate }}
-            </option>
+            <option [ngValue]="null">Не вказано</option>
             <option *ngFor="let option of sexOptions" [ngValue]="option.value">
-              {{ option.label | translate }}
+              {{ option.label }}
             </option>
           </select>
         </div>
@@ -163,7 +155,7 @@
 
       <div class="form-actions">
         <button type="button" class="cancel-button" (click)="cancelEditing()">
-          {{ "profile.buttons.cancel" | translate }}
+          Скасувати
         </button>
         <button
           type="submit"
@@ -171,7 +163,7 @@
           (click)="saveChanges()"
           [disabled]="isFormInvalid"
         >
-          {{ "profile.buttons.save" | translate }}
+          Зберегти зміни
         </button>
       </div>
     </form>

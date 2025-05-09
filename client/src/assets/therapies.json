@@ -1,7 +1,7 @@
 [
   {
-    "title": "Music Therapy",
-    "description": "Using music to address physical, emotional, cognitive, and social needs through listening, singing, or playing instruments.",
+    "title": "Музикотерапія",
+    "description": "Використання музики для задоволення фізичних, емоційних, когнітивних та соціальних потреб через слухання, спів або гру на інструментах.",
     "mentalStates": [
       "Anxiety",
       "Depression",
@@ -12,68 +12,68 @@
     "img": "assets/images/music_therapy.jpg"
   },
   {
-    "title": "Cinema Therapy",
-    "description": "Using films as a therapeutic tool to gain insight, process emotions, and stimulate discussion about personal challenges.",
+    "title": "Кінотерапія",
+    "description": "Використання фільмів як терапевтичного інструменту для отримання уявлень, обробки емоцій та стимулювання обговорень особистих труднощів.",
     "mentalStates": ["Confusion", "Frustration", "Insecurity", "Hopelessness"],
     "img": "assets/images/cinema_therapy.jpg"
   },
   {
-    "title": "Sand Therapy",
-    "description": "A hands-on therapeutic approach using sand and miniature objects to create scenes that reflect one's inner world.",
+    "title": "Пісочна терапія",
+    "description": "Практичний терапевтичний підхід із використанням піску та мініатюрних об'єктів для створення сцен, що відображають внутрішній світ людини.",
     "mentalStates": ["Fear", "Anger", "Guilt", "Shame"],
     "img": "assets/images/sand_therapy.jpg"
   },
   {
-    "title": "Mandala Drawing Therapy",
-    "description": "A calming art therapy technique using mandalas to reduce anxiety and bring focus and emotional balance.",
+    "title": "Мандалотерапія",
+    "description": "Заспокійлива арт-терапевтична техніка з використанням мандал для зниження тривожності та досягнення емоційного балансу.",
     "mentalStates": ["Anxiety", "Stress", "Pessimism"],
     "img": "assets/images/mandala_therapy.jpg"
   },
   {
-    "title": "Drama Therapy",
-    "description": "Using theater techniques and role-playing to explore emotional issues and foster personal growth.",
+    "title": "Драматерапія",
+    "description": "Використання театральних технік та рольових ігор для дослідження емоційних проблем та сприяння особистісному розвитку.",
     "mentalStates": ["Insecurity", "Isolation", "Confusion", "Anger"],
     "img": "assets/images/drama_therapy.jpg"
   },
   {
-    "title": "Dance Movement Therapy",
-    "description": "Using movement and dance to support intellectual, emotional, and motor functions of the body.",
+    "title": "Танцювально-рухова терапія",
+    "description": "Використання рухів та танців для підтримки інтелектуальних, емоційних і моторних функцій тіла.",
     "mentalStates": ["Depression", "Apathy", "Stress", "Loneliness"],
     "img": "assets/images/dance_therapy.jpg"
   },
   {
-    "title": "Collage Therapy",
-    "description": "Creating collages from various materials to express feelings and thoughts that might be hard to verbalize.",
+    "title": "Колажна терапія",
+    "description": "Створення колажів з різних матеріалів для вираження почуттів і думок, які важко висловити словами.",
     "mentalStates": ["Confusion", "Frustration", "Hopelessness", "Pessimism"],
     "img": "assets/images/collage_therapy.jpg"
   },
   {
-    "title": "Photography Therapy",
-    "description": "Using photography as a means of self-expression and exploration of personal identity and perspective.",
+    "title": "Фототерапія",
+    "description": "Використання фотографії як способу самовираження та дослідження особистої ідентичності та перспективи.",
     "mentalStates": ["Isolation", "Insecurity", "Depression", "Apathy"],
     "img": "assets/images/photography_therapy.jpg"
   },
   {
-    "title": "Clay Therapy",
-    "description": "Working with clay to release emotions, reduce stress, and improve self-esteem through tactile creation.",
+    "title": "Глинотерапія",
+    "description": "Робота з глиною для вивільнення емоцій, зниження стресу та підвищення самооцінки через тактильне творення.",
     "mentalStates": ["Anger", "Stress", "Frustration", "Guilt"],
     "img": "assets/images/clay_therapy.jpg"
   },
   {
-    "title": "Poetry Therapy",
-    "description": "Using reading, writing, and discussing poetry to promote healing and personal growth.",
+    "title": "Поетична терапія",
+    "description": "Використання читання, написання та обговорення поезії для зцілення та особистого розвитку.",
     "mentalStates": ["Loneliness", "Isolation", "Hopelessness", "Depression"],
     "img": "assets/images/poetry_therapy.jpg"
   },
   {
-    "title": "Puppet Therapy",
-    "description": "Using puppets to act out emotions and experiences, helping individuals express difficult feelings in a safe, symbolic way.",
+    "title": "Лялькотерапія",
+    "description": "Використання ляльок для відтворення емоцій та досвіду, що допомагає виразити складні почуття в безпечний, символічний спосіб.",
     "mentalStates": ["Fear", "Shame", "Anger", "Insecurity"],
     "img": "assets/images/puppet_therapy.jpg"
   },
   {
-    "title": "Nature Art Therapy",
-    "description": "Creating art with natural materials (leaves, twigs, stones) to foster grounding, mindfulness, and connection to the environment.",
+    "title": "Природна арт-терапія",
+    "description": "Створення мистецтва з природних матеріалів (листя, гілки, каміння) для заземлення, усвідомленості та зв'язку з природою.",
     "mentalStates": ["Stress", "Anxiety", "Apathy", "Pessimism"],
     "img": "assets/images/nature_therapy.jpg"
   }

@@ -1,94 +1,23 @@
-<!-- <div class="test-list-container">
-  <header class="test-list-header">
-    <h1>Available Psychological Tests</h1>
-    <p class="subtitle">
-      Select a test to assess your mental wellbeing and personal growth
-    </p>
-
-    <div class="controls">
-      <div class="search-box">
-        <input
-          type="text"
-          [(ngModel)]="searchQuery"
-          (keyup.enter)="onSearch()"
-          placeholder="Search tests..."
-          class="search-input"
-        />
-        <button (click)="onSearch()" class="search-button">
-          <span class="search-icon">🔍</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <app-loader *ngIf="loading$ | async"></app-loader>
-
-  <div *ngIf="error$ | async as error" class="error-state">
-    <p class="error-message">{{ error }}</p>
-    <button (click)="loadTests()" class="retry-button">Retry</button>
+<div class="container">
+  <div class="test-list">
+    <app-test-badge *ngFor="let test of tests" [test]="test"></app-test-badge>
   </div>
 
-  <div class="test-grid" *ngIf="tests$ | async as tests">
-    <div
-      *ngFor="let test of tests; trackBy: trackByTestId"
-      class="test-card"
-      [routerLink]="['/tests', test.uuid]"
-    >
-      <div class="test-image-container">
-        <img
-          [src]="test.img || './assets/default-test.jpg'"
-          [alt]="test.title"
-          class="test-image"
-          loading="lazy"
-          (error)="handleImageError($event)"
-        />
-      </div>
-      <div class="test-details">
-        <h3>{{ test.title }}</h3>
-        <p class="description">
-          {{ test.description || "No description available" }}
-        </p>
-        <div class="test-meta">
-          <span class="questions"
-            >{{ test.questions?.length || 0 }} questions</span
-          >
-          <span class="duration"
-            >≈ {{ test.questions?.length || 1 * 0.5 }} min</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="pagination-controls" *ngIf="(totalTests$ | async) > itemsPerPage">
+  <div class="pagination">
     <button
-      (click)="onPageChange(currentPage - 1)"
-      [disabled]="currentPage === 1"
-      class="pagination-button prev"
+      class="pagination-button"
+      [disabled]="page === 1"
+      (click)="onPageChange(page - 1)"
     >
-      &larr; Previous
+      Попередня
     </button>
-
-    <span class="page-info">
-      Page {{ currentPage }} of
-      {{ Math.ceil((totalTests$ | async) / itemsPerPage) }}
-    </span>
-
+    <span>Сторінка {{ page }}</span>
     <button
-      (click)="onPageChange(currentPage + 1)"
-      [disabled]="currentPage * itemsPerPage >= (totalTests$ | async)"
-      class="pagination-button next"
+      class="pagination-button"
+      [disabled]="page * limit >= total"
+      (click)="onPageChange(page + 1)"
     >
-      Next &rarr;
+      Наступна
     </button>
   </div>
-
-  <div
-    *ngIf="(tests$ | async)?.length === 0 && !(loading$ | async)"
-    class="no-results"
-  >
-    <img src="./assets/no-results.svg" alt="No tests found" />
-    <h3>No tests found</h3>
-    <p>Try adjusting your search criteria</p>
-  </div>
-</div> -->
+</div>

@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from "@nestjs/common";
 import { TestService } from "./test.service";
 import { CreateTestDto } from "./dto/create-test.dto";
@@ -17,13 +18,15 @@ import {
   ApiResponse,
   ApiParam,
   ApiHeader,
+  ApiQuery,
 } from "@nestjs/swagger";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { DeleteResult, UpdateResult } from "typeorm";
 import { ApiVersion } from "src/modules/versions";
 import { RoleName } from "../../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
+import { QueryTestDto } from "./dto/query-test.dto";
 
 @Controller({ path: "tests", version: ApiVersion.Version01 })
 @ApiHeader({
@@ -62,9 +65,75 @@ export class TestController {
     description: "Test not found",
   })
   handleFindTestById(@Param("id") id: string): Observable<Test> {
-    return this.testService.findById(id);
+    return this.testService.findById(id, ["questions", "questions.answers"]);
   }
 
+  @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
+  @Get()
+  @ApiOperation({ summary: "Get paginated and filtered list of tests" })
+  @ApiQuery({
+    name: "page",
+    required: false,
+    type: Number,
+    example: 1,
+    description: "Page number (starts from 1)",
+  })
+  @ApiQuery({
+    name: "limit",
+    required: false,
+    type: Number,
+    example: 10,
+    description: "Number of items per page",
+  })
+  @ApiQuery({
+    name: "search",
+    required: false,
+    type: String,
+    example: "айзенк",
+    description: "Search text for test title or description",
+  })
+  @ApiResponse({
+    status: 200,
+    description: "Paginated tests retrieved successfully.",
+    type: [Test],
+  })
+  handleFindPaginatedTests(
+    @Query() query: QueryTestDto
+  ): Observable<{ data: Test[]; total: number }> {
+    const { page, limit, search } = query;
+
+    return this.testService
+      .findAllPaginated(page, limit, search)
+      .pipe(map(([data, total]) => ({ data, total })));
+  }
+
+  @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
+  @Get(":id/info")
+  @ApiOperation({
+    summary: "Get test info: number of passed users and questions",
+  })
+  @ApiParam({ name: "id", description: "The unique identifier of the test" })
+  @ApiResponse({
+    status: 200,
+    description: "Test info retrieved successfully.",
+    schema: {
+      example: {
+        testId: "uuid",
+        totalQuestions: 12,
+        usersPassed: 5,
+      },
+    },
+  })
+  @ApiResponse({ status: 404, description: "Test not found" })
+  handleGetTestInfo(@Param("id") id: string): Observable<any> {
+    return this.testService.findTestWithStats(id).pipe(
+      map((test) => ({
+        testId: test.uuid,
+        totalQuestions: test.questions.length,
+        usersPassed: test.users.length,
+      }))
+    );
+  }
   // @Roles(RoleName.Admin)
   // @Get()
   // @ApiOperation({ summary: "Get a list of all tests" })

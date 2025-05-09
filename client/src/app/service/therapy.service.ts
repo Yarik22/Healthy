@@ -36,4 +36,25 @@ export class TherapyService {
     };
     return colors[state] || '#7f8c8d';
   }
+
+  getTranslatedMentalState(state: MentalState): string {
+    const translations: Record<MentalState, string> = {
+      [MentalState.Anxiety]: 'Тривожність',
+      [MentalState.Depression]: 'Депресія',
+      [MentalState.Stress]: 'Стрес',
+      [MentalState.Fear]: 'Страх',
+      [MentalState.Guilt]: 'Почуття провини',
+      [MentalState.Shame]: 'Сором',
+      [MentalState.Anger]: 'Злість',
+      [MentalState.Hopelessness]: 'Безнадійність',
+      [MentalState.Isolation]: 'Ізоляція',
+      [MentalState.Confusion]: 'Розгубленість',
+      [MentalState.Frustration]: 'Фрустрація',
+      [MentalState.Insecurity]: 'Невпевненість',
+      [MentalState.Pessimism]: 'Песимізм',
+      [MentalState.Apathy]: 'Апатія',
+      [MentalState.Loneliness]: 'Самотність',
+    };
+    return translations[state] || state;
+  }
 }

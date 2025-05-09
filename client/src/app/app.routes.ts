@@ -3,9 +3,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { authGuard } from './guard/auth.guard';
-import { TherapyListComponent } from './pages/therapyList/therapies.component';
 import { TherapyComponent } from './pages/therapy/therapy.component';
-// import { TestListComponent } from './pages/testList/tests.component';
+import { TherapyListComponent } from './pages/therapyList/therapies.component';
+import { TestListComponent } from './pages/testList/tests.component';
+import { TestComponent } from './pages/test/test.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,7 +18,13 @@ export const routes: Routes = [
       { path: ':name', component: TherapyComponent, canActivate: [authGuard] },
     ],
   },
-  // { path: 'tests', component: TestListComponent, canActivate: [authGuard] },
+  {
+    path: 'tests',
+    children: [
+      { path: '', component: TestListComponent, canActivate: [authGuard] },
+      { path: ':id', component: TestComponent, canActivate: [authGuard] },
+    ],
+  },
   {
     path: 'error/:code/:title/:message/:icon/:buttonText/:buttonLink',
     component: ErrorComponent,

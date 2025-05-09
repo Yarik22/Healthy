@@ -6,18 +6,12 @@ import { TherapyBadgeComponent } from '../../components/therapy-badge/therapy-ba
 import { FormsModule } from '@angular/forms';
 import { MentalState } from '../../../../../shared/enums/therapy.enum';
 import { LoaderComponent } from '../../components/loader/loader.component';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TherapyService } from '../../service/therapy.service';
 
 @Component({
   selector: 'app-therapies',
   standalone: true,
-  imports: [
-    CommonModule,
-    TherapyBadgeComponent,
-    FormsModule,
-    LoaderComponent,
-    TranslateModule,
-  ],
+  imports: [CommonModule, TherapyBadgeComponent, FormsModule, LoaderComponent],
   templateUrl: './therapies.component.html',
   styleUrls: ['./therapies.component.css'],
 })
@@ -29,7 +23,10 @@ export class TherapyListComponent {
   isLoading: boolean = true;
   error: string | null = null;
 
-  constructor(private http: HttpClient, private translate: TranslateService) {}
+  constructor(
+    private http: HttpClient,
+    private therapyService: TherapyService
+  ) {}
 
   ngOnInit(): void {
     this.loadTherapies();
@@ -91,16 +88,16 @@ export class TherapyListComponent {
 
     const states = new Set<MentalState>();
     this.therapies.forEach((therapy) => {
-      therapy.mentalStates?.forEach((state) =>
-        states.add(
-          state
-        )
-      );
+      therapy.mentalStates?.forEach((state) => states.add(state));
     });
     return Array.from(states).sort();
   }
 
   trackByTherapy(index: number, therapy: Therapy): string {
     return `${therapy.title}-${index}`;
+  }
+
+  getTranslatedMentalState(state: MentalState): string {
+    return this.therapyService.getTranslatedMentalState(state);
   }
 }

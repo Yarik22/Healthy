@@ -3,12 +3,11 @@ import { Component, Input } from '@angular/core';
 import { MentalState } from '../../../../../shared/enums/therapy.enum';
 import { TherapyService } from '../../service/therapy.service';
 import { Router } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-therapy-badge',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule],
   templateUrl: './therapy-badge.component.html',
   styleUrls: ['./therapy-badge.component.css'],
 })
@@ -18,11 +17,7 @@ export class TherapyBadgeComponent {
   @Input() img: string | null = './assets/default-therapy.jpg';
   @Input() mentalStates: MentalState[] = [];
 
-  constructor(
-    private therapyService: TherapyService,
-    private router: Router,
-    private translate: TranslateService
-  ) {}
+  constructor(private therapyService: TherapyService, private router: Router) {}
   get safeImg(): string {
     return this.img ?? './assets/default_therapy.jpg';
   }
@@ -52,15 +47,7 @@ export class TherapyBadgeComponent {
     return title.toLowerCase();
   }
 
-  get translatedTitle(): string {
-    return this.translate.instant(`therapyPage.therapy.titles.${this.title}`);
-  }
-
-  get translatedDescription(): string {
-    const descKey = `therapyPage.therapy.descriptions.${this.title}`;
-    const translated = this.translate.instant(descKey);
-    return translated !== descKey
-      ? translated
-      : this.translate.instant('therapyPage.therapy.noDescription');
+  getTranslatedMentalState(state: MentalState): string {
+    return this.therapyService.getTranslatedMentalState(state);
   }
 }

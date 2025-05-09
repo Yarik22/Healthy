@@ -1,8 +1,9 @@
 <div class="therapy-page">
   <header class="therapy-header">
-    <h1>{{ "therapyPage.header.title" | translate }}</h1>
+    <h1>Методи Терапії</h1>
     <p class="subtitle">
-      {{ "therapyPage.header.subtitle" | translate }}
+      Досліджуйте терапевтичні методи, які можуть допомогти вам відчути себе
+      краще.
     </p>
 
     <div class="filter-controls">
@@ -11,9 +12,7 @@
           type="text"
           [(ngModel)]="searchTerm"
           (input)="filterTherapies()"
-          [placeholder]="
-            'therapyPage.filterControls.searchPlaceholder' | translate
-          "
+          placeholder="Пошук терапії..."
           class="search-input"
         />
         <span class="search-icon">🔍</span>
@@ -24,11 +23,9 @@
         (change)="filterTherapies()"
         class="mental-state-filter"
       >
-        <option [ngValue]="null">
-          {{ "therapyPage.filterControls.mentalStateFilter" | translate }}
-        </option>
+        <option [ngValue]="null">Фільтр за емоційним станом</option>
         <option *ngFor="let state of allMentalStates" [ngValue]="state">
-          {{ 'therapyPage.therapy.mentalState.' + state | translate }}
+          {{ getTranslatedMentalState(state) }}
         </option>
       </select>
     </div>
@@ -38,10 +35,10 @@
 
   <div *ngIf="error" class="error-state">
     <p class="error-message">
-      {{ "therapyPage.errorState.message" | translate }}
+      Щось пішло не так під час завантаження методів терапії.
     </p>
     <button (click)="loadTherapies()" class="retry-button">
-      {{ "therapyPage.errorState.retryButton" | translate }}
+      Повторити спробу
     </button>
   </div>
 
@@ -50,10 +47,7 @@
       <app-therapy-badge
         *ngFor="let therapy of filteredTherapies; trackBy: trackByTherapy"
         [title]="therapy.title"
-        [description]="
-          therapy.description ??
-          ('therapyPage.therapy.noDescription' | translate)
-        "
+        [description]="therapy.description ?? 'Опис відсутній'"
         [img]="therapy.img ?? './assets/default-therapy.jpg'"
         [mentalStates]="therapy.mentalStates"
       ></app-therapy-badge>
@@ -61,9 +55,9 @@
 
     <ng-template #noResults>
       <div class="no-results">
-        <h2>{{ "therapyPage.noResults.oops" | translate }}</h2>
-        <h3>{{ "therapyPage.noResults.noTherapiesFound" | translate }}</h3>
-        <p>{{ "therapyPage.noResults.tryAdjusting" | translate }}</p>
+        <h2>Ой!</h2>
+        <h3>Методи терапії не знайдені</h3>
+        <p>Спробуйте змінити фільтри або введіть інші ключові слова.</p>
       </div>
     </ng-template>
   </div>

@@ -1,0 +1,57 @@
+<div
+  class="test-badge"
+  [class.hovered]="isHovered"
+  (mouseenter)="isHovered = true"
+  (mouseleave)="isHovered = false"
+>
+  <div *ngIf="isLoading" class="test-loading">
+    <app-loader></app-loader>
+  </div>
+
+  <div class="test-image-container" *ngIf="test?.img">
+    <img [src]="test.img" alt="зображення тесту" class="test-image" />
+  </div>
+  <div class="test-content">
+    <h2>{{ test.title || "Без назви" }}</h2>
+    <p *ngIf="test?.description" class="test-description">
+      {{ test.description }}
+    </p>
+
+    <div *ngIf="isLoading" class="loading-placeholder">
+      <div class="placeholder-line"></div>
+      <div class="placeholder-line"></div>
+    </div>
+
+    <div class="test-footer">
+      <div class="test-meta" *ngIf="!isLoading">
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h2v5zm0 4h-2v-2h2v2z"
+            />
+          </svg>
+          {{ totalQuestions }} питань
+        </span>
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59 5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7z"
+            />
+          </svg>
+          {{ usersPassed }} пройшли
+        </span>
+      </div>
+      <a [routerLink]="['/tests', test.uuid]" class="take-test-button">
+        Пройти
+        <svg class="button-icon" viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

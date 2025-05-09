@@ -116,7 +116,7 @@
 }
 
 .stat-label {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--text-color);
   opacity: 0.8;
 }
@@ -370,7 +370,7 @@ select.ng-invalid.ng-touched {
 
 .avatar-ring.editing .avatar-upload:hover::after {
   opacity: 1;
-  content: "Change Photo";
+  content: "Змінити Фото";
 }
 
 /* Upload icon styling */
@@ -402,4 +402,10 @@ select.ng-invalid.ng-touched {
 
 .avatar-ring.editing:hover .default-avatar {
   opacity: 0.8;
+}
+
+#sex,
+#birthdate {
+  background: var(--background-main);
+  color: var(--text-color);
 }

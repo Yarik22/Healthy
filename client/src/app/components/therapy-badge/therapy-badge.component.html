@@ -11,15 +11,15 @@
   </div>
 
   <div class="therapy-details">
-    <h3 class="title">{{ translatedTitle }}</h3>
-    <p class="description">{{ translatedDescription }}</p>
+    <h3 class="title">{{ title }}</h3>
+    <p class="description">{{ description }}</p>
     <div class="mental-states" *ngIf="hasMentalStates">
       <span
         *ngFor="let state of mentalStates"
         class="mental-state-badge"
         [style.backgroundColor]="getColorForState(state)"
       >
-        {{ "therapyPage.therapy.mentalState." + state | translate }}
+        {{ getTranslatedMentalState(state) }}
       </span>
     </div>
   </div>

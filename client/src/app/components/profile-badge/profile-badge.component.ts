@@ -12,12 +12,11 @@ import { ImageService } from '../../service/image.service';
 import { Store } from '@ngrx/store';
 import { updateUser } from '../../store/user/user.actions';
 import { Constraints } from '../../../../../shared/constraints/database.constraint';
-import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile-badge',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './profile-badge.component.html',
   styleUrls: ['./profile-badge.component.css'],
 })
@@ -70,9 +69,9 @@ export class ProfileBadgeComponent implements OnInit {
   getSexDisplayText(): string {
     if (!this.user.sex) return 'Not specified';
     return {
-      [Sex.Male]: 'Male',
-      [Sex.Female]: 'Female',
-      [Sex.Other]: 'Other',
+      [Sex.Male]: 'Чоловік',
+      [Sex.Female]: 'Жінка',
+      [Sex.Other]: 'Інша',
     }[this.user.sex];
   }
 
@@ -153,9 +152,9 @@ export class ProfileBadgeComponent implements OnInit {
 
   get sexOptions() {
     return [
-      { value: Sex.Male, label: 'profile.gender.male' },
-      { value: Sex.Female, label: 'profile.gender.female' },
-      { value: Sex.Other, label: 'profile.gender.other' },
+      { value: Sex.Male, label: 'Чоловік' },
+      { value: Sex.Female, label: 'Жінка' },
+      { value: Sex.Other, label: 'Інша' },
     ];
   }
 

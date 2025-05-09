@@ -1,0 +1,1209 @@
+[
+  {
+    "title": "Самооцінка психічних станів за Айзенком",
+    "description": "Щодня під дією навколишніх стресів і подразників ми перебуваємо у постійній напрузі. А для підтримки свого психічного здоров'я в нормі важливо знати свій стан. Для цієї мети існує ця методика «Самооцінка психічних станів» на основі теоретичних уявлень Ганса Айзенка.",
+    "img": "assets/images/Eysenck.jpg",
+    "questions": [
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені важко зосередитись або ефективно переорієнтувати свою увагу.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Confusion",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Confusion",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мої переживання не завжди виправдані.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я легко серджуся.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я хочу займати лідерську позицію.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -1
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Труднощі вганяють мене в ступор і розгубленість.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Confusion",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Confusion",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "У моїх бідах винні оточуючі.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я боюся непередбачуваних ситуацій.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені важко позбутися нав'язливих думок.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені складно знаходити вихід із складних ситуацій.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Confusion",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені властиво шкодувати.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Shame",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "У важкі хвилини я вдаюсь до дитячих форм поведінки.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я боюся робити помилки.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я не довіряю всьому новому.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я не маю користі з неприємностей.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я намагаюся залишити останнє слово за собою.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я не впевнений(а) у своїх силах.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Думаю, що мій характер невиправний.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Shame",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Через неприємності я сильно засмучуюсь.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я часто конфліктую.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я прагну помститися кривднику.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Якщо мої плани порушені, то це мене дуже засмучує.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені важко визнавати свої помилки.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Shame",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я багато часу приділяю переживанням про свої недоліки.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Shame",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "У разі неприємностей, я відчуваю провину.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Shame",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Guilt",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мене легко переконати.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я не люблю чекати.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я можу перебити співрозмовника.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я можу почервоніти через нісенітницю.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Shame",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Shame",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені важко змінити свої звички.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені подобається робити зауваження.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 4
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 2
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": -2
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "У мене злі жарти.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Моя жестикуляція різка та груба.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені складно стримувати себе, коли я в люті.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я швидко втомлююся.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Apathy",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я боюсь труднощів.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Після невдачі у мене немає мотивації щось робити.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Depression",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "У мене тривожний сон.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anxiety",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я вразлива людина.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я відчуваю беззахисність.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я не довіряю людям.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Isolation",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені більше подобається керувати, ніж підкорятися.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Anger",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Трапляється, що я відчуваю розпач.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Depression",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Мені складно адаптуватися у новій обстановці.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я не тішуся дрібницям, а прагну більше.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Pessimism",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Apathy",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я боюся ризикувати.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Fear",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я відчуваю труднощі при взаємодії з людьми.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Isolation",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Insecurity",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Isolation",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "Я відмовляюся від боротьби, вважаючи її марною.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Hopelessness",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Apathy",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Frustration",
+            "influence": -3
+          }
+        ]
+      },
+      {
+        "description": null,
+        "img": null,
+        "title": "У мене переважає пригнічений настрій.",
+        "answers": [
+          {
+            "text": "часто",
+            "img": null,
+            "mentalState": "Depression",
+            "influence": 5
+          },
+          {
+            "text": "іноді",
+            "img": null,
+            "mentalState": "Stress",
+            "influence": 3
+          },
+          {
+            "text": "ніколи",
+            "img": null,
+            "mentalState": "Depression",
+            "influence": -3
+          }
+        ]
+      }
+    ]
+  }
+]

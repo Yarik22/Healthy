@@ -17,19 +17,19 @@
         <li>
           <a routerLink="/me" routerLinkActive="active">
             <i class="fas fa-user"></i>
-            <span>{{ "navbar.profile" | translate }}</span>
+            <span>Профіль</span>
           </a>
         </li>
         <li>
           <a routerLink="/tests" routerLinkActive="active">
             <i class="fas fa-brain"></i>
-            <span>{{ "navbar.tests" | translate }}</span>
+            <span>Тести</span>
           </a>
         </li>
         <li>
           <a routerLink="/therapies" routerLinkActive="active">
             <i class="fas fa-spa"></i>
-            <span>{{ "navbar.therapies" | translate }}</span>
+            <span>Терапії</span>
           </a>
         </li>
       </ul>
@@ -37,7 +37,6 @@
 
     <div class="navbar__group navbar__group--right">
       <div class="navbar__switchers">
-        <app-language-switcher />
         <app-theme-switcher />
       </div>
       <div class="navbar_toggle">

@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -12,9 +10,7 @@ import { RouterLink } from '@angular/router';
   imports: [
     CommonModule,
     RouterLink,
-    LanguageSwitcherComponent,
     ThemeSwitcherComponent,
-    TranslateModule,
   ],
 })
 export class NavbarComponent {

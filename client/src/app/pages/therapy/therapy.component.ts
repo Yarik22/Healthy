@@ -13,14 +13,13 @@ import { LoaderComponent } from '../../components/loader/loader.component';
 import { CommonModule } from '@angular/common';
 import { MentalState } from '../../../../../shared/enums/therapy.enum';
 import { TherapyService } from '../../service/therapy.service';
-import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-therapy',
   standalone: true,
   templateUrl: './therapy.component.html',
   styleUrls: ['./therapy.component.css'],
-  imports: [LoaderComponent, CommonModule, TranslateModule],
+  imports: [LoaderComponent, CommonModule],
 })
 export class TherapyComponent implements OnInit {
   therapy$: Observable<Therapy | null>;
