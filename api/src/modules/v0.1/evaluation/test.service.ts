@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ILike, Repository } from "typeorm";
 import { Test } from "src/database/entities/test.entity";
 import { Observable, defer } from "rxjs";
+import { User } from "src/database/entities/user.entity";
 
 export class TestService extends DatabaseService<Test> {
   constructor(
@@ -40,5 +41,22 @@ export class TestService extends DatabaseService<Test> {
         relations: ["questions", "users"],
       })
     );
+  }
+
+  addUserToTest(userId: string, testId: string): Observable<void> {
+    return defer(async () => {
+      const test = await this.repository.findOneOrFail({
+        where: { uuid: testId },
+        relations: ["users"],
+      });
+
+      const user = new User();
+      user.uuid = userId;
+
+      if (!test.users.some((u) => u.uuid === userId)) {
+        test.users.push(user);
+        await this.repository.save(test);
+      }
+    });
   }
 }

@@ -11,9 +11,9 @@ export const loadTestsEffect = createEffect(
 
     return actions$.pipe(
       ofType(TestActions.loadTest),
-      switchMap(({ id }) =>
+      switchMap(({ id, savedProgress }) =>
         testService.getTestById(id).pipe(
-          map((test) => TestActions.loadTestSuccess({ test })),
+          map((test) => TestActions.loadTestSuccess({ test, savedProgress })),
           catchError((error) => of(TestActions.loadTestFailure({ error })))
         )
       )

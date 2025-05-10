@@ -25,13 +25,14 @@ export const testReducer = createReducer(
     loading: true,
     error: null,
   })),
-  on(TestActions.loadTestSuccess, (state, { test }) => ({
+  on(TestActions.loadTestSuccess, (state, { test, savedProgress }) => ({
     ...state,
     loading: false,
     test,
-    currentQuestionIndex: 0,
-    answers: {},
+    currentQuestionIndex: savedProgress?.currentQuestionIndex ?? 0,
+    answers: savedProgress?.answers ?? {},
   })),
+
   on(TestActions.loadTestFailure, (state, { error }) => ({
     ...state,
     loading: false,
@@ -47,5 +48,17 @@ export const testReducer = createReducer(
   on(TestActions.goToNextQuestion, (state) => ({
     ...state,
     currentQuestionIndex: state.currentQuestionIndex + 1,
-  }))
+  })),
+  on(
+    TestActions.restoreProgress,
+    (state, { currentQuestionIndex, answers }) => ({
+      ...state,
+      currentQuestionIndex,
+      answers,
+    })
+  ),
+  on(TestActions.goToPreviousQuestion, (state) => ({
+  ...state,
+  currentQuestionIndex: Math.max(0, state.currentQuestionIndex - 1),
+})),
 );

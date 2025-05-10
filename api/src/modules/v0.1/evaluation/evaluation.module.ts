@@ -11,9 +11,13 @@ import { AnswerController } from "./answer.controller";
 import { QuestionController } from "./question.controller";
 import { TestController } from "./test.controller";
 import { UserModule } from "../user/user.module";
+import { Result } from "src/database/entities/result.entity";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Answer, Question, Test]),UserModule],
+  imports: [
+    TypeOrmModule.forFeature([Answer, Question, Test, Result]),
+    UserModule,
+  ],
   controllers: [
     EvaluationController,
     AnswerController,

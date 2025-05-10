@@ -7,6 +7,7 @@ import { TherapyComponent } from './pages/therapy/therapy.component';
 import { TherapyListComponent } from './pages/therapyList/therapies.component';
 import { TestListComponent } from './pages/testList/tests.component';
 import { TestComponent } from './pages/test/test.component';
+import { unsavedTestGuard } from './guard/unsaved-test.guard';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,7 +23,12 @@ export const routes: Routes = [
     path: 'tests',
     children: [
       { path: '', component: TestListComponent, canActivate: [authGuard] },
-      { path: ':id', component: TestComponent, canActivate: [authGuard] },
+      {
+        path: ':id',
+        component: TestComponent,
+        canActivate: [authGuard],
+        canDeactivate: [unsavedTestGuard],
+      },
     ],
   },
   {

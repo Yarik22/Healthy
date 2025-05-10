@@ -50,4 +50,5 @@ export class TestService {
       usersPassed: number;
     }>(`${this.apiUrl}/${id}/info`);
   }
+  
 }

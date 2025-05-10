@@ -1,24 +1,98 @@
-<div *ngIf="(isFinished$ | async) === false; else finished">
-  <div *ngIf="currentQuestion$ | async as question">
-    <h2>{{ question.title }}</h2>
-
-    <div *ngIf="question.answers?.length; else noAnswers">
-      <ul>
-        <li *ngFor="let answer of question.answers">
-          <button (click)="selectAnswer(question.uuid, answer.uuid)">
-            {{ answer.text }}
-          </button>
-        </li>
-      </ul>
+<div class="test-container">
+  <ng-container *ngIf="(isFinished$ | async) === false; else finished">
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          *ngIf="
+            ((currentQuestionIndex$ | async) ?? 0) >= 0 &&
+            ((totalQuestions$ | async) ?? 0) > 0
+          "
+          [style.width.%]="
+            ((((currentQuestionIndex$ | async) ?? 0) + 1) /
+              ((totalQuestions$ | async) ?? 1)) *
+            100
+          "
+        ></div>
+      </div>
+      <span class="progress-text">
+        Питання {{ ((currentQuestionIndex$ | async) ?? 0) + 1 }} з
+        {{ (totalQuestions$ | async) ?? 0 }}
+      </span>
     </div>
 
-    <ng-template #noAnswers>
-      <p>No answers available.</p>
-    </ng-template>
-  </div>
-</div>
+    <div *ngIf="currentQuestion$ | async as question" class="question-card">
+      <div class="question-header">
+        <h2>{{ question?.title || "Питання без назви" }}</h2>
+        <p *ngIf="question?.description" class="question-description">
+          {{ question.description }}
+        </p>
+      </div>
 
-<ng-template #finished>
-  <h3>Test Completed!</h3>
-  <p>Thank you for completing the test.</p>
-</ng-template>
+      <div *ngIf="question?.img" class="question-image-container">
+        <img
+          [src]="question.img"
+          alt="зображення питання"
+          class="question-image"
+        />
+      </div>
+
+      <div
+        *ngIf="question?.answers?.length; else noAnswers"
+        class="answers-grid"
+      >
+        <button
+          *ngFor="let answer of question.answers"
+          (click)="selectAnswer(question.uuid, answer.uuid)"
+          class="answer-button"
+        >
+          <div *ngIf="answer?.img" class="answer-image-container">
+            <img
+              [src]="answer.img"
+              alt="зображення відповіді"
+              class="answer-image"
+            />
+          </div>
+          <span class="answer-text">{{
+            answer?.text || "Варіант відповіді"
+          }}</span>
+        </button>
+      </div>
+
+      <ng-template #noAnswers>
+        <p class="no-answers">Варіанти відповідей відсутні</p>
+      </ng-template>
+
+      <div class="test-controls">
+        <button
+          (click)="goToPreviousQuestion()"
+          class="nav-button"
+          *ngIf="((currentQuestionIndex$ | async) ?? 0) > 0"
+        >
+          ← Назад
+        </button>
+        <button (click)="cancelTest()" class="cancel-button">
+          Скасувати тест
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #finished>
+    <div class="completion-screen">
+      <div class="completion-content">
+        <h2>Тест завершено!</h2>
+        <p class="completion-message">Дякуємо за проходження тесту</p>
+
+        <div class="completion-buttons">
+          <button (click)="submitTest()" class="submit-button">
+            Зберегти результати
+          </button>
+          <button (click)="goToPreviousQuestion()" class="cancel-button">
+            Назад до останнього питання
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
