@@ -19,8 +19,8 @@ export const config = () => ({
     clientId: process.env.CLIENT_ID,
   },
   client: {
-    port: process.env.CLIENT_PORT || 4200
+    port: process.env.CLIENT_PORT || 4200,
   },
-  port: process.env.APP_PORT || 3000,
-  secret: process.env.SECRET
+  port: process.env.API_PORT || 3000,
+  secret: process.env.SECRET,
 });

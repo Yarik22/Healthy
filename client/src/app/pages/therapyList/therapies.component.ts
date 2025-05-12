@@ -4,7 +4,7 @@ import { Therapy } from '../../../../types/TherapyType';
 import { CommonModule } from '@angular/common';
 import { TherapyBadgeComponent } from '../../components/therapy-badge/therapy-badge.component';
 import { FormsModule } from '@angular/forms';
-import { MentalState } from '../../../../../shared/enums/therapy.enum';
+import { MentalState } from '../../../../shared/enums/therapy.enum';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { TherapyService } from '../../service/therapy.service';
 

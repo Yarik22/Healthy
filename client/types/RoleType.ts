@@ -1,4 +1,4 @@
-import { RoleName } from '../../shared/enums/user.enum';
+import { RoleName } from '../shared/enums/user.enum';
 import { BaseEntityType } from './BaseEntityType';
 import { User } from './UserType';
 

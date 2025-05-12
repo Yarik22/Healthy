@@ -3,7 +3,10 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-export default new DataSource({
+const isCompiled = __dirname.includes("dist");
+const rootPath = isCompiled ? "dist/src" : "src";
+
+export const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.DATABASE_HOST,
   port: +process.env.DATABASE_PORT,
@@ -14,8 +17,9 @@ export default new DataSource({
   dropSchema: false,
   logging: false,
   logger: "file",
-  entities: ["src/**/*.entity{.ts,.js}"],
-  migrations: ["src/migrations/**/*.ts"],
-  subscribers: ["src/subscriber/**/*.ts"],
+  entities: [`${rootPath}/**/*.entity.{ts,js}`],
+  migrations: [`${rootPath}/migrations/**/*.{ts,js}`],
+  subscribers: [`${rootPath}/subscriber/**/*.{ts,js}`],
   migrationsTableName: "migrations",
 });
+module.exports = { AppDataSource };

@@ -9,8 +9,8 @@ import {
 import { Question } from "./question.entity";
 import { Result } from "./result.entity";
 import { ApiProperty } from "@nestjs/swagger";
-import { Constraints } from "../../../../shared/constraints/database.constraint";
-import { MentalState } from "../../../../shared/enums/therapy.enum";
+import { Constraints } from "../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../shared/enums/therapy.enum";
 import { BaseEntity } from "../base.entity";
 
 @Entity()

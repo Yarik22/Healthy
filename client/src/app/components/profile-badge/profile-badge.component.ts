@@ -7,11 +7,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { User } from '../../../../types/UserType';
-import { Sex } from '../../../../../shared/enums/user.enum';
+import { Sex } from '../../../../shared/enums/user.enum';
 import { ImageService } from '../../service/image.service';
 import { Store } from '@ngrx/store';
 import { updateUser } from '../../store/user/user.actions';
-import { Constraints } from '../../../../../shared/constraints/database.constraint';
+import { Constraints } from '../../../../shared/constraints/database.constraint';
 
 @Component({
   selector: 'app-profile-badge',

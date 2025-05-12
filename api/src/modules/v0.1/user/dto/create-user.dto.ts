@@ -9,8 +9,8 @@ import {
   IsByteLength,
   IsNotEmpty,
 } from "class-validator";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
-import { Sex } from "../../../../../../shared/enums/user.enum";
+import { Constraints } from "../../../../../shared/constraints/database.constraint";
+import { Sex } from "../../../../../shared/enums/user.enum";
 import { Transform } from "class-transformer";
 import { ImageService } from "../../image/image.service";
 
@@ -70,7 +70,8 @@ export class CreateUserDto {
   banned?: boolean;
 
   @ApiProperty({
-    description: "An optional profile image for the user. The image should be base64 encoded.",
+    description:
+      "An optional profile image for the user. The image should be base64 encoded.",
     type: String,
     format: "binary",
     nullable: true,

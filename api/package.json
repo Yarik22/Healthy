@@ -6,10 +6,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "build": "nest build && npm run copy:assets",
+    "copy:assets": "copyfiles -u 1 src/assets/images/**/* dist/src",
     "dev": "nest start --watch",
-    "prod": "node dist/api/src/main",
-    "typeorm": "typeorm-ts-node-commonjs",
+    "prod": "node dist/src/main",
     "schema:sync": "npx typeorm-ts-node-commonjs schema:sync -d ./src/database/data-source.ts",
     "typeorm:cache": "npx typeorm-ts-node-commonjs cache:clear -d ./src/database/data-source.ts",
     "schema:drop": "npx typeorm-ts-node-commonjs schema:drop -d ./src/database/data-source.ts",
@@ -17,7 +17,9 @@
     "migration:generate": "npx typeorm-ts-node-commonjs migration:generate ./src/migrations/schema-update -d ./src/database/data-source.ts",
     "migration:show": "npx typeorm-ts-node-commonjs migration:show -d ./src/database/data-source.ts",
     "migration:run": "npx typeorm-ts-node-commonjs migration:run -d  ./src/database/data-source.ts",
-    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./src/database/data-source.ts"
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./src/database/data-source.ts",
+    "migration:run:js": "node ./node_modules/typeorm/cli.js migration:run -d ./dist/src/database/data-source.js",
+    "schema:drop:js": "node ./node_modules/typeorm/cli.js schema:drop -d ./dist/src/database/data-source.js"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -55,6 +57,7 @@
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",

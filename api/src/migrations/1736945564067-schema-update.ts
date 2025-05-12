@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
-import { MentalState } from "../../../shared/enums/therapy.enum";
+import { MentalState } from "../../shared/enums/therapy.enum";
 
 export class SchemaUpdate1736945564067 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

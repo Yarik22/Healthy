@@ -1,4 +1,4 @@
-import { MentalState } from '../../shared/enums/therapy.enum';
+import { MentalState } from '../shared/enums/therapy.enum';
 import { BaseEntityType } from './BaseEntityType';
 import { Question } from './QuestionType';
 import { Result } from './ResultType';

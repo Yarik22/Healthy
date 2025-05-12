@@ -2,7 +2,7 @@ import { BaseEntityType } from './BaseEntityType';
 import { Conclusion } from './ConclusionType';
 import { Result } from './ResultType';
 import { Role } from './RoleType';
-import { Sex } from '../../shared/enums/user.enum';
+import { Sex } from '../shared/enums/user.enum';
 
 export type User = BaseEntityType & {
   email: string;

@@ -22,7 +22,7 @@ import { Observable, of, switchMap, throwError } from "rxjs";
 import { Therapy } from "src/database/entities/therapy.entity";
 import { DeleteResult, UpdateResult } from "typeorm";
 import { RolesGuard } from "../guard/role.guard";
-import { RoleName } from "../../../../../shared/enums/user.enum";
+import { RoleName } from "../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 
 @Controller({ path: "therapies", version: ApiVersion.Version01 })

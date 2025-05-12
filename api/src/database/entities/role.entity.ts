@@ -1,8 +1,8 @@
 import { Entity, Column, JoinTable, ManyToMany } from "typeorm";
 import { User } from "./user.entity";
 import { ApiProperty } from "@nestjs/swagger";
-import { Constraints } from "../../../../shared/constraints/database.constraint";
-import { RoleName } from "../../../../shared/enums/user.enum";
+import { Constraints } from "../../../shared/constraints/database.constraint";
+import { RoleName } from "../../../shared/enums/user.enum";
 import { BaseEntity } from "../base.entity";
 
 @Entity()

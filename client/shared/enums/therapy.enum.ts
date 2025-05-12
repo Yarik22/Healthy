@@ -1,0 +1,17 @@
+export enum MentalState {
+  Anxiety = "Anxiety",
+  Depression = "Depression",
+  Stress = "Stress",
+  Fear = "Fear",
+  Guilt = "Guilt",
+  Shame = "Shame",
+  Anger = "Anger",
+  Hopelessness = "Hopelessness",
+  Isolation = "Isolation",
+  Confusion = "Confusion",
+  Frustration = "Frustration",
+  Insecurity = "Insecurity",
+  Pessimism = "Pessimism",
+  Apathy = "Apathy",
+  Loneliness = "Loneliness",
+}

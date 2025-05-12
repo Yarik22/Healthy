@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { MentalState } from '../../../../../shared/enums/therapy.enum';
+import { MentalState } from '../../../../shared/enums/therapy.enum';
 import { TherapyService } from '../../service/therapy.service';
 import { Router } from '@angular/router';
 

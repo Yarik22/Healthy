@@ -10,8 +10,8 @@ import {
   ArrayNotEmpty,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
-import { MentalState } from "../../../../../../shared/enums/therapy.enum";
+import { Constraints } from "../../../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../../../shared/enums/therapy.enum";
 
 export class CreateTherapyDto {
   @ApiProperty({
@@ -34,7 +34,8 @@ export class CreateTherapyDto {
   description?: string;
 
   @ApiProperty({
-    description: "An optional list of URLs for more information about the therapy.",
+    description:
+      "An optional list of URLs for more information about the therapy.",
     example: ["https://www.cbt.com", "https://www.psychologytoday.com"],
     nullable: true,
     isArray: true,

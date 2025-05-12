@@ -23,7 +23,7 @@ import {
 import { map, Observable } from "rxjs";
 import { DeleteResult, UpdateResult } from "typeorm";
 import { ApiVersion } from "src/modules/versions";
-import { RoleName } from "../../../../../shared/enums/user.enum";
+import { RoleName } from "../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 import { QueryTestDto } from "./dto/query-test.dto";

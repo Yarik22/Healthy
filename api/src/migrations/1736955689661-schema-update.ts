@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
-import { Constraints } from "../../../shared/constraints/database.constraint";
+import { Constraints } from "../../shared/constraints/database.constraint";
 
 export class SchemaUpdate1736955689661 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

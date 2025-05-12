@@ -6,7 +6,7 @@ import {
   IsUUID,
   IsByteLength,
 } from "class-validator";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
+import { Constraints } from "../../../../../shared/constraints/database.constraint";
 
 export class CreateTestDto {
   @ApiProperty({

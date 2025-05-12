@@ -1,8 +1,8 @@
 import { Entity, Column, ManyToOne, JoinColumn, Check } from "typeorm";
 import { BaseEntity } from "../base.entity";
 import { ApiProperty } from "@nestjs/swagger";
-import { Constraints } from "../../../../shared/constraints/database.constraint";
-import { MentalState } from "../../../../shared/enums/therapy.enum";
+import { Constraints } from "../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../shared/enums/therapy.enum";
 import { User } from "./user.entity";
 
 @Entity()

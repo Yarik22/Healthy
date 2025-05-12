@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
-import { RoleName } from "../../../shared/enums/user.enum";
+import { RoleName } from "../../shared/enums/user.enum";
 
 export class SchemaUpdate1736945562961 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

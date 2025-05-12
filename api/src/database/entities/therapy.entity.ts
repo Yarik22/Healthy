@@ -1,7 +1,7 @@
 import { Entity, Column, Check } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
-import { Constraints } from "../../../../shared/constraints/database.constraint";
-import { MentalState } from "../../../../shared/enums/therapy.enum";
+import { Constraints } from "../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../shared/enums/therapy.enum";
 import { BaseEntity } from "../base.entity";
 
 @Entity()
@@ -38,7 +38,8 @@ export class Therapy extends BaseEntity {
     array: true,
   })
   @ApiProperty({
-    description: "An optional list of URLs for more information about the therapy.",
+    description:
+      "An optional list of URLs for more information about the therapy.",
     example: ["https://www.cbt.com", "https://www.psychologytoday.com"],
     isArray: true,
     nullable: true,

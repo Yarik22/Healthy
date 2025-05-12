@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 import { Test } from "./test.entity";
 import { ApiProperty } from "@nestjs/swagger";
-import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { Constraints } from "../../../shared/constraints/database.constraint";
 import { Answer } from "./answer.entity";
 import { Result } from "./result.entity";
 import { BaseEntity } from "../base.entity";

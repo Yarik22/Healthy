@@ -5,7 +5,7 @@ import { TestService } from "./test.service";
 
 import { ApiVersion } from "src/modules/versions";
 import { ApiHeader } from "@nestjs/swagger";
-import { RoleName } from "../../../../../shared/enums/user.enum";
+import { RoleName } from "../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 

@@ -9,8 +9,8 @@ import {
   Check,
 } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
-import { Constraints } from "../../../../shared/constraints/database.constraint";
-import { Sex } from "../../../../shared/enums/user.enum";
+import { Constraints } from "../../../shared/constraints/database.constraint";
+import { Sex } from "../../../shared/enums/user.enum";
 import { Conclusion } from "./conclusion.entity";
 import { Result } from "./result.entity";
 import { Role } from "./role.entity";

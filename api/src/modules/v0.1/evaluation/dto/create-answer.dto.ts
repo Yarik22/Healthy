@@ -6,8 +6,8 @@ import {
   IsString,
   IsByteLength,
 } from "class-validator";
-import { Constraints } from "../../../../../../shared/constraints/database.constraint";
-import { MentalState } from "../../../../../../shared/enums/therapy.enum";
+import { Constraints } from "../../../../../shared/constraints/database.constraint";
+import { MentalState } from "../../../../../shared/enums/therapy.enum";
 
 export class CreateAnswerDto {
   @ApiProperty({

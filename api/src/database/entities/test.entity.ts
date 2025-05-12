@@ -1,7 +1,7 @@
 import { Entity, Column, JoinTable, ManyToMany, Check } from "typeorm";
 import { Question } from "./question.entity";
 import { ApiProperty } from "@nestjs/swagger";
-import { Constraints } from "../../../../shared/constraints/database.constraint";
+import { Constraints } from "../../../shared/constraints/database.constraint";
 import { User } from "./user.entity";
 import { BaseEntity } from "../base.entity";
 

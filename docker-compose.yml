@@ -1,0 +1,62 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST: ${DATABASE_HOST}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "${DATABASE_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT}:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    container_name: api
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "${API_PORT}:3000"
+    depends_on:
+      - postgres
+
+  client:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+    container_name: client
+    restart: always
+    ports:
+      - "${CLIENT_PORT}:80"
+    depends_on:
+      - api
+    environment:
+      CLIENT_PORT: ${CLIENT_PORT}
+
+volumes:
+  postgres_data:
+  pgadmin_data:

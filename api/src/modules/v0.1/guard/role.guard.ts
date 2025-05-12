@@ -9,7 +9,7 @@ import { Reflector } from "@nestjs/core";
 import { Observable, from } from "rxjs";
 import { map, catchError, switchMap } from "rxjs/operators";
 import { UserService } from "../user/user.service";
-import { RoleName } from "../../../../../shared/enums/user.enum";
+import { RoleName } from "../../../../shared/enums/user.enum";
 import { User } from "src/database/entities/user.entity";
 
 @Injectable()

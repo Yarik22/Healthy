@@ -7,3 +7,6 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+
+docker.env
+.env

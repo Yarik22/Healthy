@@ -22,7 +22,7 @@ import { ApiVersion } from "src/modules/versions";
 import { from, Observable, switchMap } from "rxjs";
 import { User } from "src/database/entities/user.entity";
 import { DeleteResult, UpdateResult } from "typeorm";
-import { RoleName } from "../../../../../shared/enums/user.enum";
+import { RoleName } from "../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 import { Request } from "express";

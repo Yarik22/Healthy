@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Therapy } from '../../../types/TherapyType';
 import { environment } from '../../../environments/environment';
-import { MentalState } from '../../../../shared/enums/therapy.enum';
+import { MentalState } from '../../../shared/enums/therapy.enum';
 
 @Injectable({
   providedIn: 'root',

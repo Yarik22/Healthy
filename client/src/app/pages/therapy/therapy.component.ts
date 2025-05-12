@@ -11,7 +11,7 @@ import {
 } from '../../store/therapy/therapy.selectors';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { CommonModule } from '@angular/common';
-import { MentalState } from '../../../../../shared/enums/therapy.enum';
+import { MentalState } from '../../../../shared/enums/therapy.enum';
 import { TherapyService } from '../../service/therapy.service';
 
 @Component({
