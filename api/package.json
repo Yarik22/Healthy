@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.1",
+  "version": "0.2",
   "description": "",
   "author": "Clemson",
   "private": true,
@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^10.4.16",
     "@nestjs/swagger": "^8.1.1",
     "@nestjs/typeorm": "^10.0.2",
+    "amqplib": "^0.10.8",
     "bcrypt": "^5.1.1",
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.7",
@@ -48,6 +49,7 @@
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
+    "@types/amqplib": "^0.10.7",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",

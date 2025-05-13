@@ -23,4 +23,7 @@ export const config = () => ({
   },
   port: process.env.API_PORT || 3000,
   secret: process.env.SECRET,
+  rabbitmq: {
+    url: process.env.RABBITMQ_URL || "amqp://rabbitmq",
+  },
 });

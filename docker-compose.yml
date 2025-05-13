@@ -2,7 +2,6 @@ services:
   postgres:
     image: postgres:latest
     container_name: postgres
-    restart: always
     env_file:
       - .env
     environment:
@@ -18,7 +17,6 @@ services:
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
-    restart: always
     env_file:
       - .env
     environment:
@@ -31,32 +29,55 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
+  rabbitmq:
+    image: "rabbitmq:management"
+    container_name: rabbitmq
+    ports:
+      - "${RABBITMQ_PORT}:${RABBITMQ_PORT}"
+      - "15672:15672"
+    env_file:
+      - .env
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
   api:
     build:
       context: .
       dockerfile: ./api/Dockerfile
     container_name: api
-    restart: always
     env_file:
       - .env
     ports:
-      - "${API_PORT}:3000"
+      - "${API_PORT}:${API_PORT}"
     depends_on:
       - postgres
+      - rabbitmq
 
   client:
     build:
       context: .
       dockerfile: ./client/Dockerfile
     container_name: client
-    restart: always
     ports:
       - "${CLIENT_PORT}:80"
     depends_on:
       - api
-    environment:
-      CLIENT_PORT: ${CLIENT_PORT}
+    env_file:
+      - .env
+
+  ai:
+    build:
+      context: ./ai
+      dockerfile: Dockerfile
+    container_name: ai
+    ports:
+      - "${AI_PORT}:${AI_PORT}"
+    depends_on:
+      - rabbitmq
+    env_file:
+      - .env
 
 volumes:
   postgres_data:
   pgadmin_data:
+  rabbitmq_data:

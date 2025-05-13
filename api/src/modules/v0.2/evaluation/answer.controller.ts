@@ -25,7 +25,7 @@ import { RoleName } from "../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 
-@Controller({ path: "answers", version: ApiVersion.Version01 })
+@Controller({ path: "answers", version: ApiVersion.Version02 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),

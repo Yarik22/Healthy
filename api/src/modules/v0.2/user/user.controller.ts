@@ -27,7 +27,7 @@ import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 import { Request } from "express";
 
-@Controller({ path: "users", version: ApiVersion.Version01 })
+@Controller({ path: "users", version: ApiVersion.Version02 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),

@@ -7,7 +7,7 @@ import { Response } from "express";
 import { ConfigService } from "@nestjs/config";
 
 @UseGuards(GoogleAuthGuard)
-@Controller({ path: "auth", version: ApiVersion.Version01 })
+@Controller({ path: "auth", version: ApiVersion.Version02 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),

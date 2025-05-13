@@ -29,7 +29,7 @@ import { Request } from "express";
 import { Result } from "src/database/entities/result.entity";
 import { SubmitResultsDto } from "./dto/result.dto";
 import { User } from "src/database/entities/user.entity";
-@Controller({ path: "questions", version: ApiVersion.Version01 })
+@Controller({ path: "questions", version: ApiVersion.Version02 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),

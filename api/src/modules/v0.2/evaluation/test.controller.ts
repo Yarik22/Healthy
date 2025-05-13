@@ -28,7 +28,7 @@ import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 import { QueryTestDto } from "./dto/query-test.dto";
 
-@Controller({ path: "tests", version: ApiVersion.Version01 })
+@Controller({ path: "tests", version: ApiVersion.Version02 })
 @ApiHeader({
   name: "Version",
   enum: Object.values(ApiVersion),
