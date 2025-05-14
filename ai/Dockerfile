@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE ${AI_PORT:-3030}
 
-CMD ["node", "index.js"]
+CMD ["npm", "run", "start"]

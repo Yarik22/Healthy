@@ -12,11 +12,18 @@ import { QuestionController } from "./question.controller";
 import { TestController } from "./test.controller";
 import { UserModule } from "../user/user.module";
 import { Result } from "src/database/entities/result.entity";
+import { AIModule } from "../ai/ai.module";
+import { EvaluationService } from "./evaluation.service";
+import { Conclusion } from "src/database/entities/conclusion.entity";
+import { HttpModule } from "@nestjs/axios";
+import { TranslationService } from "./translation.service";
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Answer, Question, Test, Result]),
+    TypeOrmModule.forFeature([Answer, Question, Test, Result, Conclusion]),
+    HttpModule,
     UserModule,
+    AIModule,
   ],
   controllers: [
     EvaluationController,
@@ -24,6 +31,12 @@ import { Result } from "src/database/entities/result.entity";
     QuestionController,
     TestController,
   ],
-  providers: [QuestionService, AnswerService, TestService],
+  providers: [
+    QuestionService,
+    AnswerService,
+    TestService,
+    EvaluationService,
+    TranslationService,
+  ],
 })
 export class EvaluationModule {}

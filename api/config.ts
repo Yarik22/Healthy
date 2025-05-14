@@ -26,4 +26,8 @@ export const config = () => ({
   rabbitmq: {
     url: process.env.RABBITMQ_URL || "amqp://rabbitmq",
   },
+  translator: {
+    host: process.env.TRANSLATOR_HOST,
+    port: process.env.TRANSLATOR_PORT,
+  },
 });
