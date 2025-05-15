@@ -33,9 +33,8 @@ import { DeleteResult, UpdateResult } from "typeorm";
 import { RolesGuard } from "../guard/role.guard";
 import { RoleName } from "../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
-import { CacheInterceptor, CacheKey, CacheTTL } from "@nestjs/cache-manager";
+import { CacheInterceptor, CacheTTL } from "@nestjs/cache-manager";
 
-@UseInterceptors(CacheInterceptor)
 @Controller({ path: "therapies", version: ApiVersion.Version02 })
 @UseGuards(RolesGuard)
 @ApiHeader({
@@ -116,17 +115,16 @@ export class TherapyController {
   }
 
   // @Roles(RoleName.Admin)
-  @CacheKey("qwe")
-  @Get()
-  @ApiOperation({ summary: "Get a list of all therapies" })
-  @ApiResponse({
-    status: 200,
-    description: "List of therapies retrieved successfully.",
-    type: [Therapy],
-  })
-  handleFindAll(): Observable<Therapy[]> {
-    return this.therapyService.findAll();
-  }
+  // @Get()
+  // @ApiOperation({ summary: "Get a list of all therapies" })
+  // @ApiResponse({
+  //   status: 200,
+  //   description: "List of therapies retrieved successfully.",
+  //   type: [Therapy],
+  // })
+  // handleFindAll(): Observable<Therapy[]> {
+  //   return this.therapyService.findAll();
+  // }
 
   // @Roles(RoleName.Admin)
   // @Patch(":id")

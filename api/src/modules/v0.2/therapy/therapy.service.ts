@@ -1,17 +1,14 @@
-import { Injectable, Inject, OnModuleInit } from "@nestjs/common";
-import { CACHE_MANAGER } from "@nestjs/cache-manager";
+import { Injectable, Inject } from "@nestjs/common";
+import { Cache } from "cache-manager";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Therapy } from "src/database/entities/therapy.entity";
 import { DatabaseService } from "src/database/database.service";
 import { Observable, defer } from "rxjs";
-import { Cache } from "cache-manager";
+import { CACHE_MANAGER } from "@nestjs/cache-manager";
 
 @Injectable()
-export class TherapyService
-  extends DatabaseService<Therapy>
-  implements OnModuleInit
-{
+export class TherapyService extends DatabaseService<Therapy> {
   constructor(
     @InjectRepository(Therapy)
     protected readonly repository: Repository<Therapy>,
@@ -19,14 +16,6 @@ export class TherapyService
     protected cacheManager: Cache
   ) {
     super(repository);
-  }
-
-  async onModuleInit() {
-    // ✅ Cache something on service init
-    console.log(await this.cacheManager.get("k"));
-    await this.cacheManager.set("init:hello", "world");
-    console.log("Cached value on init");
-    console.log(await this.cacheManager.get("init:hello"));
   }
 
   findByIdCached(uuid: string): Observable<Therapy> {
@@ -38,7 +27,7 @@ export class TherapyService
       const therapy = await this.repository.findOne({ where: { uuid } });
       if (!therapy) throw new Error("NotFound");
 
-      await this.cacheManager.set(cacheKey, therapy, 60000);
+      await this.cacheManager.set(cacheKey, therapy);
       return therapy;
     });
   }
@@ -54,8 +43,7 @@ export class TherapyService
         where: { title: normalizedTitle },
       });
       if (!therapy) throw new Error("NotFound");
-
-      await this.cacheManager.set(cacheKey, therapy, 60000);
+      await this.cacheManager.set(cacheKey, therapy);
       return therapy;
     });
   }

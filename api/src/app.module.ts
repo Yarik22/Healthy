@@ -4,7 +4,7 @@ import { config } from "../config";
 import { RegisterModule } from "./modules/register.module";
 import { DatabaseModule } from "./database/database.module";
 import { PassportModule } from "@nestjs/passport";
-import { redisStore } from "cache-manager-redis-yet";
+import * as redisStore from 'cache-manager-redis-store';
 import { CacheModule } from "@nestjs/cache-manager";
 
 @Module({
@@ -16,26 +16,13 @@ import { CacheModule } from "@nestjs/cache-manager";
     RegisterModule,
     DatabaseModule,
     PassportModule.register({ session: true }),
-    // CacheModule.registerAsync({
-    //   isGlobal: true,
-    //   useFactory: async (cfg) => {
-    //     const store = await redisStore({
-    //       socket: {
-    //         host: "localhost",
-    //         port: 6379,
-    //       },
-    //     });
-    //     return { store };
-    //   },
-    //   inject: [ConfigService],
-    // }),
     CacheModule.register({
       max: 100,
       ttl: 0,
       isGlobal: true,
       store: redisStore,
-      host: "localhost",
-      port: 6379,
+      host: process.env.REDIS_HOST,
+      port: +process.env.REDIS_PORT,
     }),
   ],
 })
