@@ -6,6 +6,7 @@ import { VersioningType } from "@nestjs/common";
 import * as seesion from "express-session";
 import * as passport from "passport";
 import * as bodyParser from "body-parser";
+import { createConnection } from "net";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

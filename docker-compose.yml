@@ -52,6 +52,7 @@ services:
     depends_on:
       - postgres
       - rabbitmq
+      - redis
 
   client:
     build:
@@ -105,12 +106,22 @@ services:
       - "${GO_SERVICE_PORT:-8000}:8000"
     depends_on:
       - rabbitmq
+  redis:
+    image: redis:latest
+    container_name: redis
+    env_file:
+      - .env
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
 
 volumes:
   postgres_data:
   pgadmin_data:
   rabbitmq_data:
   ollama_data:
+  redis_data:
 
 networks:
   default:

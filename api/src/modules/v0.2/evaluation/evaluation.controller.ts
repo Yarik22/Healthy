@@ -58,14 +58,11 @@ export class EvaluationController {
 
             const prompt = `My name is ${user.nickname}, I need suggestion (3 art therapies) what art therapies should I pass. Here is the options: ${availableTherapies.join(", ")}. I have the following parameters of my psychological state from 0 (the lowest) to 100 (the highest) level. ${stateValues}. To answer you should say hello to me and give art therapy recomendations with short description, thats all. Do not mention my parameters in your answer or that I provided you the list of art therapies. Give therapies listed.`;
             return from(this.aiService.prompt(prompt)).pipe(
-              switchMap(
-                (res: any) => {
-                  console.log(String(res.aiResponse));
-                  return from(
-                    this.translationService.translateToUkrainian(res.aiResponse)
-                  );
-                }
-              )
+              switchMap((res: any) => {
+                return from(
+                  this.translationService.translateToUkrainian(res.aiResponse)
+                );
+              })
             );
           })
         );

@@ -30,4 +30,9 @@ export const config = () => ({
     host: process.env.TRANSLATOR_HOST,
     port: process.env.TRANSLATOR_PORT,
   },
+  redis: {
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    // password: process.env.REDIS_PASSWORD,
+  },
 });
