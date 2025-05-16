@@ -35,4 +35,10 @@ export const config = () => ({
     port: process.env.REDIS_PORT,
     // password: process.env.REDIS_PASSWORD,
   },
+  elasticsearch: {
+    host: process.env.ELASTICSEARCH_HOST,
+    port: process.env.ELASTICSEARCH_PORT,
+    username: process.env.ELASTICSEARCH_USERNAME,
+    password: process.env.ELASTICSEARCH_PASSWORD,
+  },
 });

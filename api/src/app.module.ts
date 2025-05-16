@@ -4,8 +4,9 @@ import { config } from "../config";
 import { RegisterModule } from "./modules/register.module";
 import { DatabaseModule } from "./database/database.module";
 import { PassportModule } from "@nestjs/passport";
-import * as redisStore from 'cache-manager-redis-store';
+import * as redisStore from "cache-manager-redis-store";
 import { CacheModule } from "@nestjs/cache-manager";
+import { ElasticsearchModule } from "@nestjs/elasticsearch";
 
 @Module({
   imports: [
@@ -18,7 +19,6 @@ import { CacheModule } from "@nestjs/cache-manager";
     PassportModule.register({ session: true }),
     CacheModule.register({
       max: 100,
-      ttl: 0,
       isGlobal: true,
       store: redisStore,
       host: process.env.REDIS_HOST,

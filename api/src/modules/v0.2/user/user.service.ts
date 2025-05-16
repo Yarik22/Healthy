@@ -2,18 +2,20 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { DatabaseService } from "src/database/database.service";
 import { User } from "src/database/entities/user.entity";
-import { Repository, UpdateResult } from "typeorm";
+import { FindOneOptions, Repository, UpdateResult } from "typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
-import { firstValueFrom, from, Observable, switchMap } from "rxjs";
+import { defer, firstValueFrom, from, Observable, switchMap } from "rxjs";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { ImageService } from "../image/image.service";
+import { ElasticsearchService } from "@nestjs/elasticsearch";
 
 @Injectable()
 export class UserService extends DatabaseService<User> {
   constructor(
     @InjectRepository(User)
     protected readonly repository: Repository<User>,
-    private readonly imageService: ImageService
+    private readonly imageService: ImageService,
+    private readonly elasticsearchService: ElasticsearchService
   ) {
     super(repository);
   }
@@ -56,6 +58,24 @@ export class UserService extends DatabaseService<User> {
           return from(this.repository.update(id, updatedUserData));
         }
       })
+    );
+  }
+
+  findByNickname(nickname: string): Observable<User[]> {
+    return from(
+      this.elasticsearchService
+        .search<User>({
+          index: "users",
+          query: {
+            match: {
+              nickname: {
+                query: nickname,
+                fuzziness: "AUTO",
+              },
+            },
+          },
+        })
+        .then((res) => res.hits.hits.map((hit) => hit._source))
     );
   }
 }

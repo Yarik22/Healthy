@@ -53,6 +53,7 @@ services:
       - postgres
       - rabbitmq
       - redis
+      - elasticsearch
 
   client:
     build:
@@ -116,6 +117,20 @@ services:
       - "8001:8001"
     volumes:
       - redis_data:/data
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+    container_name: elasticsearch
+    env_file:
+      - .env
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ELASTIC_PASSWORD=elastic
+    ports:
+      - "${ELASTICSEARCH_PORT:-9200}:${ELASTICSEARCH_PORT:-9200}"
+      - "${ELASTICSEARCH_TRANSPORT_PORT:-9300}:${ELASTICSEARCH_TRANSPORT_PORT:-9300}"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
 
 volumes:
   postgres_data:
@@ -123,6 +138,7 @@ volumes:
   rabbitmq_data:
   ollama_data:
   redis_data:
+  esdata:
 
 networks:
   default:

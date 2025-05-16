@@ -18,7 +18,7 @@ import { BaseEntity } from "../base.entity";
 
 @Entity()
 @Check(`length(img) <= ${Constraints.User.imgMaxLength}`)
-@Unique(["email", "nickname"])
+@Unique(["email"])
 export class User extends BaseEntity {
   @ManyToMany(() => Role, (role) => role.users, {
     onDelete: "CASCADE",
@@ -52,9 +52,7 @@ export class User extends BaseEntity {
   @Column({
     type: "varchar",
     length: Constraints.User.nicknameMaxLength,
-    unique: true,
   })
-  @Index()
   @ApiProperty({
     description: "The unique nickname of the user.",
     example: "usernickname",
