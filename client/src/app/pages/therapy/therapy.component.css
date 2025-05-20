@@ -1,131 +1,239 @@
 .therapy-detail-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem;
 }
 
+/* Loader styles */
+.loader {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Error state styles */
 .error-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.error-card {
+  background-color: var(--background-main);
+  border: 1px solid var(--background-shadow);
+  border-radius: 12px;
+  padding: 2rem;
   text-align: center;
-  padding: 1.5rem;
-  background-color: #fff5f5;
-  border-radius: 8px;
-  color: #c53030;
   max-width: 500px;
-  margin: 0 auto;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  color: var(--background-shadow);
+}
+
+.error-title {
+  color: var(--background-shadow);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .error-message {
-  margin-bottom: 1rem;
-  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
 .retry-button {
-  background-color: #e53e3e;
-  color: white;
+  background-color: var(--background-shadow);
+  color: var(--negative);
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
-  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .retry-button:hover {
-  background-color: #c53030;
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
 }
 
-.therapy-header {
-  margin-bottom: 2.5rem;
-  text-align: center;
+/* Therapy card styles */
+.therapy-card {
+  background-color: var(--background-main);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
 
-.therapy-header h1 {
-  font-size: 2rem;
-  color: #1a202c;
-  margin-bottom: 1.5rem;
+.therapy-hero {
+  position: relative;
 }
 
 .therapy-image-container {
-  height: 350px;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 12px;
+  height: 300px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .therapy-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.therapy-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
+.therapy-image:hover {
+  transform: scale(1.03);
 }
 
-.therapy-content h2 {
-  font-size: 1.5rem;
-  color: #2d3748;
-  margin: 2rem 0 1rem;
-  font-weight: 600;
+.therapy-header {
+  padding: 1.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    var(--background-main)
+  );
 }
 
-.therapy-content p {
-  color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+.therapy-title {
+  color: var(--text-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
+/* Mental state badges */
 .mental-state-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
 .mental-state-badge {
   color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.resources ul {
-  list-style-type: none;
+/* Content sections */
+.therapy-content {
+  padding: 1.5rem;
+}
+
+.section-title {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.description-content {
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Resources section */
+.resources-list {
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.resources li {
-  margin-bottom: 0.5rem;
+.resource-item {
+  margin-bottom: 0.75rem;
 }
 
-.resources a {
-  color: #3182ce;
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
   text-decoration: none;
-  transition: color 0.2s;
-  word-break: break-all;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: rgba(139, 137, 247, 0.1);
 }
 
-.resources a:hover {
-  color: #2c5282;
+.resource-link:hover {
+  background-color: rgba(139, 137, 247, 0.2);
   text-decoration: underline;
 }
 
+.link-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.resource-text {
+  word-break: break-all;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .therapy-header h1 {
-    font-size: 1.8rem;
+  .therapy-image-container {
+    height: 200px;
+  }
+
+  .therapy-title {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .therapy-detail-container {
+    padding: 0.5rem;
+  }
+
+  .therapy-card {
+    border-radius: 12px;
   }
 
   .therapy-image-container {
-    height: 250px;
+    height: 180px;
   }
 
-  .therapy-content {
-    padding: 0;
+  .therapy-title {
+    font-size: 1.5rem;
   }
+
+  .mental-state-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+.mental-states-label {
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  opacity: 0.9;
 }

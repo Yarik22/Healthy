@@ -6,7 +6,7 @@
 
 body {
   background: var(--background-main);
-  font-family: "Segoe UI", sans-serif;
+  font-family: "WinkyRough", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   padding: 2rem 0;
@@ -44,6 +44,9 @@ h3 {
     justify-content: space-between;
     align-items: center;
   }
+}
+img {
+  border-radius: 15px;
 }
 
 .hero-left h1 {
@@ -133,6 +136,10 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+p {
+  font-size: 1.2rem;
 }
 
 @media (min-width: 768px) {

@@ -59,4 +59,16 @@ export class TestService extends DatabaseService<Test> {
       }
     });
   }
+
+  hasUserTakenAnyTest(userId: string): Observable<boolean> {
+    return defer(async () => {
+      const count = await this.repository
+        .createQueryBuilder("test")
+        .innerJoin("test.users", "user")
+        .where("user.uuid = :userId", { userId })
+        .getCount();
+
+      return count > 0;
+    });
+  }
 }

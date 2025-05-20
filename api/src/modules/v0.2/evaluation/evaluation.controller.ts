@@ -61,6 +61,12 @@ export class EvaluationController {
               switchMap((res: any) => {
                 return from(
                   this.translationService.translateToUkrainian(res.aiResponse)
+                ).pipe(
+                  switchMap((translated: string) => {
+                    return from(
+                      Promise.resolve({ recommendation: translated })
+                    );
+                  })
                 );
               })
             );

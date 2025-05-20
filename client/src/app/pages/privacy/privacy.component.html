@@ -1,0 +1,258 @@
+<section class="privacy-container">
+  <article class="privacy-policy">
+    <header class="privacy-header">
+      <h1 class="privacy-title">Політика конфіденційності</h1>
+      <p class="privacy-effective">Діє з 20 січня 2025 року</p>
+    </header>
+
+    <div class="privacy-content">
+      <!-- Section 1 -->
+      <section class="privacy-section">
+        <div class="section-header" (click)="toggleSection(1)">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M12,3L2,12H5V20H19V12H22L12,3M12,7.7C14.1,7.7 15.8,9.4 15.8,11.5C15.8,14.5 12,18 12,18C12,18 8.2,14.5 8.2,11.5C8.2,9.4 9.9,7.7 12,7.7M12,10A1.5,1.5 0 0,0 10.5,11.5A1.5,1.5 0 0,0 12,13A1.5,1.5 0 0,0 13.5,11.5A1.5,1.5 0 0,0 12,10Z"
+              />
+            </svg>
+            <span>Загальні положення</span>
+          </h2>
+          <div class="section-toggle">{{ sections[1] ? "+" : "-" }}</div>
+        </div>
+        <div class="section-content" [class.collapsed]="sections[1]">
+          <p>
+            Healthy (далі - "Компанія") поважає ваше право на конфіденційність
+            та дотримується вимог чинного законодавства України у сфері захисту
+            персональних даних, зокрема Закону України "Про захист персональних
+            даних".
+          </p>
+          <p>
+            Ця Політика конфіденційності (далі - "Політика") визначає порядок
+            обробки персональних даних користувачів нашого веб-застосунку (далі
+            - "Застосунок").
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="privacy-section">
+        <div class="section-header" (click)="toggleSection(2)">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
+              />
+            </svg>
+            <span>Категорії збираємих даних</span>
+          </h2>
+          <div class="section-toggle">{{ sections[2] ? "+" : "-" }}</div>
+        </div>
+        <div class="section-content" [class.collapsed]="sections[2]">
+          <p>
+            Ми можемо збирати та обробляти наступні категорії персональних
+            даних:
+          </p>
+          <ul class="data-list">
+            <li class="data-item">
+              <strong>Ідентифікаційні дані:</strong> ім'я, електронна адреса,
+              вік (якщо надано)
+            </li>
+            <li class="data-item">
+              <strong>Психологічні дані:</strong> відповіді на тести, результати
+              аналізу емоційного стану
+            </li>
+            <li class="data-item">
+              <strong>Технічні дані:</strong> IP-адреса, тип браузера, дані про
+              пристрій
+            </li>
+            <li class="data-item">
+              <strong>Дані використання:</strong> час сеансів, частота
+              використання, переглянуті сторінки
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="privacy-section">
+        <div class="section-header" (click)="toggleSection(3)">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"
+              />
+            </svg>
+            <span>Мета обробки даних</span>
+          </h2>
+          <div class="section-toggle">{{ sections[3] ? "+" : "-" }}</div>
+        </div>
+        <div class="section-content" [class.collapsed]="sections[3]">
+          <p>Ваші персональні дані обробляються з наступних цілей:</p>
+          <ol class="purpose-list">
+            <li>Надання персоналізованих рекомендацій з арт-терапії</li>
+            <li>Покращення якості наданих сервісів</li>
+            <li>Аналіз ефективності терапевтичних методів</li>
+            <li>Забезпечення безпеки та запобігання шахрайству</li>
+            <li>Виконання юридичних зобов'язань</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="privacy-section">
+        <div class="section-header" (click)="toggleSection(4)">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11C15.4,11 16,11.6 16,12.2V15.7C16,16.4 15.4,17 14.7,17H9.2C8.6,17 8,16.4 8,15.7V12.2C8,11.6 8.6,11 9.2,11V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"
+              />
+            </svg>
+            <span>Захист даних</span>
+          </h2>
+          <div class="section-toggle">{{ sections[4] ? "+" : "-" }}</div>
+        </div>
+        <div class="section-content" [class.collapsed]="sections[4]">
+          <p>
+            Ми вживаємо всіх необхідних технічних та організаційних заходів для
+            захисту ваших персональних даних, включаючи:
+          </p>
+          <div class="protection-grid">
+            <div class="protection-item">
+              <div class="protection-icon">🔒</div>
+              <h3>Шифрування даних</h3>
+              <p>
+                Використання сучасних алгоритмів шифрування при передачі та
+                зберіганні
+              </p>
+            </div>
+            <div class="protection-item">
+              <div class="protection-icon">🛡️</div>
+              <h3>Контроль доступу</h3>
+              <p>
+                Суворе обмеження доступу до даних тільки для авторизованого
+                персоналу
+              </p>
+            </div>
+            <div class="protection-item">
+              <div class="protection-icon">📋</div>
+              <h3>Політики безпеки</h3>
+              <p>Чіткі внутрішні процедури обробки та захисту даних</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="privacy-section">
+        <div class="section-header" (click)="toggleSection(5)">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"
+              />
+            </svg>
+            <span>Ваші права</span>
+          </h2>
+          <div class="section-toggle">{{ sections[5] ? "+" : "-" }}</div>
+        </div>
+        <div class="section-content" [class.collapsed]="sections[5]">
+          <p>
+            Відповідно до Закону України "Про захист персональних даних", ви
+            маєте право:
+          </p>
+          <div class="rights-grid">
+            <div class="right-item">
+              <h3>Доступ</h3>
+              <p>Отримати інформацію про обробку ваших даних</p>
+            </div>
+            <div class="right-item">
+              <h3>Виправлення</h3>
+              <p>Вимагати виправлення неточної інформації</p>
+            </div>
+            <div class="right-item">
+              <h3>Видалення</h3>
+              <p>Вимагати видалення ваших персональних даних</p>
+            </div>
+            <div class="right-item">
+              <h3>Обмеження</h3>
+              <p>Обмежити обробку ваших даних</p>
+            </div>
+          </div>
+          <p class="notice">
+            Для реалізації ваших прав будь ласка, зв'яжіться з нашим офіцером з
+            захисту даних.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="privacy-section">
+        <div class="section-header" (click)="toggleSection(6)">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M22,16A5,5 0 0,1 17,21A5,5 0 0,1 12,16A5,5 0 0,1 17,11A5,5 0 0,1 22,16M5,5H7V3H5V5M21,5H23V3H21V5M17,1H19V3H17V1M9,3V5H11V3H9M5,7H7V9H5V7M5,11H7V13H5V11M5,15H7V17H5V15M5,19H7V21H5V19M9,7V9H11V7H9M9,11V13H11V11H9M9,15V17H11V15H9M9,19V21H11V19H9M13,3V5H15V3H13M13,19V21H15V19H13M17,7V9H19V7H17M17,15V17H19V15H17M13,7V9H15V7H13M13,11V13H15V11H13M13,15V17H15V15H13Z"
+              />
+            </svg>
+            <span>Контакти</span>
+          </h2>
+          <div class="section-toggle">{{ sections[6] ? "+" : "-" }}</div>
+        </div>
+        <div class="section-content" [class.collapsed]="sections[6]">
+          <div class="contact-card">
+            <div class="contact-info">
+              <h3>Офіцер з захисту даних</h3>
+              <p>Healthy</p>
+              <p>вул. Терапевтична, 15, м. Київ, 01001</p>
+              <p>
+                Email:
+                <a href="mailto:popov.yarik.popov@gmail.com">{{
+                  "popov.yarik.popov@gmail.com"
+                }}</a>
+              </p>
+              <p>Телефон: <a href="tel:+380123456789">+380 12 345 67 89</a></p>
+            </div>
+            <div class="contact-hours">
+              <h4>Години роботи:</h4>
+              <p>Пн-Пт: 09:00 - 18:00</p>
+              <p>Сб-Нд: Вихідний</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section class="privacy-section">
+        <div class="section-header" (click)="toggleSection(7)">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M13,12H16V15H13V12M8,12H11V15H8V12M8,7H16V11H8V7Z"
+              />
+            </svg>
+            <span>Зміни до Політики</span>
+          </h2>
+          <div class="section-toggle">{{ sections[7] ? "+" : "-" }}</div>
+        </div>
+        <div class="section-content" [class.collapsed]="sections[7]">
+          <p>
+            Ми залишаємо за собою право вносити зміни до цієї Політики. Про всі
+            суттєві зміни ми повідомлятимемо через наш Застосунок або
+            електронною поштою.
+          </p>
+          <div class="update-info">
+            <div class="update-badge">ОНОВЛЕНО</div>
+            <p class="last-updated">24 травня 2025 року</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+</section>

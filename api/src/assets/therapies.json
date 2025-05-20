@@ -10,83 +10,83 @@
       "Loneliness"
     ],
     "img": "assets/images/music_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=Hf71v8Zv7U8"]
   },
   {
     "title": "Кінотерапія",
     "description": "Використання фільмів як терапевтичного інструменту для отримання уявлень, обробки емоцій та стимулювання обговорень особистих труднощів.",
     "mentalStates": ["Confusion", "Frustration", "Insecurity", "Hopelessness"],
     "img": "assets/images/cinema_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://jut.su/", "https://kinogo.inc/"]
   },
   {
     "title": "Пісочна терапія",
     "description": "Практичний терапевтичний підхід із використанням піску та мініатюрних об'єктів для створення сцен, що відображають внутрішній світ людини.",
     "mentalStates": ["Fear", "Anger", "Guilt", "Shame"],
     "img": "assets/images/sand_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=JQizN6quYBs"]
   },
   {
     "title": "Мандалотерапія",
     "description": "Заспокійлива арт-терапевтична техніка з використанням мандал для зниження тривожності та досягнення емоційного балансу.",
     "mentalStates": ["Anxiety", "Stress", "Pessimism"],
     "img": "assets/images/mandala_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://mandalamaker.online/"]
   },
   {
     "title": "Драматерапія",
     "description": "Використання театральних технік та рольових ігор для дослідження емоційних проблем та сприяння особистісному розвитку.",
     "mentalStates": ["Insecurity", "Isolation", "Confusion", "Anger"],
     "img": "assets/images/drama_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=2CvuaEo3Zrk"]
   },
   {
     "title": "Танцювально-рухова терапія",
     "description": "Використання рухів та танців для підтримки інтелектуальних, емоційних і моторних функцій тіла.",
     "mentalStates": ["Depression", "Apathy", "Stress", "Loneliness"],
     "img": "assets/images/dance_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=tMh4XE6lKXI"]
   },
   {
     "title": "Колажна терапія",
     "description": "Створення колажів з різних матеріалів для вираження почуттів і думок, які важко висловити словами.",
     "mentalStates": ["Confusion", "Frustration", "Hopelessness", "Pessimism"],
     "img": "assets/images/collage_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://pixlr.com/photo-collage/"]
   },
   {
     "title": "Фототерапія",
     "description": "Використання фотографії як способу самовираження та дослідження особистої ідентичності та перспективи.",
     "mentalStates": ["Isolation", "Insecurity", "Depression", "Apathy"],
     "img": "assets/images/photography_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=vyeqp2TQz7o"]
   },
   {
     "title": "Глинотерапія",
     "description": "Робота з глиною для вивільнення емоцій, зниження стресу та підвищення самооцінки через тактильне творення.",
     "mentalStates": ["Anger", "Stress", "Frustration", "Guilt"],
     "img": "assets/images/clay_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=DCoR8psosE8"]
   },
   {
     "title": "Поетична терапія",
     "description": "Використання читання, написання та обговорення поезії для зцілення та особистого розвитку.",
     "mentalStates": ["Loneliness", "Isolation", "Hopelessness", "Depression"],
     "img": "assets/images/poetry_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.song-lyrics-generator.org.uk/","https://eadmin.expertus.com.ua/uploads/%D0%94%D0%A1%D0%9E%D0%9F/%D0%9F%D1%96%D1%81%D0%B5%D0%BD%D0%BD%D0%BE-%D0%BF%D0%BE%D0%B5%D1%82%D0%B8%D1%87%D0%BD%D0%B0%20%D0%B4%D0%BE%D0%B1%D1%96%D1%80%D0%BA%D0%B0%20%D0%B2%D1%96%D0%B4%20%D0%93%D0%BE%D0%BB%D0%BE%D0%B2%D0%B1%D1%83%D1%85%20%D0%9C%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D0%BD%D0%B0.pdf"]
   },
   {
     "title": "Лялькотерапія",
     "description": "Використання ляльок для відтворення емоцій та досвіду, що допомагає виразити складні почуття в безпечний, символічний спосіб.",
     "mentalStates": ["Fear", "Shame", "Anger", "Insecurity"],
     "img": "assets/images/puppet_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=Smyu7VIIqEE"]
   },
   {
     "title": "Природна арт-терапія",
     "description": "Створення мистецтва з природних матеріалів (листя, гілки, каміння) для заземлення, усвідомленості та зв'язку з природою.",
     "mentalStates": ["Stress", "Anxiety", "Apathy", "Pessimism"],
     "img": "assets/images/nature_therapy.jpg",
-    "url": ["http://example.com"]
+    "url": ["https://www.youtube.com/watch?v=qkGp73sv1WM"]
   }
 ]

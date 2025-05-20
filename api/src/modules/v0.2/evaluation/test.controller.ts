@@ -20,13 +20,16 @@ import {
   ApiHeader,
   ApiQuery,
 } from "@nestjs/swagger";
-import { map, Observable } from "rxjs";
+import { from, map, Observable, switchMap } from "rxjs";
 import { DeleteResult, UpdateResult } from "typeorm";
 import { ApiVersion } from "src/modules/versions";
 import { RoleName } from "../../../../shared/enums/user.enum";
 import { Roles } from "../decorator/role.decorator";
 import { RolesGuard } from "../guard/role.guard";
 import { QueryTestDto } from "./dto/query-test.dto";
+import { Req } from "@nestjs/common";
+import { Request } from "express";
+import { User } from "src/database/entities/user.entity";
 
 @Controller({ path: "tests", version: ApiVersion.Version02 })
 @ApiHeader({
@@ -182,4 +185,28 @@ export class TestController {
   // handleDeleteTest(@Param("id") id: string): Observable<DeleteResult> {
   //   return this.testService.delete(id);
   // }
+
+  @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
+  @Get("user/has-tests")
+  @ApiOperation({ summary: "Check if the current user has at least one test" })
+  @ApiResponse({
+    status: 200,
+    description: "Whether the user has at least one test",
+    schema: {
+      example: { hasTests: true },
+    },
+  })
+  handleCheckUserHasTests(
+    @Req() req: Request
+  ): Observable<{ hasTests: boolean }> {
+    return from(req.user as Promise<User>).pipe(
+      switchMap((user: User) => {
+        if (!user || !user.uuid) {
+          throw new Error("User not found");
+        }
+        return this.testService.hasUserTakenAnyTest(user.uuid);
+      }),
+      map((hasTests: boolean) => ({ hasTests }))
+    );
+  }
 }

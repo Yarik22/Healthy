@@ -23,10 +23,10 @@ export const authGuard: CanActivateFn = () => {
       router.navigate([
         '/error',
         '401',
-        'Unauthorized',
-        'Please login to continue.',
+        'Авторизація', // 'Unauthorized'
+        'Будь ласка, увійдіть для продовження.', // 'Please login to continue.'
         '🔒',
-        'Login with Google',
+        'Увійти через Google', // 'Login with Google'
         `${apiUrl}/auth/google/login`,
       ]);
       return of(false);

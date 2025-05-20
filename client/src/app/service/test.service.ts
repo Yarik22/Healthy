@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Test } from '../../../types/TestType';
 import { environment } from '../../../environments/environment';
 
@@ -37,9 +37,7 @@ export class TestService {
     return this.http.post(`${this.apiUrl}/submit`, { answers });
   }
 
-  getTestInfo(
-    id: string
-  ): Observable<{
+  getTestInfo(id: string): Observable<{
     testId: string;
     totalQuestions: number;
     usersPassed: number;
@@ -50,5 +48,10 @@ export class TestService {
       usersPassed: number;
     }>(`${this.apiUrl}/${id}/info`);
   }
-  
+
+  hasSubmitedTest(): Observable<boolean> {
+    return this.http
+      .get<{ hasTests: boolean }>(`${this.apiUrl}/user/has-tests`)
+      .pipe(map((response) => response.hasTests));
+  }
 }

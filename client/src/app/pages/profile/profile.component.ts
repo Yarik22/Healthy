@@ -11,12 +11,13 @@ import {
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { CommonModule } from '@angular/common';
 import { ProfileBadgeComponent } from '../../components/profile-badge/profile-badge.component';
+import { RecommendationComponent } from "../../components/recommendation/recommendation.component";
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  imports: [LoaderComponent, CommonModule, ProfileBadgeComponent],
+  imports: [LoaderComponent, CommonModule, ProfileBadgeComponent, RecommendationComponent],
 })
 export class ProfileComponent implements OnInit {
   user$: Observable<User | null>;

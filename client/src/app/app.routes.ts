@@ -8,6 +8,7 @@ import { TherapyListComponent } from './pages/therapyList/therapies.component';
 import { TestListComponent } from './pages/testList/tests.component';
 import { TestComponent } from './pages/test/test.component';
 import { unsavedTestGuard } from './guard/unsaved-test.guard';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,6 +31,10 @@ export const routes: Routes = [
         canDeactivate: [unsavedTestGuard],
       },
     ],
+  },
+  {
+    path: 'privacy',
+    component: PrivacyComponent,
   },
   {
     path: 'error/:code/:title/:message/:icon/:buttonText/:buttonLink',

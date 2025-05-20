@@ -1,53 +1,96 @@
 <div class="therapy-detail-container">
-  <app-loader *ngIf="loading$ | async"></app-loader>
+  <app-loader *ngIf="loading$ | async" class="loader"></app-loader>
 
   <div *ngIf="error$ | async as error" class="error-state">
-    <p class="error-message">{{ error }}</p>
-    <button (click)="reload()" class="retry-button">Спробувати знову</button>
+    <div class="error-card">
+      <svg class="error-icon" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"
+        />
+      </svg>
+      <h3 class="error-title">Помилка завантаження</h3>
+      <p class="error-message">{{ error }}</p>
+      <button (click)="reload()" class="retry-button">Спробувати знову</button>
+    </div>
   </div>
 
   <div *ngIf="therapy$ | async as therapy" class="therapy-detail">
-    <div class="therapy-header">
-      <h1>{{ therapy.title }}</h1>
-      <div class="therapy-image-container">
-        <img
-          [src]="therapy.img || './assets/default-therapy.jpg'"
-          [alt]="therapy.title"
-          class="therapy-image"
-          (error)="handleImageError($event)"
-        />
-      </div>
-    </div>
-
-    <div class="therapy-content">
-      <div class="description">
-        <h2>Опис</h2>
-        <p>{{ therapy.description || "Опис відсутній" }}</p>
-      </div>
-
-      <div class="mental-states" *ngIf="therapy.mentalStates?.length">
-        <h2>Допомагає з</h2>
-        <div class="mental-state-badges">
-          <span
-            *ngFor="let state of therapy.mentalStates"
-            class="mental-state-badge"
-            [style.backgroundColor]="getColorForState(state)"
-          >
-            {{ state }}
-          </span>
+    <article class="therapy-card">
+      <div class="therapy-hero">
+        <div class="therapy-image-container">
+          <img
+            [src]="therapy.img || './assets/default-therapy.jpg'"
+            [alt]="therapy.title"
+            class="therapy-image"
+            (error)="handleImageError($event)"
+          />
+        </div>
+        <div class="therapy-header">
+          <h1 class="therapy-title">{{ therapy.title | titlecase }}</h1>
+          <div class="therapy-meta">
+            <div class="mental-states" *ngIf="therapy.mentalStates?.length">
+              <p class="mental-states-label">Допомагає при:</p>
+              <div class="mental-state-badges">
+                <span
+                  *ngFor="let state of therapy.mentalStates"
+                  class="mental-state-badge"
+                  [style.backgroundColor]="getColorForState(state)"
+                >
+                  {{ getTranslatedMentalState(state) }}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="resources" *ngIf="therapy.url?.length">
-        <h2>Ресурси</h2>
-        <ul>
-          <li *ngFor="let resourceUrl of therapy.url">
-            <a [href]="resourceUrl" target="_blank" rel="noopener noreferrer">
-              {{ resourceUrl }}
-            </a>
-          </li>
-        </ul>
+      <div class="therapy-content">
+        <section class="description-section">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z"
+              />
+            </svg>
+            Опис
+          </h2>
+          <div class="description-content">
+            <p>{{ therapy.description || "Опис відсутній" }}</p>
+          </div>
+        </section>
+
+        <section class="resources-section" *ngIf="therapy.url?.length">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
+              />
+            </svg>
+            Ресурси
+          </h2>
+          <ul class="resources-list">
+            <li *ngFor="let resourceUrl of therapy.url" class="resource-item">
+              <a
+                [href]="resourceUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-link"
+              >
+                <svg class="link-icon" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z"
+                  />
+                </svg>
+                <span class="resource-text">{{ resourceUrl }}</span>
+              </a>
+            </li>
+          </ul>
+        </section>
       </div>
-    </div>
+    </article>
   </div>
 </div>

@@ -62,4 +62,8 @@ export class TherapyComponent implements OnInit {
       }
     });
   }
+
+  getTranslatedMentalState(state: MentalState): string {
+    return this.therapyService.getTranslatedMentalState(state);
+  }
 }

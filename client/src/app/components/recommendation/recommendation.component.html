@@ -1,0 +1,48 @@
+<div class="recommendation-container">
+  <div class="recommendation-header">
+    <div class="header-content">
+      <h3><i class="fas fa-lightbulb"></i> Персональні рекомендації</h3>
+      <p class="subtitle">
+        Отримайте персоналізовані поради на основі ваших результатів тестів
+      </p>
+    </div>
+  </div>
+
+  <div class="recommendation-card">
+    <div class="card-illustration">
+      <i class="fas fa-chart-line"></i>
+    </div>
+
+    <div class="card-content">
+      <div class="recommendation-result" *ngIf="recommendation && !loading">
+        <p>{{ recommendation }}</p>
+      </div>
+
+      <div class="recommendation-actions" *ngIf="!recommendation || loading">
+        <button
+          class="recommendation-button"
+          [disabled]="!hasTests || loading || timeLeft > 0"
+          (click)="getRecommendation()"
+          (mouseenter)="!hasTests && showTooltip()"
+        >
+          <span *ngIf="!loading">
+            <i class="fas fa-magic"></i>
+            {{
+              timeLeft > 0
+                ? "Доступно через " + timeLeft + " хв"
+                : "Отримати рекомендацію"
+            }}
+          </span>
+          <span *ngIf="loading">Завантаження...</span>
+        </button>
+
+        <div class="tooltip" [class.visible]="tooltipVisible" *ngIf="!hasTests">
+          <i class="fas fa-exclamation-circle"></i>
+          Ви повинні пройти хоча б один тест
+        </div>
+      </div>
+
+      <app-loader *ngIf="loading"></app-loader>
+    </div>
+  </div>
+</div>
