@@ -7,6 +7,7 @@ import {
   IsByteLength,
 } from "class-validator";
 import { Constraints } from "../../../../../shared/constraints/database.constraint";
+import { CreateQuestionDto } from "./create-question.dto";
 
 export class CreateTestDto {
   @ApiProperty({
@@ -37,4 +38,6 @@ export class CreateTestDto {
   @IsOptional()
   @IsByteLength(0, Constraints.Test.imgMaxLength)
   img?: string;
+
+  questions: CreateQuestionDto[];
 }

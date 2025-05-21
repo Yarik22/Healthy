@@ -32,6 +32,21 @@
             <span>Терапії</span>
           </a>
         </li>
+
+        <ng-container *ngIf="user$ | async as user">
+          <li *ngIf="hasAdminOrModeratorRole(user)">
+            <a routerLink="/tests/create" routerLinkActive="active">
+              <i class="fas fa-plus-circle"></i>
+              <span>Створити тест</span>
+            </a>
+          </li>
+          <li *ngIf="hasAdminOrModeratorRole(user)">
+            <a routerLink="/user/find" routerLinkActive="active">
+              <i class="fas fa-search"></i>
+              <span>Знайти користувача</span>
+            </a>
+          </li>
+        </ng-container>
       </ul>
     </div>
 

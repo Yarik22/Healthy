@@ -235,7 +235,6 @@ export class UserController {
     }
 
     for (let i = 0; i < mockUsersCount; i++) {
-      // Every 10 users, generate a new base nickname
       if (i % 10 === 0) {
         var baseNickname = faker.internet.userName();
       }

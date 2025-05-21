@@ -42,6 +42,21 @@ import { User } from "src/database/entities/user.entity";
 export class TestController {
   constructor(private readonly testService: TestService) {}
 
+  @Roles(RoleName.Admin, RoleName.Moderator)
+  @Post()
+  @ApiOperation({
+    summary: "Create a new test with nested questions and answers",
+  })
+  @ApiResponse({
+    status: 201,
+    description:
+      "The test and its nested entities have been successfully created.",
+    type: Test,
+  })
+  handleCreateTest(@Body() createTestDto: CreateTestDto): Observable<Test> {
+    return this.testService.createTestWithQuestionsAndAnswers(createTestDto);
+  }
+
   // @Roles(RoleName.Admin)
   // @Post()
   // @ApiOperation({ summary: "Create a new test" })

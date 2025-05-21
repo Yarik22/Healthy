@@ -1,5 +1,6 @@
+// user.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { User } from '../../../types/UserType';
@@ -18,5 +19,10 @@ export class UserService {
 
   updateMe(updatedUser: Partial<User>): Observable<User> {
     return this.http.patch<User>(`${this.apiUrl}/me`, updatedUser);
+  }
+
+  searchUsers(nickname: string): Observable<User[]> {
+    const params = new HttpParams().set('nickname', nickname);
+    return this.http.get<User[]>(`${this.apiUrl}/search`, { params });
   }
 }

@@ -1,0 +1,185 @@
+<div class="container">
+  <form [formGroup]="testForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>Назва тесту *</label>
+      <input type="text" formControlName="title" />
+      <ng-container *ngIf="testForm.get('title')?.touched">
+        <span
+          class="error-message"
+          *ngIf="testForm.get('title')?.hasError('required')"
+        >
+          Назва обов'язкова
+        </span>
+        <span
+          class="error-message"
+          *ngIf="testForm.get('title')?.hasError('maxlength')"
+        >
+          Максимум {{ constraints.Test.titleMaxLength }} символів
+        </span>
+      </ng-container>
+    </div>
+
+    <div class="form-group">
+      <label>Опис</label>
+      <textarea formControlName="description"></textarea>
+      <span
+        class="error-message"
+        *ngIf="testForm.get('description')?.hasError('maxlength')"
+      >
+        Максимум {{ constraints.Test.descriptionMaxLength }} символів
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Зображення тесту (до 1 МБ)</label>
+      <input type="file" (change)="handleFileUpload($event)" accept="image/*" />
+      <span class="error-message" *ngIf="fileError">{{ fileError }}</span>
+    </div>
+
+    <div formArrayName="questions">
+      <div
+        *ngFor="let question of questions.controls; let i = index"
+        [formGroupName]="i"
+        class="question-block"
+      >
+        <h4>Питання {{ i + 1 }}</h4>
+        <div class="form-group">
+          <label>Заголовок питання *</label>
+          <input type="text" formControlName="title" />
+          <ng-container *ngIf="question.get('title')?.touched">
+            <span
+              class="error-message"
+              *ngIf="question.get('title')?.hasError('required')"
+            >
+              Заголовок обов'язковий
+            </span>
+            <span
+              class="error-message"
+              *ngIf="question.get('title')?.hasError('maxlength')"
+            >
+              Максимум {{ constraints.Question.titleMaxLength }} символів
+            </span>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <label>Опис (необов'язково)</label>
+          <textarea formControlName="description"></textarea>
+          <span
+            class="error-message"
+            *ngIf="question.get('description')?.hasError('maxlength')"
+          >
+            Максимум {{ constraints.Question.descriptionMaxLength }} символів
+          </span>
+        </div>
+
+        <div formArrayName="answers">
+          <h5>Відповіді</h5>
+          <div
+            *ngFor="let answer of getAnswers(i).controls; let j = index"
+            [formGroupName]="j"
+            class="answer-group"
+          >
+            <div class="form-group">
+              <label>Текст відповіді *</label>
+              <input type="text" formControlName="text" />
+              <ng-container *ngIf="answer.get('text')?.touched">
+                <span
+                  class="error-message"
+                  *ngIf="answer.get('text')?.hasError('required')"
+                >
+                  Текст відповіді обов'язковий
+                </span>
+                <span
+                  class="error-message"
+                  *ngIf="answer.get('text')?.hasError('maxlength')"
+                >
+                  Максимум {{ constraints.Answer.textMaxLength }} символів
+                </span>
+              </ng-container>
+            </div>
+
+            <div class="form-group">
+              <label>Вплив (-10 до 10) *</label>
+              <input
+                type="number"
+                formControlName="influence"
+                min="-10"
+                max="10"
+              />
+              <ng-container *ngIf="answer.get('influence')?.touched">
+                <span
+                  class="error-message"
+                  *ngIf="answer.get('influence')?.hasError('required')"
+                >
+                  Вплив обов'язковий
+                </span>
+                <span
+                  class="error-message"
+                  *ngIf="
+                    answer.get('influence')?.hasError('min') ||
+                    answer.get('influence')?.hasError('max')
+                  "
+                >
+                  Допустиме значення від
+                  {{ constraints.Answer.influenceMin }} до
+                  {{ constraints.Answer.influenceMax }}
+                </span>
+              </ng-container>
+            </div>
+
+            <div class="form-group">
+              <label>Емоційний стан *</label>
+              <select formControlName="mentalState">
+                <option value="">Оберіть емоційний стан</option>
+                <option
+                  *ngFor="let state of translatedMentalStates"
+                  [value]="state.key"
+                >
+                  {{ state.label }}
+                </option>
+              </select>
+              <span
+                class="error-message"
+                *ngIf="
+                  answer.get('mentalState')?.touched &&
+                  answer.get('mentalState')?.hasError('required')
+                "
+              >
+                Оберіть емоційний стан
+              </span>
+            </div>
+
+            <button
+              type="button"
+              (click)="removeAnswer(i, j)"
+              class="remove-btn"
+            >
+              Видалити відповідь
+            </button>
+          </div>
+          <button type="button" (click)="addAnswer(i)" class="add-btn">
+            Додати відповідь
+          </button>
+        </div>
+
+        <button type="button" (click)="removeQuestion(i)" class="remove-btn">
+          Видалити питання
+        </button>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="addQuestion()" class="add-btn">
+        Додати питання
+      </button>
+      <button
+        type="submit"
+        [disabled]="loading || testForm.invalid || !!fileError"
+        class="submit-btn"
+      >
+        {{ loading ? "Збереження..." : "Зберегти тест" }}
+      </button>
+    </div>
+  </form>
+</div>

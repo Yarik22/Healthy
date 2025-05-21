@@ -7,23 +7,23 @@ export const Constraints = {
     defaultValue: 50,
   },
   Therapy: {
-    imgMaxLength: 2097152, // 2 MB in bytes
+    imgMaxLength: 1048576, // 1 MB in bytes
     titleMaxLength: 100,
     descriptionMaxLength: 1000,
     urlMaxLength: 500,
   },
   Test: {
-    imgMaxLength: 2097152, // 2 MB in bytes
+    imgMaxLength: 1048576, // 1 MB in bytes
     titleMaxLength: 100,
     descriptionMaxLength: 1000,
   },
   Question: {
-    imgMaxLength: 2097152, // 2 MB in bytes
+    imgMaxLength: 1048576, // 1 MB in bytes
     titleMaxLength: 200,
     descriptionMaxLength: 1000,
   },
   Answer: {
-    imgMaxLength: 2097152, // 2 MB in bytes
+    imgMaxLength: 1048576, // 1 MB in bytes
     influenceMin: -10,
     influenceMax: 10,
     textMaxLength: 250,
@@ -32,7 +32,7 @@ export const Constraints = {
     emailMaxLength: 320,
     nicknameMaxLength: 64,
     bioMaxLength: 1000,
-    imgMaxLength: 2097152, // 2 MB in bytes
+    imgMaxLength: 1048576, // 1 MB in bytes
   },
   Role: {
     nameMaxLength: 50,

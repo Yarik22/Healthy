@@ -1,0 +1,62 @@
+<div class="find-user-container">
+
+  <div class="search-box">
+    <input
+      type="text"
+      [formControl]="searchControl"
+      placeholder="Enter nickname..."
+      autocomplete="off"
+      class="search-input"
+    />
+    <i class="fas fa-search search-icon"></i>
+    <div class="loading-indicator" *ngIf="isLoading">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
+  </div>
+
+  <div class="results-container" *ngIf="(users$ | async)?.length; else noUsers">
+    <div
+      *ngFor="let user of users$ | async"
+      class="user-card"
+      [class.banned]="user.banned"
+      (click)="navigateToUserStats(user.uuid)"
+    >
+      <div class="user-avatar">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="user-info">
+        <div class="user-header">
+          <h3 class="user-nickname">{{ user.nickname }}</h3>
+          <span class="user-badge banned" *ngIf="user.banned">
+            <i class="fas fa-ban"></i> Banned
+          </span>
+        </div>
+        <p class="user-email">{{ user.email }}</p>
+
+        <div class="user-meta">
+          <span class="meta-item">
+            <i class="fas fa-venus-mars"></i> {{ getSexLabel(user.sex) }}
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-birthday-cake"></i>
+            {{ formatBirthdate(user.birthdate) }}
+          </span>
+        </div>
+
+        <p class="user-bio" *ngIf="user.bio">{{ user.bio }}</p>
+      </div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </div>
+  </div>
+
+  <ng-template #noUsers>
+    <div class="no-results" *ngIf="searchControl.value?.trim() && !isLoading">
+      <i class="fas fa-user-slash"></i>
+      <p>No users found for "{{ searchControl.value }}"</p>
+    </div>
+    <div class="search-hint" *ngIf="!searchControl.value?.trim() && !isLoading">
+      <i class="fas fa-info-circle"></i>
+      <p>Start typing to search for users</p>
+    </div>
+  </ng-template>
+</div>

@@ -14,7 +14,7 @@
 
 .slider {
   position: absolute;
-  cursor: pointer;
+  cursor: url("../../../assets/icons/pointer.png"), pointer !important;
   top: 0;
   left: 0;
   right: 0;

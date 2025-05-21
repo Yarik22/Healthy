@@ -13,7 +13,9 @@ export class SessionSerializer extends PassportSerializer {
     done(null, user);
   }
   deserializeUser(payload: User, done: Function) {
-    const user = firstValueFrom(this.userService.findById(payload.uuid));
+    const user = firstValueFrom(
+      this.userService.findById(payload.uuid, ["roles"])
+    );
     return user ? done(null, user) : done(null, null);
   }
 }

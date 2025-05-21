@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, IsByteLength } from "class-validator";
 import { Constraints } from "../../../../../shared/constraints/database.constraint";
+import { CreateAnswerDto } from "./create-answer.dto";
 
 export class CreateQuestionDto {
   @ApiProperty({
@@ -31,4 +32,6 @@ export class CreateQuestionDto {
   @IsOptional()
   @IsByteLength(0, Constraints.Question.imgMaxLength)
   img?: string;
+
+  answers: CreateAnswerDto[];
 }

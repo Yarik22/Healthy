@@ -178,6 +178,25 @@ select {
   transition: color 0.5s ease;
   color: var(--text-color);
 }
+
+body,
+label {
+  cursor: url("assets/icons/cursor.png"), auto !important;
+}
+
+a,
+button,
+input#birthdate[type="date"],
+select#sex,
+select#sex option,
+label.avatar-upload,
+select.mental-state-filter,
+input[type="file"],
+div.therapy-badge,
+div.section-header,
+div.user-card {
+  cursor: url("assets/icons/pointer.png"), pointer !important;
+}
 /*---------------------------------------------------------FONTS---------------------------------------------------------*/
 
 @font-face {

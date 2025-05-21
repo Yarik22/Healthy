@@ -4,11 +4,20 @@ import { ILike, Repository } from "typeorm";
 import { Test } from "src/database/entities/test.entity";
 import { Observable, defer } from "rxjs";
 import { User } from "src/database/entities/user.entity";
+import { CreateTestDto } from "./dto/create-test.dto";
+import { Answer } from "src/database/entities/answer.entity";
+import { Question } from "src/database/entities/question.entity";
 
 export class TestService extends DatabaseService<Test> {
   constructor(
     @InjectRepository(Test)
-    protected readonly repository: Repository<Test>
+    protected readonly repository: Repository<Test>,
+
+    @InjectRepository(Question)
+    protected readonly questionRepository: Repository<Question>,
+
+    @InjectRepository(Answer)
+    protected readonly answerRepository: Repository<Answer>
   ) {
     super(repository);
   }
@@ -69,6 +78,62 @@ export class TestService extends DatabaseService<Test> {
         .getCount();
 
       return count > 0;
+    });
+  }
+
+  createTestWithQuestionsAndAnswers(dto: CreateTestDto): Observable<Test> {
+    return defer(async () => {
+      const queryRunner =
+        this.repository.manager.connection.createQueryRunner();
+
+      await queryRunner.connect();
+      await queryRunner.startTransaction();
+
+      try {
+        // Use queryRunner.manager to access repositories in the transaction
+        const test = queryRunner.manager.getRepository(Test).create({
+          title: dto.title,
+          description: dto.description,
+          img: dto.img,
+        });
+
+        const savedTest = await queryRunner.manager
+          .getRepository(Test)
+          .save(test);
+
+        for (const questionDto of dto.questions) {
+          const question = queryRunner.manager.getRepository(Question).create({
+            title: questionDto.title,
+            description: questionDto.description,
+            img: questionDto.img,
+            tests: [savedTest],
+          });
+
+          const savedQuestion = await queryRunner.manager
+            .getRepository(Question)
+            .save(question);
+
+          const answers = questionDto.answers.map((answerDto) =>
+            queryRunner.manager.getRepository(Answer).create({
+              text: answerDto.text,
+              mentalState: answerDto.mentalState,
+              influence: answerDto.influence,
+              img: answerDto.img,
+              question: savedQuestion,
+            })
+          );
+
+          await queryRunner.manager.getRepository(Answer).save(answers);
+        }
+
+        await queryRunner.commitTransaction();
+        return savedTest;
+      } catch (err) {
+        await queryRunner.rollbackTransaction();
+        throw err;
+      } finally {
+        await queryRunner.release();
+      }
     });
   }
 }

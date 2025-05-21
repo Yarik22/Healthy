@@ -21,10 +21,10 @@ export class QuestionService {
     return this.http.get<Question>(`${this.apiUrl}/${id}`);
   }
 
-  submitResults(results: SubmitResult[], testId: string): Observable<any> {
+  submitResults(results: SubmitResult[], test_uuid: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/submit-results`, {
+      test_uuid,
       results,
-      testId,
     });
   }
 }

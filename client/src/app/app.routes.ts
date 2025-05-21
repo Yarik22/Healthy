@@ -9,6 +9,10 @@ import { TestListComponent } from './pages/testList/tests.component';
 import { TestComponent } from './pages/test/test.component';
 import { unsavedTestGuard } from './guard/unsaved-test.guard';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { TestCreateComponent } from './pages/test-create/test-create.component';
+import { roleGuard } from './guard/role.guard';
+import { FindUserComponent } from './pages/find-user/find-user.component';
+import { UserStatsComponent } from './pages/user-stats/user-stats.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,10 +24,32 @@ export const routes: Routes = [
       { path: ':name', component: TherapyComponent, canActivate: [authGuard] },
     ],
   },
+
+  {
+    path: 'user',
+    children: [
+      {
+        path: 'find',
+        component: FindUserComponent,
+        canActivate: [roleGuard(['admin', 'moderator'])],
+      },
+      {
+        path: ':userId/stats',
+        component: UserStatsComponent,
+        canActivate: [roleGuard(['admin', 'moderator'])],
+      },
+    ],
+  },
+
   {
     path: 'tests',
     children: [
       { path: '', component: TestListComponent, canActivate: [authGuard] },
+      {
+        path: 'create',
+        component: TestCreateComponent,
+        canActivate: [roleGuard(['admin', 'moderator'])],
+      },
       {
         path: ':id',
         component: TestComponent,
