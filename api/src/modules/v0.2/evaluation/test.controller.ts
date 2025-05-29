@@ -57,18 +57,6 @@ export class TestController {
     return this.testService.createTestWithQuestionsAndAnswers(createTestDto);
   }
 
-  // @Roles(RoleName.Admin)
-  // @Post()
-  // @ApiOperation({ summary: "Create a new test" })
-  // @ApiResponse({
-  //   status: 201,
-  //   description: "The test has been successfully created.",
-  //   type: Test,
-  // })
-  // handleCreateTest(@Body() test: CreateTestDto): Observable<Test> {
-  //   return this.testService.create(test);
-  // }
-
   @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
   @Get(":id")
   @ApiOperation({ summary: "Get a test by ID" })
@@ -152,54 +140,6 @@ export class TestController {
       }))
     );
   }
-  // @Roles(RoleName.Admin)
-  // @Get()
-  // @ApiOperation({ summary: "Get a list of all tests" })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: "List of tests retrieved successfully.",
-  //   type: [Test],
-  // })
-  // handleFindAllTests(): Observable<Test[]> {
-  //   return this.testService.findAll();
-  // }
-
-  // @Roles(RoleName.Admin)
-  // @Patch(":id")
-  // @ApiOperation({ summary: "Update a test by ID" })
-  // @ApiParam({ name: "id", description: "The unique identifier of the test" })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: "The test was successfully updated.",
-  //   type: UpdateResult,
-  // })
-  // @ApiResponse({
-  //   status: 404,
-  //   description: "Test not found",
-  // })
-  // handleUpdateTest(
-  //   @Param("id") id: string,
-  //   @Body() updateTestDto: UpdateTestDto
-  // ): Observable<UpdateResult> {
-  //   return this.testService.update(id, updateTestDto);
-  // }
-
-  // @Roles(RoleName.Admin)
-  // @Delete(":id")
-  // @ApiOperation({ summary: "Delete a test by ID" })
-  // @ApiParam({ name: "id", description: "The unique identifier of the test" })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: "The test has been successfully deleted.",
-  //   type: DeleteResult,
-  // })
-  // @ApiResponse({
-  //   status: 404,
-  //   description: "Test not found",
-  // })
-  // handleDeleteTest(@Param("id") id: string): Observable<DeleteResult> {
-  //   return this.testService.delete(id);
-  // }
 
   @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
   @Get("user/has-tests")

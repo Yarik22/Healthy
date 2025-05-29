@@ -46,18 +46,6 @@ import { CacheInterceptor, CacheTTL } from "@nestjs/cache-manager";
 export class TherapyController {
   constructor(private readonly therapyService: TherapyService) {}
 
-  // @Roles(RoleName.Admin)
-  // @Post()
-  // @ApiOperation({ summary: "Create a new therapy" })
-  // @ApiResponse({
-  //   status: 201,
-  //   description: "The therapy has been successfully created.",
-  //   type: Therapy,
-  // })
-  // handleCreate(@Body() therapy: CreateTherapyDto): Observable<Therapy> {
-  //   return this.therapyService.create(therapy);
-  // }
-
   @Roles(RoleName.User, RoleName.Moderator, RoleName.Admin)
   @Get(":identifier")
   @ApiOperation({ summary: "Get a therapy by ID or name" })
@@ -113,53 +101,4 @@ export class TherapyController {
       );
     }
   }
-
-  // @Roles(RoleName.Admin)
-  // @Get()
-  // @ApiOperation({ summary: "Get a list of all therapies" })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: "List of therapies retrieved successfully.",
-  //   type: [Therapy],
-  // })
-  // handleFindAll(): Observable<Therapy[]> {
-  //   return this.therapyService.findAll();
-  // }
-
-  // @Roles(RoleName.Admin)
-  // @Patch(":id")
-  // @ApiOperation({ summary: "Update therapy information by ID" })
-  // @ApiParam({ name: "id", description: "The unique identifier of the therapy" })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: "Therapy updated successfully.",
-  //   type: UpdateResult,
-  // })
-  // @ApiResponse({
-  //   status: 404,
-  //   description: "Therapy not found",
-  // })
-  // handleUpdate(
-  //   @Param("id") id: string,
-  //   @Body() therapy: UpdateTherapyDto
-  // ): Observable<UpdateResult> {
-  //   return this.therapyService.update(id, therapy);
-  // }
-
-  // @Roles(RoleName.Admin)
-  // @Delete(":id")
-  // @ApiOperation({ summary: "Delete a therapy by ID" })
-  // @ApiParam({ name: "id", description: "The unique identifier of the therapy" })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: "The therapy has been successfully deleted.",
-  //   type: DeleteResult,
-  // })
-  // @ApiResponse({
-  //   status: 404,
-  //   description: "Therapy not found",
-  // })
-  // handleDelete(@Param("id") id: string): Observable<DeleteResult> {
-  //   return this.therapyService.delete(id);
-  // }
 }

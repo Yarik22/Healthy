@@ -131,6 +131,24 @@ services:
       - "${ELASTICSEARCH_TRANSPORT_PORT:-9300}:${ELASTICSEARCH_TRANSPORT_PORT:-9300}"
     volumes:
       - esdata:/usr/share/elasticsearch/data
+  postgres_slave:
+    build:
+      context: ./postgres-slave
+    container_name: postgres_slave
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_slave_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
@@ -139,6 +157,7 @@ volumes:
   ollama_data:
   redis_data:
   esdata:
+  postgres_slave_data:
 
 networks:
   default:
